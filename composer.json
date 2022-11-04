@@ -100,6 +100,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "5.4.*",
-        "symfony/web-profiler-bundle": "5.4.*"
+        "symfony/web-profiler-bundle": "5.4.*",
+        "theofidry/psysh-bundle": "^4.5"
     }
 }
