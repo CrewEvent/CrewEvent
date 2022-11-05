@@ -21,6 +21,7 @@ security:
       remember_me:
         secret: "%kernel.secret%" # required
         lifetime: 604800
+
         signature_properties: ["password", "updatedAt"]
       logout:
         path: app_logout
