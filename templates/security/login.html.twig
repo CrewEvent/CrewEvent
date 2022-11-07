@@ -48,93 +48,147 @@
         </button>
     </form> #}
 
-    <section class="vh-100">
-        <div class="container-fluid h-custom">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-9 col-lg-6 col-xl-5">
-                    <img src="{{ asset("images/event2.png")}}" class="img-fluid" alt="Sample image" width="600">
+   
 
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-                </div>
-                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form method="post">
-
-                        {% if error %}
-                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                        {% endif %}
-
-                        {% if app.user %}
-                            <div class="mb-3">
-                                Vous étes connecté en tant que{{ app.user.userIdentifier }},
-                                <a href="{{ path('app_logout') }}">Deconnection</a>
-                            </div>
-                        {% endif %}
-
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                            <input type="text" id="form3Example3" class="form-control form-control-lg" value="{{ last_username }}" name="username" placeholder="Entrer votre identifiant"/>
-                            <label class="form-label" for="form3Example3">Identifiant</label>
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-3">
-                            <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Entrer votre mot de passe"/>
-
-                            <label class="form-label" for="form3Example4">Mot de passe</label>
-                        </div>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-
-                        <div
-                            class="d-flex justify-content-between align-items-center">
-                            <!-- Checkbox -->
-                            <div class="form-check mb-0">
-                                <input class="form-check-input me-2" type="checkbox" name="_remember_me" id="form2Example3"/>
-                                <label class="form-check-label" for="form2Example3">
-                                    Se souvenir de moi
-                                </label>
-                            </div>
-                            <a href="#!" class="text-body">Mot de passe oublié?</a>
-                        </div>
-
-                        <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Connection</button>
-
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas de compte?
-                                <a href="{{path("app_register")}}" class="link-danger">Inscrivez vous</a>
-                            </p>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
+    {% if app.user %}
+        <div class="mb-3">
+        Vous étes connecté en tant que{{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Deconnection</a>
         </div>
-        <div
-            class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-            <!-- Copyright -->
-            <div class="text-white mb-3 mb-md-0">
-                Copyright © 2022. All rights reserved.
-            </div>
-            <!-- Copyright -->
+    {% endif %}
 
-            <!-- Right -->
-            <div>
-                <a href="#!" class="text-white me-4">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#!" class="text-white me-4">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#!" class="text-white me-4">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="#!" class="text-white">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </div>
-            <!-- Right -->
-        </div>
-    </section>
+	<span id="root">
+		<section
+			class="section-all">
+
+			<!-- 1-Role Main -->
+			<main class="main" role="main">
+				<div class="wrapper">
+					<article class="article">
+						<div class="content">
+							<div class="login-box">
+								<div class="header">
+									<img class="logo" src="{{asset("images/crewevent.png")}}" alt="crewevent">
+								</div>
+								<!-- Header end -->
+								<div class="form-wrap">
+									<form class="form">
+
+										<div class="input-box">
+                                            <input type="text" value="{{ last_username }}" name="username" id="username" aria-describedby="" placeholder="identifiant" aria-required="true" maxlength="30" autocapitalize="off" autocorrect="off" required>
+
+										</div>
+
+										<div class="input-box">
+											<input type="password" name="password" id="password" placeholder="mot de passe" aria-describedby="" maxlength="30" aria-required="true" autocapitalize="off" autocorrect="off" required>
+
+										</div>
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="flexCheckDefault">
+
+                                                <input class="form-check-input" type="checkbox" name="_remember_me" value="" id="flexCheckDefault require">
+
+                                                
+                                                En cochant cette case vous acceptez les <a href="#">termes d'utilisation.</a>
+                                            </label>
+                                        </div>
+
+                                        {# <div class="checkbox mb-3">
+                                            <label>
+                                                <input type="checkbox" name="_remember_me">
+                                                Se souvenir de moi
+                                            </label>
+                                        </div> #}
+
+
+
+										<span class="button-box">
+                                            <button class="btn" type="submit" name="submit">Connecter</button>
+
+										</span>
+
+										<a class="forgot" href="">Mot de passe oublié?</a>
+									</form>
+								</div>
+								<!-- Form-wrap end -->
+							</div>
+							<!-- Login-box end -->
+
+							<div class="login-box">
+								<p class="text">Pas encore de compte ?<a href="#">Inscrivez vous</a>
+								</p>
+							</div>
+							<!-- Signup-box end -->
+
+							
+						</div>
+						<!-- Content end -->
+					</article>
+				</div>
+				<!-- Wrapper end -->
+			</main>
+
+			<!-- 2-Role Footer -->
+			<footer class="footer" role="contentinfo">
+				<div class="footer-container">
+
+					<nav class="footer-nav" role="navigation">
+						<ul>
+							<li>
+								<a href="">A propos</a>
+							</li>
+							<li>
+								<a href="">Support</a>
+							</li>
+							<li>
+								<a href="">Discord</a>
+							</li>
+                            <li>
+							
+								<a href="">Privacy</a>
+							</li>
+							<li>
+								<a href="">Terms</a>
+							</li>
+
+							<li>
+								<span class="language">Language
+									<select name="language" class="select" onchange="la(this.value)">
+										<option value="#">English</option>
+										<option value="#">french</option>
+									</select>
+								</span>
+							</li>
+						</ul>
+					</nav>
+
+					<span class="footer-logo">&copy; 2022 crewevent</span>
+				</div>
+				<!-- Footer container end -->
+			</footer>
+
+		</section>
+	</span>
+	<!-- Root -->
+
+	<!-- Select Link -->
+	<script type="text/javascript">
+		function la(src) {
+            window.location = src;
+        }
+	</script>
+</fomr>
+
+
+
+
+
 
 
 {% endblock %}
