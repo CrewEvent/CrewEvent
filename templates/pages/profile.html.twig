@@ -1,0 +1,72 @@
+{% extends 'pages_base.html.twig' %}
+
+{% block title %}page de profile
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div
+                        id="content" class="content content-full-width">
+                        <!-- begin profile -->
+                        <div class="profile">
+                            <div
+                                class="profile-header">
+                                <!-- BEGIN profile-header-cover -->
+                                <div class="profile-header-cover"></div>
+                                <!-- END profile-header-cover -->
+                                <!-- BEGIN profile-header-content -->
+                                <div
+                                    class="profile-header-content">
+                                    <!-- BEGIN profile-header-img -->
+                                    <div class="profile-header-img">
+                                        <img src="{{asset("./images/pas_de_photo.png")}}" alt="">
+
+                                    </div>
+                                    <!-- END profile-header-img -->
+                                    <!-- BEGIN profile-header-info -->
+                                    <div class="profile-header-info">
+                                        <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>
+                                        <p class="m-b-10">@ {{app.user.username}}</p>
+                                        <a href="{{path("app_edit_profile")}}" class="btn btn-sm btn-info mb-2">Edit Profile</a>
+                                    </div>
+                                    <!-- END profile-header-info -->
+                                </div>
+                                <!-- END profile-header-content -->
+                                <!-- BEGIN profile-header-tab -->
+                                <ul class="profile-header-tab nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a href="#" target="__blank" class="nav-link_">A propos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" target="__blank" class="nav-link_">Photos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" target="__blank" class="nav-link_">Evénements</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" target="__blank" class="nav-link_">Amis</a>
+                                    </li>
+                                </ul>
+                                <!-- END profile-header-tab -->
+                            </div>
+                        </div>
+                        <!-- end profile --> 
+                        </div>
+                        <!-- end profile-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	{% else %}
+		<a href="{{path("app_login")}}">Connecter vous</a>
+		<br>
+		<a href="{{path("app_register")}}">Inscrivez vous</a>
+
+	{% endif %}
+
+{% endblock %}

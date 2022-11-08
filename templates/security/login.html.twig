@@ -47,7 +47,7 @@
             Connection
         </button>
     </form> #}
-
+	<a href="{{path('app_index')}}">Retour</a>
    
 	<span id="root">
 		<section
@@ -66,14 +66,14 @@
 								<div class="form-wrap">
 									<form class="form" method="post">
 										{% if error %}
-													<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-												{% endif %}
+											<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+										{% endif %}
 
-												{% if app.user %}
-													<div class="mb-3">
-													Vous étes connecté en tant que{{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Deconnection</a>
-													</div>
-												{% endif %}
+										{% if app.user %}
+											<div class="mb-3">
+											Vous étes connecté en tant que{{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Deconnection</a>
+											</div>
+										{% endif %}
 
 										<div class="input-box">
                                             <input type="text" value="{{ last_username }}" name="username" id="username" aria-describedby="" placeholder="identifiant" aria-required="true" maxlength="30" autocapitalize="off" autocorrect="off" required>
@@ -89,9 +89,7 @@
                                         <div class="form-check">
 											<label class="form-check-label d-flex align-items-center" for="flexCheckDefault">
 
-
                                                 <input class="form-check-input p-2" type="checkbox" name="_remember_me" value="" id="flexCheckDefault require">
- 
 												<span class="p-2">Se souvenir de moi</span>
 
                                             </label>
@@ -158,7 +156,7 @@
 							<li>
 								<a href="">Termes</a>
 							</li>
-							
+
 							<li>
 								<span class="language">Langues
 									<select name="language" class="select" onchange="la(this.value)">

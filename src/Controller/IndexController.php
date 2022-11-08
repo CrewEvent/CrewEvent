@@ -15,4 +15,18 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
         ]);
     }
+    #[Route('/profile', name: 'app_profile')]
+    public function profile(): Response
+    {
+        return $this->render(
+            'pages/profile.html.twig'
+        );
+    }
+    #[Route('/profile/edit', name: 'app_edit_profile')]
+    public function edit_profile(): Response
+    {
+        return $this->render(
+            'pages/edit_profile.html.twig'
+        );
+    }
 }

@@ -6,7 +6,7 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/login.css';
+import './styles/profile.css';
 
 import $ from 'jquery';
 
