@@ -6,7 +6,8 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/login.css';
+import './styles/register.css';
 import $ from 'jquery';
 
 // start the Stimulus application

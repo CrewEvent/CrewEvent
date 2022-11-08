@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,6 +21,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
+
             ->add('email')
             ->add('username')
             ->add('agreeTerms', CheckboxType::class, [
@@ -29,6 +31,7 @@ class RegistrationFormType extends AbstractType
                         'message' => "Tu dois accépter les termes d'utilisations",
                     ]),
                 ],
+                'attr' => ['class' => 'form-check-input']
             ])
             ->add(
                 'plainPassword',
@@ -39,7 +42,7 @@ class RegistrationFormType extends AbstractType
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
                         new NotBlank([
-                            'message' => 'Please enter a password',
+                            'message' => 'entrer un mot de passe s il vous plait',
                         ]),
                         new Length([
                             'min' => 6,
@@ -48,8 +51,8 @@ class RegistrationFormType extends AbstractType
                         ])
 
                     ],
-                    'first_options'  => ['label' => 'Password'],
-                    'second_options' => ['label' => 'Repeat Password']
+                    'first_options'  => ['attr' => ['placeholder' => 'mot de passe', 'class' => 'mb-2'], 'label' => ' '],
+                    'second_options' => ['attr' => ['placeholder' => 'confirmer le mot de passe', 'class' => 'mb-3'], 'label' => ' ']
 
                 ]
             );
