@@ -71,6 +71,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $language = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photoProfile = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -304,6 +307,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLanguage(?string $language): self
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    public function getPhotoProfile(): ?string
+    {
+        return $this->photoProfile;
+    }
+
+    public function setPhotoProfile(?string $photoProfile): self
+    {
+        $this->photoProfile = $photoProfile;
 
         return $this;
     }
