@@ -9,13 +9,19 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\DBAL\Types\Types;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'users')]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
 #[HasLifecycleCallbacks]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+/**
+ * @Vich\Uploadable
+ */
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -74,6 +80,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photoProfile = null;
 
+    /**
+     * @Vich\UploadableField(mapping="profile_image", fileNameProperty="photoProfile")
+     * @Assert\Valid
+     * @Assert\File(
+     *     maxSize="1000K",
+     *     mimeTypes={
+     *         "image/jpg", "image/gif", "image/jpeg", "image/png"
+     *     }
+     * )
+     * @var File
+     */
+    private ?file $photoProfileFile;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +105,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->username;
     }
+
+
 
     public function setUsername(string $username): self
     {
@@ -311,6 +332,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
+    public function setPhotoProfileFile(File $image = null)
+    {
+        $this->photoProfileFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = (new \DateTimeImmutable());
+        }
+    }
+
+    public function getPhotoProfileFile()
+    {
+        return $this->photoProfileFile;
+    }
+
+
     public function getPhotoProfile(): ?string
     {
         return $this->photoProfile;
@@ -321,5 +362,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->photoProfile = $photoProfile;
 
         return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+            //$this->active,
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->username,
+            $this->password,
+            //$this->active,
+        ] = \unserialize($serialized, [self::class]);
     }
 }

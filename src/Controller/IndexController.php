@@ -55,6 +55,7 @@ class IndexController extends AbstractController
     #[Route('/profile/edit_password', name: 'app_change_password', methods: ['POST', 'GET'])]
     public function edit_password(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $userPasswordHasher): Response
     {
+
         $user = $this->getUser();
         $form = $this->createForm(ChangePasswordType::class, $user);
 

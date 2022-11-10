@@ -6,17 +6,28 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add(
+                'photoProfileFile',
+                VichImageType::class,
+                [
+                    'imagine_pattern' => 'my_thumb',
+                    'required' => false,
+                    'label' => "charger votre image",
+                    'allow_delete' => false,
+                    'delete_label' => 'supprimer',
+                    'download_uri' => true,
+                    'download_link' => false,
+                ]
+            )
+
             ->add('username')
             //->add('roles')
             ->add('email')
@@ -30,9 +41,23 @@ class UserType extends AbstractType
             ->add('city')
             ->add('gender')
             //->add('birthday')
-            ->add('language')
-            //->add('photoProfile')
-        ;
+            ->add('language');
+        // ->add(
+        //     'photoProfileFile',
+        //     VichImageType::class,
+        //     [
+        //         'required' => false,
+        //         'allow_delete' => true,
+        //         'label' => "Image au format JPG ou PNG",
+        //         'delete_label' => 'supprimer',
+        //         'download_label' => false,
+        //         'download_uri' => false,
+        //         'image_uri' => true,
+        //         'imagine_pattern' => 'my_thumb',
+        //     ]
+
+
+        // );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

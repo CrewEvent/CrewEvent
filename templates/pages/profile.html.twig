@@ -23,7 +23,7 @@
                                     class="profile-header-content">
                                     <!-- BEGIN profile-header-img -->
                                     <div class="profile-header-img">
-                                        <img src="{{asset("./images/pas_de_photo.png")}}" alt="">
+                                         <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
 
                                     </div>
                                     <!-- END profile-header-img -->
