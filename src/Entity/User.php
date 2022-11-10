@@ -91,7 +91,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
      * )
      * @var File
      */
-    private ?file $photoProfileFile;
+    private $photoProfileFile;
 
     public function getId(): ?int
     {
