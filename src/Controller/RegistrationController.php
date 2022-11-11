@@ -1,4 +1,12 @@
 <?php
+/* 
+    -Controller qui gére la partie inscription d'un utilisateur
+    -liste des méthodes:
+    --register: /register, app_register
+    --verifyUserEmail: /verify/email, app_verify_email
+    --cmd: symfony console make:registration-form
+
+    */
 
 namespace App\Controller;
 
@@ -26,6 +34,13 @@ class RegistrationController extends AbstractController
     {
         $this->emailVerifier = $emailVerifier;
     }
+
+    /* 
+    -Rendu du Formulaire d'inscription
+    -Sauvegrade dans la base de donnée
+    -Envoie email de confirmation
+
+    */
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
@@ -69,6 +84,8 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
+
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response

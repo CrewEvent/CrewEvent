@@ -1,4 +1,8 @@
 <?php
+/* 
+    -Formulaire de type changement de mot de passe
+    -cmd: symfony console make:form
+    */
 
 namespace App\Form;
 
@@ -16,23 +20,26 @@ class ChangePasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            //Input mot de passe actuel
             ->add(
                 'currentPassword',
-                PasswordType::class,
+                PasswordType::class, //type mot de passe
                 [
                     'mapped' => false,
                     'constraints' => [
-                        new NotBlank(['message' => 'veuillez entrer un mot de passe']),
-                        new UserPassword(["message" => "le message actuel n'est pas valide"])
+                        new NotBlank(['message' => 'veuillez entrer un mot de passe']), //Contraintes pas vide
+                        new UserPassword(["message" => "le message actuel n'est pas valide"]) //Contraintes de type mot de passe de l'utilisateur
                     ],
                     'attr' => ['placeholder' => 'votre mot de passe actuel', 'class' => 'mb-2'],
                     'label' => ' '
                 ]
 
             )
+
+            //Innput nouveau mot de passe
             ->add(
                 'newPassword',
-                RepeatedType::class,
+                RepeatedType::class, //de type répétition
                 [
                     'type' => PasswordType::class,
                     'invalid_message' => 'Les deux mots de passe doivent correspondrent',
@@ -40,10 +47,10 @@ class ChangePasswordType extends AbstractType
                     'mapped' => false,
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
-                        new NotBlank([
+                        new NotBlank([ //contrainte non vide
                             'message' => 'entrer un mot de passe s il vous plait',
                         ]),
-                        new Length([
+                        new Length([ //contrainte de largeur
                             'min' => 6,
                             'minMessage' => 'Your password should be at least {{ limit }} characters',
                             'max' => 4096
@@ -56,6 +63,12 @@ class ChangePasswordType extends AbstractType
                 ]
             );
     }
+    /* 
+    -
+    -
+    -
+
+    */
 
     public function configureOptions(OptionsResolver $resolver): void
     {

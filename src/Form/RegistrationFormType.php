@@ -1,4 +1,10 @@
 <?php
+/* 
+    -Formulaire de type Inscription
+    -
+    -
+
+    */
 
 namespace App\Form;
 
@@ -14,10 +20,13 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
             ->add('nom')
             ->add('prenom')
@@ -33,9 +42,11 @@ class RegistrationFormType extends AbstractType
                 ],
                 'attr' => ['class' => 'form-check-input']
             ])
+
+
             ->add(
                 'plainPassword',
-                RepeatedType::class,
+                RepeatedType::class, //type répétition
                 [
                     'type' => PasswordType::class,
                     'mapped' => false,

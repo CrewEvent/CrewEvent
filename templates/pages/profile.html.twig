@@ -1,3 +1,9 @@
+<!-- 
+Page de profile 
+route: /profile 
+route_name: app_profile
+-->
+
 {% extends 'pages_base.html.twig' %}
 
 {% block title %}page de profile
@@ -23,12 +29,15 @@
                                     class="profile-header-content">
                                     <!-- BEGIN profile-header-img -->
                                     <div class="profile-header-img">
-                                         <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
+                                    <!-- uploade le photo de profil  -->
+                                    <!-- oublié de mettre le filtre-->
+                                         <img src="{{app.user.photoProfileFile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
 
                                     </div>
                                     <!-- END profile-header-img -->
                                     <!-- BEGIN profile-header-info -->
                                     <div class="profile-header-info">
+                                    <!-- affiche le prenom et l'identifiant -->
                                         <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>
                                         <p class="m-b-10">@ {{app.user.username}}</p>
                                         <a href="{{path("app_edit_profile")}}" class="btn btn-sm btn-info mb-2">Editer le profil</a>

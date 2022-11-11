@@ -1,6 +1,13 @@
+<!-- 
+Page d'édition du profil
+route: /profile/edit
+route_name: app_edit_profile
+-->
+
+
 {% extends 'pages_base.html.twig' %}
 
-{% block title %}page d'acceuil
+{% block title %}Edition du profil
 {% endblock %}
 
 {% block body %}
@@ -28,13 +35,13 @@
                                         <div class="row g-3">
                                             <h4 class="mb-4 mt-0">Détail de contact</h4>
 
-                                            <!-- First Name -->
+                                            <!-- Prenom -->
                                             <div class="col-md-6">
                                                 <label class="form-label"> Prenom*</label>
                                                 {{ form_widget(form.prenom, { 'attr': {'class': "form-control",
                                                     'placeholder': "prenom"} }) }}
                                             </div>
-                                            <!-- Last name -->
+                                            <!-- Nom -->
                                             <div class="col-md-6">
                                                 <label class="form-label">Nom *</label>
                                                 {{ form_widget(form.nom, { 'attr': {'class': "form-control",
@@ -46,29 +53,33 @@
                                                 {{ form_widget(form.email, { 'attr': {'class': "form-control",
                                                     'placeholder': "email"} }) }}
                                             </div>
-                                            <!-- Mobile number -->
+                                            <!-- Identifiant -->
                                             <div class="col-md-6">
                                                 <label class="form-label">Identifiant *</label>
                                                 {{ form_widget(form.username, { 'attr': {'class': "form-control",
                                                     'placeholder': "identifiant"} }) }}
                                             </div>
-                                            <!-- Email -->
+                                            <!-- Pays -->
                                             <div class="col-md-6">
                                                 <label for="inputEmail4" class="form-label"  >Pays</label>
                                                 {{ form_widget(form.country, { 'attr': {'class': "form-control",
                                                     'placeholder': "country"} }) }}
                                             </div>
+
+                                            <!-- Ville -->
                                             <div class="col-md-6">
                                                 <label for="inputEmail4" class="form-label"  >Ville</label>
                                                 {{ form_widget(form.city, { 'attr': {'class': "form-control",
                                                     'placeholder': "ville"} }) }}
                                             </div>
-                                            <!-- Skype -->
+                                            <!-- description -->
                                             <div class="col-md-6">
                                                 <label class="form-label">Description</label>
                                                 {{ form_widget(form.description, { 'attr': {'class': "form-control",
                                                     'placeholder': "description"} }) }}
                                             </div>
+
+                                            <!-- sexe -->
                                             <div class="col-md-6">
                                                 <label class="form-label">Sexe</label>
                                                 {{ form_widget(form.gender, { 'attr': {'class': "form-control",
@@ -79,6 +90,9 @@
                                                 {{ form_widget(form.birthday, { 'attr': {'class': "form-control",
                                                     } }) }}
                                             </div> #}
+
+
+                                            <!-- langues -->
                                             <div class="col-md-6">
                                                 <label class="form-label">Langue</label>
                                                 {{ form_widget(form.language, { 'attr': {'class': "form-control",
@@ -113,7 +127,7 @@
                             <!-- Row END -->
                             <!-- button -->
                             <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                                <button type="button" class="btn btn-danger btn-lg">Supprimer </button>
+                                {# <button type="button" class="btn btn-danger btn-lg">Supprimer </button> #}
                                 <button type="submit" class="btn btn-primary btn-lg">mis a jour</button>
                             </div>
                         {{form_end(form)}}

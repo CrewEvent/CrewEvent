@@ -1,5 +1,11 @@
 <?php
 
+
+/* 
+    -Entité User avec ses informations que l'on va mapper dans la base de donnée
+
+    */
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;

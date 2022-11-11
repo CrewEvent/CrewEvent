@@ -1,5 +1,12 @@
 <?php
 
+/* 
+    -
+    -
+    -
+
+    */
+
 namespace App\Security;
 
 use Doctrine\ORM\EntityManagerInterface;

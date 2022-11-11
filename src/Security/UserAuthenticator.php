@@ -1,5 +1,12 @@
 <?php
 
+/* 
+    -Nous gére l'authentification de l'utilisateur
+    -symfony console make:auth
+    -
+
+    */
+
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,6 +33,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     {
     }
 
+    //Génerer un passport avec les bages pour vérifier l'utilisateur connecté
     public function authenticate(Request $request): Passport
     {
         $username = $request->request->get('username', '');

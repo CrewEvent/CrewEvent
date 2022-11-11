@@ -1,3 +1,4 @@
+#Sert à ulpoader des images
 vich_uploader:
   db_driver: orm
   mappings:
