@@ -3,7 +3,7 @@ liip_imagine:
   twig:
     mode: lazy
   # valid drivers options include "gd" or "gmagick" or "imagick"
-  driver: "gd"
+  driver: "imagick"
   filter_sets:
     # the name of the "filter set"
     my_thumb:
