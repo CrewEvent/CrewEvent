@@ -26,9 +26,12 @@ route_name: app_index
                 <!-- Si c'est l'utilisateur courant on le redirige dans la page d'acceuil -->
                 {% if user == app.user %}
                     <a href="{{path("app_profile")}}"><li>{{user.username}}</li></a></a>
+                {% else %}
+
+                    <a href="{{path("app_show_profile", {username : user.username})}}"><li>{{user.username}}</li></a>
                 <!-- Sinon on l'amméne vers la page de profil d'un autre utilisateur -->
                 {% endif %}
-                <a href="{{path("app_show_profile", {username : user.username})}}"><li>{{user.username}}</li></a>
+               
             {% endfor %}
         </ul>
 
