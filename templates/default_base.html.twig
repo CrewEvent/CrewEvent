@@ -1,0 +1,49 @@
+<!-- Base 1 pour les pages twigs  -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+            <!-- MDB icon -->
+        <link
+        rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"/>
+        <!-- Font Awesome -->
+        <link
+        rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+        <!-- Google Fonts Roboto -->
+        {# <link
+        rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/> #}
+
+
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+        <!-- MDB -->
+        <link rel="stylesheet" href="css/mdb.min.css"/>
+
+			{{ encore_entry_link_tags('default') }}
+		{% endblock %}
+
+		{% block javascripts %}
+            <script src="js/mdb.min.js"></script>
+			{{ encore_entry_script_tags('default') }}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+                    
+        {% endblock %}
+	</body>
+</html>
+
+
+
+
