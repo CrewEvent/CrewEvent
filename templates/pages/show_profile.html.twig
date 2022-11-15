@@ -1,17 +1,17 @@
 {# <!-- 
-Page de profile 
-route: /profile 
-route_name: app_profile
+On regarde ici le profil d'un utilisateur 
+route: /show_profile 
+route_name: app_show_profile
 --> #}
 
 {% extends 'pages_base.html.twig' %}
 
-{% block title %}page de profile
+{% block title %}Page de profil de 
+{{user.prenom}}
 {% endblock %}
 
 {% block body %}
 	{% if app.user %}
-
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
             <div class="row">
@@ -31,18 +31,21 @@ route_name: app_profile
                                     <!-- BEGIN profile-header-img -->
                                     <div class="profile-header-img">
                                     <!-- uploade le photo de profil  -->
-                                    <!-- oublié de mettre le filtre-->
-                                         <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
+                              
+                                         <img src="{{user.photoProfile ? vich_uploader_asset(user) : asset('images/pas_de_photo.png')}}" alt="">
 
                                     </div>
                                     <!-- END profile-header-img -->
                                     <!-- BEGIN profile-header-info -->
                                     <div class="profile-header-info">
                                     <!-- affiche le prenom et l'identifiant -->
-                                        <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>
-                                        <p class="m-b-10">@ {{app.user.username}}</p>
-                                        <a href="{{path("app_edit_profile")}}" class="btn btn-sm btn-info mb-2">Editer le profil</a>
-                                        <a href="{{path("app_change_password")}}" class="btn btn-sm btn-info mb-2">changer le mot de passe</a>
+                                        <h4 class="m-t-10 m-b-5">{{user.prenom}}</h4>
+                                        <p class="m-b-10">@ {{user.username}}</p>
+                                      
+                                        
+                                        <a href="#" class="btn btn-sm btn-info mb-2">Ajouter à la liste d'amis</a>
+                                        <a href="#" class="btn btn-sm btn-info mb-2">Envoyer message</a>
+
                                     </div>
                                     <!-- END profile-header-info -->
                                 </div>
@@ -56,17 +59,12 @@ route_name: app_profile
                                         <a href="#" target="__blank" class="nav-link_">Photos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" target="__blank" class="nav-link_">Evénements</a>
+                                        <a href="#" target="__blank" class="nav-link_">Evénements en commun</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" target="__blank" class="nav-link_">Amis</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="{{path('app_index')}}" target="__blank" class="nav-link_">Acceuil</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{path('app_logout')}}" target="__blank" class="nav-link_">Deconnection</a>
-                                    </li>
+
                                 </ul>
                                 <!-- END profile-header-tab -->
                             </div>

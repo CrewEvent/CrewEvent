@@ -25,5 +25,8 @@
     "engines": {
         "node": "v18.9.*",
         "npm": "8.19.*"
+    },
+    "dependencies": {
+        "mdb-ui-kit": "^6.0.0"
     }
 }

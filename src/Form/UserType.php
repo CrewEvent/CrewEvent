@@ -12,7 +12,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /* 
@@ -41,9 +41,9 @@ class UserType extends AbstractType
                     'required' => false,
                     'label' => "charger votre image",
                     'allow_delete' => false,
+                    'image_uri' => false,
                     'delete_label' => 'supprimer',
-                    'download_uri' => true,
-                    'download_link' => false,
+                    'download_uri' => false,
                 ]
             )
 

@@ -22,6 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Form\ChangePasswordType;
+use App\Repository\UserRepository;
 
 class IndexController extends AbstractController
 {
@@ -31,11 +32,12 @@ class IndexController extends AbstractController
     */
 
     #[Route('/', name: 'app_index')]
-    public function index(): Response
+    public function index(UserRepository $userRepo): Response
     {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
+        // prend tous les utilisateurs dans le repo user
+        $users = $userRepo->findAll();
+
+        return $this->render('pages/index.html.twig', ['users' => $users]);
     }
 
     /* 
@@ -120,5 +122,15 @@ class IndexController extends AbstractController
             ['form' => $form->createView()]
 
         );
+    }
+
+    //Affiche la page de profil d'un utilisateur en mode view only pas d'édition
+    //En attribut si on indique username dans la route et que l'on injecte User
+    //symfony sait que l'entité que l'on va utiliser est la méme que celui de la route
+    #[Route('/show_profile/{username}', name: 'app_show_profile')]
+    public function show_profile(UserRepository $userRepo, User $user): Response
+    {
+
+        return $this->render('pages/show_profile.html.twig', ['user' => $user]);
     }
 }
