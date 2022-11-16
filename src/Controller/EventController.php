@@ -43,17 +43,20 @@ class EventController extends AbstractController
             $em->persist($event);
             $em->flush();
             //redirection vers la page de l'événement
-            return $this->redirectToRoute('app_event_show');
+            return $this->redirectToRoute('app_show_event');
         }
 
         return $this->render('pages/event/event_creation.html.twig', [
             'form' => $form->createView()
         ]);
     }
-    #[Route('/event/show', name: 'app_event_show', methods: ['POST','GET'])]
-    public function event_show(Request $request, EntityManagerInterface $em): Response
+    #[Route('/event/show/{name}', name: 'app_show_event', methods: ['POST','GET'])]
+    public function event_show(Request $request, EntityManagerInterface $em, Event $event): Response
     {
-        return $this->render('pages/event/event_show.html.twig');
+
+        return $this->render('pages/event/event_show.html.twig',[
+            'event' => $event
+        ]);
     }
 
 }

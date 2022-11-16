@@ -2,9 +2,10 @@
 
 {# Page de l'événement #}
 
-{% block title %}Page de l'événement{% endblock %}
+{% block title %}Page de l'événement {{event.name}}{% endblock %}
 
 {% block body %}
-
-    <h1>Welcome</h1>
+    
+    {{ include('partials/_navbar.html.twig')}}
+    {{ include('partials/_sidebar.html.twig')}}
 {% endblock %}

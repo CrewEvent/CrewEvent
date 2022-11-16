@@ -15,14 +15,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Form\ChangePasswordType;
 use App\Repository\UserRepository;
+use App\Repository\EventRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class IndexController extends AbstractController
 {
@@ -32,12 +33,15 @@ class IndexController extends AbstractController
     */
 
     #[Route('/', name: 'app_index')]
-    public function index(UserRepository $userRepo): Response
+    public function index(UserRepository $userRepo, EventRepository $eventRepo): Response
     {
         // prend tous les utilisateurs dans le repo user
         $users = $userRepo->findAll();
 
-        return $this->render('pages/index.html.twig', ['users' => $users]);
+        //prend tous les événements dans le repo event
+        $events = $eventRepo->findAll();
+
+        return $this->render('pages/index.html.twig', ['users' => $users, 'events' => $events]);
     }
 
     /* 
