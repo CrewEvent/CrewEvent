@@ -2,10 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EventRepository;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
+#[ORM\Table(name: 'events')]
+#[HasLifecycleCallbacks]
+/**
+ * @ORM\Entity
+ * @Vich\Uploadable
+ */
 class Event
 {
     #[ORM\Id]
@@ -19,13 +30,14 @@ class Event
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, options: ["default" => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, options: ["default" => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+
+    #[ORM\Column(length: 255, type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -34,6 +46,19 @@ class Event
     #[ORM\ManyToOne(inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+      /**
+     * @Vich\UploadableField(mapping="event_image", fileNameProperty="image")
+     * @Assert\Valid
+     * @Assert\File(
+     *     maxSize="1000K",
+     *     mimeTypes={
+     *         "image/jpg", "image/gif", "image/jpeg", "image/png"
+     *     }
+     * )
+     * @var File
+     */
+    private $imageFile;
 
     public function getId(): ?int
     {
@@ -50,6 +75,24 @@ class Event
         $this->name = $name;
 
         return $this;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = (new \DateTimeImmutable());
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 
     public function getImage(): ?string
@@ -88,6 +131,16 @@ class Event
         return $this;
     }
 
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateTimestamp()
+    {
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable());
+        }
+        $this->setUpdatedAt(new \DateTimeImmutable());
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -123,4 +176,21 @@ class Event
 
         return $this;
     }
+
+    public function serialize()
+    {
+        return serialize([
+            $this->name,
+            //$this->active,
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->name,
+            //$this->active,
+        ] = \unserialize($serialized, [self::class]);
+    }
 }
+
