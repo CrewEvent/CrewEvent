@@ -6,10 +6,8 @@
   "build/default.css": "/build/default.css",
   "build/default.js": "/build/default.js",
   "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-c05d81.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-c05d81.js",
-  "build/vendors-node_modules_bootstrap_dist_css_bootstrap_css.css": "/build/vendors-node_modules_bootstrap_dist_css_bootstrap_css.css",
-  "build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.css": "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.css",
-  "build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.js": "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.js",
   "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-18aa49.css": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-18aa49.css",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-18aa49.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-18aa49.js"
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-18aa49.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-18aa49.js",
+  "build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.css": "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.css",
+  "build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.js": "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.js"
 }
