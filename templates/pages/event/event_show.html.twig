@@ -2,28 +2,17 @@
 
 {# Page de l'événement #}
 
-{% block title %}Page de l'événement {{event.name}}{% endblock %}
+{% block title %}
+  Page de l'événement {{ event.name }}
+{% endblock %}
 
 {% block body %}
-    {# On affiche la barre de navigation #}
-    {{ include('partials/_navbar.html.twig')}}
+  {# On affiche la barre de navigation #}
+  {{ include('partials/_navbar.html.twig') }}
 
-    {# On affiche juste la side bar et la liste des participants #}
-  
-    <div class="d-flex p-2 justify-content-between ">
-        {{ include('partials/_sidebar.html.twig')}}
-        {{ include('partials/_partie_pub.html.twig')}} 
-        {{ include('partials/_partie_sub.html.twig')}}     
-    </div>
-    
-    
-    {#
-     Un utilisateur peut participer si son compte est vérifié 
-    S'il clique sur le bouton participer on l'ajoute dans la liste des participants
-    #}
-    {# <a href="{{path("app_add_participant")}}">
-        <button type="button" class="btn btn-primary">Participer</button>
-    </a> #}
+  {# On affiche juste la side bar et la liste des participants #}
 
-
+  <div class="d-flex p-2 justify-content-between">{{ include('partials/_sidebar.html.twig') }}
+    {{ include('partials/_partie_pub.html.twig') }}
+    {{ include('partials/_partie_sub.html.twig') }}</div>
 {% endblock %}
