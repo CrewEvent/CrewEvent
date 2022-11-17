@@ -34,7 +34,7 @@ route_name: app_edit_profile
                                 <div class="col-xxl-8 mb-5 mb-xxl-0">
                                     <div class="bg-secondary-soft px-4 py-5 rounded">
                                         <div class="row g-3">
-                                            <h4 class="mb-4 mt-0">Détail de contact</h4>
+                                            <h4 class="mb-4 mt-0">Détail du profil</h4>
 
                                             <!-- Prenom -->
                                             <div class="col-md-6">
@@ -125,12 +125,10 @@ route_name: app_edit_profile
 
                                             {# {{form_row(form.photoProfileFile)}} #}
                                             {# <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt=""> #}
-                                                
+
                                                 {{form_widget(form.photoProfileFile)}}
+                                                
                                                 {# <script type="text/JavaScript"> location.reload(); </script> #}
-
-
-
 
                                         </div>
                                         <!-- Row END -->

@@ -53,9 +53,20 @@ route_name: app_index
                
             {% endfor %}
         </ul>
+        <!--Mes abonnements -->
+        <h1>Tous Mes abonnements</h1>
+        <ul>
+        
+            <!--On prend chaque participation dans la liste des participations->
+            {% for participant in participants %}
+                    <!--Puis on les affiche-->
+                    <a href="{{path("app_show_event", {name : participant.eventName})}}"><li>{{participant.eventName}}</li></a>
+               
+            {% endfor %}
+        </ul>
         
 
-    <!-- si l'utilisateur connecté-->
+    <!-- si l'utilisateur n'est pas connecté-->
     {% else %}
         <a href="{{path("app_login")}}">Connecter vous</a>
         <br>

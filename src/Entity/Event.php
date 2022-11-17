@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EventRepository;
@@ -47,7 +49,7 @@ class Event
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-      /**
+    /**
      * @Vich\UploadableField(mapping="event_image", fileNameProperty="image")
      * @Assert\Valid
      * @Assert\File(
@@ -59,6 +61,16 @@ class Event
      * @var File
      */
     private $imageFile;
+
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class)]
+    private Collection $participants;
+
+
+    public function __construct()
+    {
+        $this->username = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -192,5 +204,34 @@ class Event
             //$this->active,
         ] = \unserialize($serialized, [self::class]);
     }
-}
 
+    /**
+     * @return Collection<int, Participant>
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants->add($participant);
+            $participant->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            // set the owning side to null (unless already changed)
+            if ($participant->getEvent() === $this) {
+                $participant->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+}

@@ -1,20 +1,57 @@
+{# 
+Side bar page événement
+ #}
+<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 280px;">
 
-<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
-    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+    <!--
+    Si l'utlisatuer n'a pas encore participé à la liste des événements on lui affiche le bouton participer
+    -->
+      {% if not isParticipant %}
+        <a href="{{path("app_add_participant",{name : event.name})}}">
+          <button type="button" class="btn btn-primary">Participer</button>
+        </a>
+      {% endif %}
+
+
+        <!--Nom de l'événement-->
+    <a href="#" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold">{{event.name}}</span>
     </a>
+
+    <!--Bars de navigations-->
+
     <div class="list-group list-group-flush border-bottom scrollarea">
-      <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+
+     <!--Activitées récentes-->
+      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
         <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">Informations générales</strong>
+          <strong class="mb-1">Activitées récentes</strong>
         </div>
       </a>
+
+      <!--Partie informations générales-->
+      <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Informations</strong>
+        </div>
+      </a>
+
+      <!--Partie discussions générales-->
       <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
         <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">Discussions générales</strong>
+          <strong class="mb-1">Discussions</strong>
         </div>
       </a>
+      <!-- Partie evenement -->
+      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Evènement</strong>
+        </div>
+      </a>
+
+     
+      
       {# <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>

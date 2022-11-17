@@ -20,24 +20,27 @@ class EventCreationType extends AbstractType
     {
 
         $builder
-            ->add('name',
-            TextType::class,[
-                'attr' => ['class' => 'form-control']
-            ]
-            
+            ->add(
+                'name',
+                TextType::class,
+                [
+                    'attr' => ['class' => 'form-control']
+                ]
+
             )
-            ->add('imageFile',
-            VichImageType::class,
+            ->add(
+                'imageFile',
+                VichImageType::class,
                 [
                     'imagine_pattern' => 'my_thumb',
                     'required' => false,
-                    'label' => "charger votre image",
+                    'label' => "Donner une image à votre événement",
                     'allow_delete' => false,
                     'image_uri' => false,
                     'delete_label' => 'supprimer',
                     'download_uri' => false,
                 ]
-            
+
             )
             //->add('createdAt')
             //->add('updatedAt')
@@ -58,8 +61,6 @@ class EventCreationType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-           
-        ]);
+        $resolver->setDefaults([]);
     }
 }
