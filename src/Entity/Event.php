@@ -15,7 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 #[ORM\Table(name: 'events')]
 #[HasLifecycleCallbacks]
-#[Vich\Uploadable]
+/**
+ * @ORM\Entity
+ * @Vich\Uploadable
+ */
 class Event
 {
     #[ORM\Id]

@@ -1,0 +1,121 @@
+
+
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div
+                        id="content" class="content content-full-width">
+                        <!-- begin profile -->
+                        <div class="profile">
+                            <div
+                                class="profile-header">
+                                <!-- BEGIN profile-header-cover -->
+                                <div class="profile-header-cover"></div> 
+                                <!-- END profile-header-cover -->
+                                <!-- BEGIN profile-header-content -->
+                                <div
+                                    class="profile-header-content">
+                                    <!-- BEGIN profile-header-img -->
+                                    <div class="profile-header-img">
+                                    <!-- uploade le photo de profil  -->
+                                    <!-- oublié de mettre le filtre-->
+                                         <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
+
+                                    </div>
+                                    <!-- END profile-header-img -->
+                                    <!-- BEGIN profile-header-info -->
+                                    <div class="profile-header-info">
+                                    <!-- affiche le prenom et l'identifiant -->
+                                        <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>
+                                        <p class="m-b-10">@ {{app.user.username}}</p>
+                                        <a href="{{path("app_edit_profile")}}" class="btn btn-sm btn-info mb-2">Editer le profil</a>
+                                        <a href="{{path("app_change_password")}}" class="btn btn-sm btn-info mb-2">changer le mot de passe</a>
+                                    </div>
+                                    <!-- END profile-header-info -->
+                                </div>
+                                <!-- END profile-header-content -->
+                                <!-- BEGIN profile-header-tab -->
+                                <ul class="profile-header-tab nav nav-tabs">
+                                 <li class="nav-item">
+                                        <a href="{{path('app_index')}}"  class="nav-link_">Acceuil</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#"  class="nav-link_">A propos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#"  class="nav-link_">Photos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#"  class="nav-link_">Evénements</a>
+                                    </li>
+                                </ul>
+                                <!-- END profile-header-tab -->
+                            </div>
+                        </div>
+                        <!-- end profile --> 
+                        </div>
+                        <!-- end profile-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          {{form_start(form)}} 
+            
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nom Complet</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Kenneth Valdez
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      fip@jukmuh.al
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      (239) 816-9029
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mobile</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      (320) 380-4539
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Bay Area, San Francisco, CA
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info " href="{{path("app_edit_profile")}}">Modifier</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               {{form_end(form)}}

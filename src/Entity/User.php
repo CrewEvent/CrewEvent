@@ -104,6 +104,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Event::class, orphanRemoval: true)]
     private Collection $events;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Telephone = null;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -426,6 +429,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
                 $event->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->Telephone;
+    }
+
+    public function setTelephone(?string $Telephone): self
+    {
+        $this->Telephone = $Telephone;
 
         return $this;
     }
