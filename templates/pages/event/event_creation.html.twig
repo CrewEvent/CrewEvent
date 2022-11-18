@@ -3,60 +3,53 @@
 Page de crétion de l'événement
  #}
 
-{% block title %}page de création d'événement{% endblock %}
+{% block title %}
+  page de création d'événement
+{% endblock %}
 
 {% block body %}
+  {{ include('partials/_navbar.html.twig') }}
 
+  {{ form_start(form) }}
+    <div class="container mt-5 col-4">
+      <h1>Créer votre événement</h1>
+      <!-- Name input -->
+      <div class="form-outline mb-4 mt-4">
+        {# <input type="text" id="form4Example1" class="form-control" /> #}
+        {{ form_widget(form.name) }}
+        <label class="form-label" for="form4Example1">Nom</label>
+      </div>
 
+      <!-- tag input -->
+      <div class="form-outline mb-4">
+        {# <input type="email" id="form4Example2" class="form-control" /> #}
+        {{ form_widget(form.tag) }}
+        <label class="form-label" for="form4Example2">Tag</label>
+      </div>
 
-    {{ include('partials/_navbar.html.twig')}}
+      <!-- Message input -->
+      <div class="form-outline mb-4">
+        {{ form_widget(form.description) }}
+        {# <textarea class="form-control" id="form4Example3" rows="4"></textarea> #}
+        <label class="form-label" for="form4Example3">Description</label>
+      </div>
 
-    {{form_start(form)}}
-        <div class="container mt-5 col-4">
-            <h1>Créer votre événement</h1>
-                <!-- Name input -->
-            <div class="form-outline mb-4 mt-4">
-                {# <input type="text" id="form4Example1" class="form-control" /> #}
-                {{form_widget(form.name)}}
-                <label class="form-label" for="form4Example1">Nom</label>
-            </div>
+      <!-- Checkbox -->
+      <div class="form-check d-flex justify-content-center mb-4">
+        {{ form_widget(form.agreeTerms) }}
+        {# <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked /> #}
+        <label class="form-check-label" for="form4Example4">J'accepte les <a href="#">conditions d'utilisations</a></label>
+      </div>
+      <!-- Importer photo -->
+      <div class="mb-3">
+        {# <label for="formFile" class="form-label">Donner une image à votre événement</label> #}
+        {# {{ form_row(form.imageFile) }} #}
 
-            <!-- tag input -->
-            <div class="form-outline mb-4">
-                {# <input type="email" id="form4Example2" class="form-control" /> #}
-                {{form_widget(form.tag)}}
-                <label class="form-label" for="form4Example2">Tag</label>
-            </div>
+        {# <input class="form-control" type="file" id="formFile"> #}
+      </div>
 
-            <!-- Message input -->
-            <div class="form-outline mb-4">
-                {{form_widget(form.description)}}
-                {# <textarea class="form-control" id="form4Example3" rows="4"></textarea> #}
-                <label class="form-label" for="form4Example3">Description</label>
-            </div>
-
-            <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-center mb-4">
-                {{form_widget(form.agreeTerms)}}
-                {# <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked /> #}
-                <label class="form-check-label" for="form4Example4">
-                J'accepte les <a href="#">conditions d'utilisations</a>
-                </label>
-            </div>
-            <!--Importer photo -->
-            <div class="mb-3">
-                {# <label for="formFile" class="form-label">Donner une image à votre événement</label> #}
-                {{form_widget(form.imageFile)}}
-                
-                {# <input class="form-control" type="file" id="formFile"> #}
-            </div>
-
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4 ">Créer</button>
-        </div>
-       
-   {{form_end(form)}}
-
-
-
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Créer</button>
+    </div>  
+  {{ form_end(form) }}
 {% endblock %}

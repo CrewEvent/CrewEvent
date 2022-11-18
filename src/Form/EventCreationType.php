@@ -10,6 +10,9 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventCreationType extends AbstractType
 {
@@ -24,27 +27,38 @@ class EventCreationType extends AbstractType
                 'name',
                 TextType::class,
                 [
-                    'attr' => ['class' => 'form-control']
+                    'attr' => ['class' => 'form-control'],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => "entrer un nom s'il vous plait",
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Le nomdoit étre au moins  {{ limit }} characteres',
+                            'max' => 4096
+                        ])
+
+                    ]
                 ]
 
             )
-            ->add(
-                'imageFile',
-                VichImageType::class,
-                [
-                    'imagine_pattern' => 'my_thumb',
-                    'required' => false,
-                    'label' => "Donner une image à votre événement",
-                    'allow_delete' => false,
-                    'image_uri' => false,
-                    'delete_label' => 'supprimer',
-                    'download_uri' => false,
-                ]
+            // ->add(
+            //     'imageFile',
+            //     VichImageType::class,
+            //     [
+            //         'imagine_pattern' => 'my_thumb',
+            //         'required' => false,
+            //         'label' => "Donner une image à votre événement",
+            //         'allow_delete' => false,
+            //         'image_uri' => false,
+            //         'delete_label' => 'supprimer',
+            //         'download_uri' => false,
+            //     ]
 
-            )
+            // )
             //->add('createdAt')
             //->add('updatedAt')
-            ->add('description')
+            ->add('description', TextareaType::class)
             ->add('tag')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -61,6 +75,6 @@ class EventCreationType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults(['data_class' => Event::class]);
     }
 }

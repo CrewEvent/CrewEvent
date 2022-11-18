@@ -97,7 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
      *         "image/jpg", "image/gif", "image/jpeg", "image/png"
      *     }
      * )
-     * @var File
+     * @var File | null
      */
     private $photoProfileFile;
 

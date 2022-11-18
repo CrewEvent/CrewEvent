@@ -6,158 +6,127 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}
+  Inscription
+{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+  {% for flash_error in app.flashes('verify_email_error') %}
+    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+  {% endfor %}
 
-    <a href="{{path('app_index')}}">Retour</a>
-    
-    <span id="root">
-        <section
-            class="section-all">
+  <a href="{{ path('app_index') }}">Retour</a>
 
-            <!-- 1-Role Main -->
-            <main class="main" role="main">
-                <div class="wrapper">
-                    <article class="article">
-                        <div class="content">
-                            <div class="login-box">
-                                <div class="header">
-                                    <img class="logo" src="{{asset("images/crewevent.png")}}" alt="crewevent">
-                                </div>
-                                <!-- Header end -->
-                                <div class="form-wrap">
-                                <!-- Début du formulaire -->
-                                        {{ form_start(registrationForm) }}
-
-                                            <!-- prenom input -->
-                                            <div class="input-box">
-                                            <!-- prenom input -->
-                                                {{ form_widget(registrationForm.prenom, { 'attr': {'class': "prenom",
-                                                        'placeholder': "prenom"} }) }}
-
-                                            </div>
-                                            <!-- nom input -->
-                                            <div class="input-box">
-                                                    {{ form_widget(registrationForm.nom, { 'attr': {'class': "nom",
-                                                        'placeholder': "nom"} }) }}
-
-                                            </div>
-                                            <!-- email input -->
-                                            <div class="input-box">
-                                                {{ form_widget(registrationForm.email, { 'attr': {'class': "email",
-                                                        'placeholder': "email"} }) }}
-
-                                            </div>
-                                            <!-- identifiant input -->
-
-                                            <div class="input-box">
-                                                {{ form_widget(registrationForm.username, { 'attr': {'class': "username",
-                                                        'placeholder': "identifiant"} }) }}
-
-                                            </div>
-                                            <!-- mot de passe input -->
-
-                                            <div class="input-box">
-                                                {{ form_row(registrationForm.plainPassword)}}
-
-                                            </div>
-                                            <!-- conditions d'utilisation input -->
-
-                                            <div class="form-check">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    {{ form_widget(registrationForm.agreeTerms) }}
-                                                    En cochant cette case vous acceptez les
-                                                    <a href="#">termes d'utilisation.</a>
-                                                </label>
-                                            </div>
-
-                                            <span class="button-box">
-                                                <button class="btn" type="submit" name="submit">S'inscrire</button>
-
-                                            </span>
-
-                                        <!-- fin du formulaire -->
-
-                                        {{ form_end(registrationForm) }}
-
-                                            <a class="forgot" href="">Mot de passe oublié?</a>
-                                </div>
-                                <!-- Form-wrap end -->
-                            </div>
-                            <!-- Login-box end -->
-
-                            <div class="login-box">
-                                <p class="text">Vous avez déja un compte ?<a href="{{path("app_login")}}">Connecter vous</a>
-                                </p>
-                            </div>
-                            <!-- Signup-box end -->
-
-
-                        </div>
-                        <!-- Content end -->
-                    </article>
+  <span id="root">
+    <section class="section-all">
+      <!-- 1-Role Main -->
+      <main class="main" role="main">
+        <div class="wrapper">
+          <article class="article">
+            <div class="content">
+              <div class="login-box">
+                <div class="header">
+                  <img class="logo" src="{{ asset('images/crewevent.png') }}" alt="crewevent" />
                 </div>
-                <!-- Wrapper end -->
-            </main>
+                <!-- Header end -->
+                <div class="form-wrap">
+                  <!-- Début du formulaire -->
+                  {{ form_start(registrationForm) }}
 
-            <!-- 2-Role Footer -->
-            <footer class="footer" role="contentinfo">
-                <div class="footer-container">
+                  <!-- prenom input -->
+                  <div class="input-box">
+                    <!-- prenom input -->
+                    {{ form_widget(registrationForm.prenom, { attr: { class: 'prenom', placeholder: 'prenom' } }) }}
+                  </div>
+                  <!-- nom input -->
+                  <div class="input-box">{{ form_widget(registrationForm.nom, { attr: { class: 'nom', placeholder: 'nom' } }) }}</div>
+                  <!-- email input -->
+                  <div class="input-box">{{ form_widget(registrationForm.email, { attr: { class: 'email', placeholder: 'email' } }) }}</div>
+                  <!-- identifiant input -->
 
-                    <nav class="footer-nav" role="navigation">
-                        <ul>
-                            <li>
-                                <a href="">A propos</a>
-                            </li>
-                            <li>
-                                <a href="">Support</a>
-                            </li>
-                            <li>
-                                <a href="">Discord</a>
-                            </li>
-                            <li>
+                  <div class="input-box">{{ form_widget(registrationForm.username, { attr: { class: 'username', placeholder: 'identifiant' } }) }}</div>
+                  <!-- mot de passe input -->
 
-                                <a href="">Vos données personnelles</a>
-                            </li>
-                            <li>
-                                <a href="">Termes</a>
-                            </li>
+                  <div class="input-box">{{ form_row(registrationForm.plainPassword) }}</div>
+                  <!-- conditions d'utilisation input -->
 
-                            <li>
-                                <span class="language">Langues
-                                    <select name="language" class="select" onchange="la(this.value)">
-                                        <option value="#">Anglais</option>
-                                        <option value="#">Français</option>
-                                    </select>
-                                </span>
-                            </li>
-                        </ul>
-                    </nav>
+                  <div class="form-check">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      {{ form_widget(registrationForm.agreeTerms) }}
+                      En cochant cette case vous acceptez les
+                      <a href="#">termes d'utilisation.</a>
+                    </label>
+                  </div>
 
-                    <span class="footer-logo">&copy; 2022 crewevent</span>
+                  <span class="button-box"><button class="btn" type="submit" name="submit">S'inscrire</button></span>
+
+                  <!-- fin du formulaire -->
+
+                  {{ form_end(registrationForm) }}
+
+                  <a class="forgot" href="">Mot de passe oublié?</a>
                 </div>
-                <!-- Footer container end -->
-            </footer>
+                <!-- Form-wrap end -->
+              </div>
+              <!-- Login-box end -->
 
-        </section>
-    </span>
-<!-- Root -->
+              <div class="login-box">
+                <p class="text">
+                  Vous avez déja un compte ?<a href="{{ path('app_login') }}">Connecter vous</a>
+                </p>
+              </div>
+              <!-- Signup-box end -->
+            </div>
+            <!-- Content end -->
+          </article>
+        </div>
+        <!-- Wrapper end -->
+      </main>
 
-<!-- Select Link -->
-<script type="text/javascript">
-	function la(src) {
-window.location = src;
-}
-</script>
+      <!-- 2-Role Footer -->
+      <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+          <nav class="footer-nav" role="navigation">
+            <ul>
+              <li>
+                <a href="">A propos</a>
+              </li>
+              <li>
+                <a href="">Support</a>
+              </li>
+              <li>
+                <a href="">Discord</a>
+              </li>
+              <li>
+                <a href="">Vos données personnelles</a>
+              </li>
+              <li>
+                <a href="">Termes</a>
+              </li>
 
+              <li>
+                <span class="language">
+                  Langues<select name="language" class="select" onchange="la(this.value)">
+                    <option value="#">Anglais</option>
+                    <option value="#">Français</option>
+                  </select>
+                </span>
+              </li>
+            </ul>
+          </nav>
 
-    
+          <span class="footer-logo">&copy; 2022 crewevent</span>
+        </div>
+        <!-- Footer container end -->
+      </footer>
+    </section>
+  </span>
+  <!-- Root -->
 
-
-
-    
+  <!-- Select Link -->
+  <script type="text/javascript">
+    function la(src) {
+      window.location = src
+    }
+  </script>
 {% endblock %}
