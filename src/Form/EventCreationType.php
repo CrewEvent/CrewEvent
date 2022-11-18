@@ -58,8 +58,23 @@ class EventCreationType extends AbstractType
             // )
             //->add('createdAt')
             //->add('updatedAt')
-            ->add('description', TextareaType::class)
-            ->add('tag')
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'attr' => ['class' => 'form-control']
+
+                ]
+
+            )
+            ->add(
+                'tag',
+                TextType::class,
+                [
+                    'attr' => ['class' => 'form-control']
+
+                ]
+            )
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
