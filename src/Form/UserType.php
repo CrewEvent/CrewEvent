@@ -33,19 +33,19 @@ class UserType extends AbstractType
 
         */
         $builder
-            ->add(
-                'photoProfileFile',
-                VichImageType::class,
-                [
-                    'imagine_pattern' => 'my_thumb',
-                    'required' => false,
-                    'label' => "charger votre image",
-                    'allow_delete' => false,
-                    'image_uri' => false,
-                    'delete_label' => 'supprimer',
-                    'download_uri' => false,
-                ]
-            )
+            // ->add(
+            //     'photoProfileFile',
+            //     VichImageType::class,
+            //     [
+            //         'imagine_pattern' => 'my_thumb',
+            //         'required' => false,
+            //         'label' => "charger votre image",
+            //         'allow_delete' => false,
+            //         'image_uri' => false,
+            //         'delete_label' => 'supprimer',
+            //         'download_uri' => false,
+            //     ]
+            // )
 
             ->add('username')
             //->add('roles')
@@ -60,7 +60,9 @@ class UserType extends AbstractType
             ->add('city')
             ->add('gender')
             //->add('birthday')
-            ->add('language');
+           // ->add('language')
+            ->add('Telephone');
+
         // ->add(
         //     'photoProfileFile',
         //     VichImageType::class,

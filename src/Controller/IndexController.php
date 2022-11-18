@@ -90,7 +90,6 @@ class IndexController extends AbstractController
     {
         //on récupére les informations de l'utilisateur conrant qu'on stocke dans $user 
         $user = $this->getUser();
-
         //On crée une formulaire de type UserType
         $form = $this->createForm(UserType::class, $user);
 

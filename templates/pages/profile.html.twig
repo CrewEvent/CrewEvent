@@ -12,7 +12,10 @@ route_name: app_profile
 {% block body %}
 
 	{% if app.user %}
-    
+  <div class="my-5">
+            <h3>Mon profil</h3>
+            <hr />
+          </div>
    <div class="container">
     <div class="main-body">
     
@@ -36,12 +39,12 @@ route_name: app_profile
                   <div class="d-flex flex-column align-items-center text-center">
                    <!-- uploade le photo de profil  -->
                                     <!-- oublié de mettre le filtre-->
-                    <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="photo" class="rounded-circle" width="150">
+                    <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="photo" class="rounded-circle" width="110">
                     <!--<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> -->
                     <div class="mt-3">
                         <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>
                         <p class="m-b-10">@ {{app.user.username}}</p>
-                        <a href="{{path("app_change_password")}}" class="btn btn-outline-primary">changer le mot de passe</a>
+                        <a href="{{path("app_change_password")}}" class="btn btn-outline-primary">Changer le mot de passe</a>
                     </div>
                   </div>
                 </div>
@@ -80,70 +83,70 @@ route_name: app_profile
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Nom Complet</h6>
+                      <h6 class="mb-0 text-primary">Nom Complet</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{app.user.prenom}}&nbsp;{{app.user.nom}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
+                      <h6 class="mb-0 text-primary">Email</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                      {{app.user.email}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Telephone</h6>
+                      <h6 class="mb-0 text-primary">Telephone</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{app.user.Telephone}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Identifiant</h6>
+                      <h6 class="mb-0 text-primary">Identifiant</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{app.user.username}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Pays</h6>
+                      <h6 class="mb-0 text-primary">Pays</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{app.user.country}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Ville</h6>
+                      <h6 class="mb-0 text-primary">Ville</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{app.user.city}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Sexe</h6>
+                      <h6 class="mb-0 text-primary">Sexe</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-9 ">
                       {{app.user.gender}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " href="{{path("app_edit_profile")}}">Modifier</a>
+                      <a class="btn btn-primary px-4" href="{{path("app_edit_profile")}}">Modifier</a>
                     </div>
                   </div>
                 </div>
@@ -154,7 +157,7 @@ route_name: app_profile
                   <div class="col-sm-6 mb-3">
                     <div class="card h-100">
                       <div class="card-body">
-                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"></i>Description</h6>
+                          <h6 class="d-flex align-items-center mb-3 text-primary"><i class="material-icons text-info mr-2"></i>Description</h6>
                           {{app.user.description}}
                     </div>
                   </div>
@@ -163,7 +166,7 @@ route_name: app_profile
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"></i>Evenement crée</h6>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2 text-primary"></i>Evenement crée</h6>
                     </div>
                   </div>
                 </div>
