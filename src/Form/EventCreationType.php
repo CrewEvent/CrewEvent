@@ -35,7 +35,6 @@ class EventCreationType extends AbstractType
                         new Length([
                             'min' => 6,
                             'minMessage' => 'Le nomdoit étre au moins  {{ limit }} characteres',
-                            'max' => 4096
                         ])
 
                     ]

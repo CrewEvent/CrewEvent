@@ -13,3 +13,4 @@ import { Input as CustomInput } from 'mdb-ui-kit'; // module with custom name
 // start the Stimulus application
 import './bootstrap';
 
+

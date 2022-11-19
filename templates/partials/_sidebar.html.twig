@@ -31,14 +31,14 @@ Side bar page événement
       </a>
 
       <!--Partie informations générales-->
-      <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight">
+      <a href="{{path("app_show_event",{name : event.name})}}" class="list-group-item list-group-item-action py-3 lh-tight">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">Informations</strong>
         </div>
       </a>
 
       <!--Partie discussions générales-->
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+      <a href="{{path("app_event_chat", {name : event.name})}}" class="list-group-item list-group-item-action py-3 lh-tight">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">Discussions</strong>
         </div>

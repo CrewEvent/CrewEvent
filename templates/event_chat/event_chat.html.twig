@@ -1,0 +1,29 @@
+{% extends 'default_base.html.twig' %}
+
+{# Page de l'événement #}
+
+{% block title %}
+	Page de l'événement
+	{{ event.name }}
+{% endblock %}
+
+{% block body %}
+	{# On affiche la barre de navigation #}
+	{{ include('partials/_navbar.html.twig') }}
+
+	{# On affiche juste la side bar et la liste des participants #}
+
+	<div class="row">
+		<div class="col">
+			{{ include('partials/_sidebar.html.twig') }}
+		</div>
+		<div class="col-7">
+			{{ include('partials/_chat.html.twig') }}
+		</div>
+		<div class="col">
+			{{ include('partials/_partie_sub.html.twig') }}
+		</div>
+
+	</div>
+{% endblock %}
+
