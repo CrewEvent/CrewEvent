@@ -12,6 +12,11 @@
 	{{ include('partials/_navbar.html.twig') }}
 
 	{# On affiche juste la side bar et la liste des participants #}
+	{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
 
 	<div class="row">
 		<div class="col">

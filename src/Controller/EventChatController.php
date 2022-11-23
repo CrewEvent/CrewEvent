@@ -19,7 +19,7 @@ use Symfony\Component\Mercure\Authorization;
 use Symfony\Component\Mercure\Discovery;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventChatController extends AbstractController
 {
@@ -52,11 +52,15 @@ class EventChatController extends AbstractController
 
         //On crée le formulaire de message
         $form = $this->createFormBuilder()
-            ->add('message', TextType::class, ['attr' => ['autocomplete' => 'off']])
-            ->add('send', SubmitType::class)
+            ->add(
+                'message',
+                TextType::class,
+                ['attr' => ['autocomplete' => 'off', 'class' => 'form-control form-control-lg', 'placeholder' => 'entrer un message']]
+            )
+
             ->getForm();
 
-        //Aprés un post on vide le contenu du formulaire
+        //On le clone juste pour pouvoir le réutiliser
         $emptyForm = clone $form;
 
         //On dit au formulaire de gérer les requétes
@@ -66,31 +70,40 @@ class EventChatController extends AbstractController
 
         //Si le formulaire est soumis
         if ($form->isSubmitted() && $form->isValid()) {
-
-            //On prend les données du formulaire cad le contenu du message
-            $data = $form->getData();
-
-            //On fait des enregistrements pour la bdd
-            $chatEvent->setContent($data['message']);
-            $chatEvent->setSender($username);
-            $chatEvent->setEvent($event);
-
-            //On envoie dans la bdd
-            $em->persist($chatEvent);
-            $em->flush();
+            //On regarde si l'utilisateur est participant dans l'événement pour pouvoir envoyer des messages
+            if ($isParticipant) {
 
 
-            // 🔥 The magic happens here! 🔥
-            // The HTML update is pushed to the client using Mercure
 
-            $hub->publish(new Update(
-                'chat',
-                $this->renderView('chat/message.stream.html.twig', ['message' => $data['message']])
-            ));
+                //On prend les données du formulaire cad le contenu du message
+                $data = $form->getData();
 
-            // Force an empty form to be rendered below
-            // It will replace the content of the Turbo Frame after a post
-            $form = $emptyForm;
+                //On fait des enregistrements pour la bdd
+                $chatEvent->setContent($data['message']);
+                $chatEvent->setSender($username);
+                $chatEvent->setEvent($event);
+
+                //On envoie dans la bdd
+                $em->persist($chatEvent);
+                $em->flush();
+
+
+                // 🔥 The magic happens here! 🔥
+                // The HTML update is pushed to the client using Mercure
+
+                $hub->publish(new Update(
+                    'chat',
+                    $this->renderView('chat/message.stream.html.twig', ['message' => $data['message'], 'sender' => $username])
+                ));
+
+                // Force an empty form to be rendered below
+                // It will replace the content of the Turbo Frame after a post
+                $form = $emptyForm;
+            } else {
+                //Sinon on le redirrige vers la pasge informations générales et lui afficher un message flash pour qu'il s'abonne  
+                $this->addFlash('danger', 'Vous devez vous participer à cet événement pour envoyer un message');
+                return $this->redirectToRoute('app_show_event', ['name' => $event->getName()]);
+            }
         }
 
 
