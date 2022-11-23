@@ -1,8 +1,4 @@
 
-
-
-
-
 <div class="" id="chat2">
   <div class="card-header d-flex justify-content-between align-items-center p-3" >
     <h5 class="mb-0">Chat</h5>
@@ -12,13 +8,11 @@
 
     
       {# <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;"> #}
-      <div class="d-flex flex-row justify-content-start">
+      <div class="d-flex flex-row justify-content-start mb-4">
+
+        {# Tous les nouveaux messages seront display ici dans le turbo_stream #}
         <div id="messages" {{ turbo_stream_listen('chat') }}>
-          {#
-          The messages will be displayed here.
-          "turbo_stream_listen()" automatically registers a Stimulus controller that subscribes to the "chat" topic as managed by the transport.
-          All connected users will receive the new messages!
-          #}
+            
         </div>
       </div>
     
@@ -31,20 +25,29 @@
 
 
 
-
+{# C'est le formulaire d'envoie de message à chaque post c'est juste cette partie et le turbo qui change la page ne change pas #}
   <turbo-frame id="message_form">
+    
 
-    {{ form(form) }}
-
-      {#
-                        The form is displayed in a Turbo Frame, with this trick a new empty form is displayed after every post,
-                        but the rest of the page will not change.
-                    #}
+    {{ form_start(form) }}
+      <div class="card-footer text-muted d-flex  align-items-center p-3">
+        {{form_widget(form.message)}}
+        <button class="btn btn-white" type="submit"> <i class="fas fa-paper-plane fa-2x"></i></button>
+      </div>
+    {{form_end(form)}}
+    
   </turbo-frame>
 
   
 </div>
-
+<style>
+  .btn-white:hover,.btn-white,.btn-white:active,.btn-white:focus {
+    color:  #38b6ff !important;
+    text-decoration: none !important;
+    background-color: white !important;
+    box-shadow: none !important;
+  }
+</style>
 <script>
 	var objDiv = document.getElementById("chat-scroll-el");
   objDiv.scrollTop = objDiv.scrollHeight;

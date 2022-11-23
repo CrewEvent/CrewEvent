@@ -6,13 +6,6 @@ Side bar page événement
     <!--
     Si l'utlisatuer n'a pas encore participé à la liste des événements on lui affiche le bouton participer
     -->
-      {% if not isParticipant %}
-        <a href="{{path("app_add_participant",{name : event.name})}}">
-          <button type="button" class="btn btn-primary">Participer</button>
-        </a>
-      {% endif %}
-
-
         <!--Nom de l'événement-->
     <a href="#" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
