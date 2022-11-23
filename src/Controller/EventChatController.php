@@ -15,12 +15,18 @@ use App\Repository\ParticipantRepository;
 use App\Entity\ChatEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ChatEventRepository;
+use Symfony\Component\Mercure\Authorization;
+use Symfony\Component\Mercure\Discovery;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class EventChatController extends AbstractController
 {
     #[Route('/event/{name}/chat', name: 'app_event_chat')]
-    public function event_chat(Event $event, ParticipantRepository $participantRepo, Request $request, EntityManagerInterface $em, ChatEventRepository $chatRepo): Response
+    public function event_chat(Event $event, ParticipantRepository $participantRepo, Request $request, EntityManagerInterface $em, ChatEventRepository $chatRepo, HubInterface $hub, Discovery $discovery, Authorization $authorization): Response
     {
+
         //On récupére l'identifiant de l'utilisateur connecté
         $username = $this->getUser()->getUserIdentifier();
 
@@ -40,48 +46,60 @@ class EventChatController extends AbstractController
             }
         }
 
-        //On crée un nouveau Message
-        $chatEvent = new ChatEvent();
-        $form = $this->createForm(ChatType::class, $chatEvent);
+        //On créé un nouveau message
+        $chatEvent = new ChatEvent;
 
 
+        //On crée le formulaire de message
+        $form = $this->createFormBuilder()
+            ->add('message', TextType::class, ['attr' => ['autocomplete' => 'off']])
+            ->add('send', SubmitType::class)
+            ->getForm();
 
-        //On dit au formulaie de gérer la requéte
+        //Aprés un post on vide le contenu du formulaire
+        $emptyForm = clone $form;
+
+        //On dit au formulaire de gérer les requétes
         $form->handleRequest($request);
 
-        //Si le formulaire est soumis et valide
+
+
+        //Si le formulaire est soumis
         if ($form->isSubmitted() && $form->isValid()) {
-            //On définit l'envoyeur et le l'événement concerné
+
+            //On prend les données du formulaire cad le contenu du message
+            $data = $form->getData();
+
+            //On fait des enregistrements pour la bdd
+            $chatEvent->setContent($data['message']);
             $chatEvent->setSender($username);
             $chatEvent->setEvent($event);
 
-            //On enregistre dans la base de donnée
+            //On envoie dans la bdd
             $em->persist($chatEvent);
             $em->flush();
 
-            //Redirection vers la méme page
-            // $this->redirectToRoute('app_event_chat', [
-            //     'event' => $event,
-            //     'name' => $event->getName(),
-            //     'participants' => $participants,
-            //     'isParticipant' => $isParticipant,
-            //     'form' => $form->createView(),
-            //     //On lui donne le chat aussi à afficher
-            //     'eventChats' => $eventChats
-            // ]);
+
+            // 🔥 The magic happens here! 🔥
+            // The HTML update is pushed to the client using Mercure
+
+            $hub->publish(new Update(
+                'chat',
+                $this->renderView('chat/message.stream.html.twig', ['message' => $data['message']])
+            ));
+
+            // Force an empty form to be rendered below
+            // It will replace the content of the Turbo Frame after a post
+            $form = $emptyForm;
         }
 
-        //On récupére le chat de l'événement
 
-        $messages = $chatRepo->findBy(['event' => $event]);
-        //retourne la page
-        return $this->render('event_chat/event_chat.html.twig', [
+        //Affichage de la page
+        return $this->renderForm('event_chat/event_chat.html.twig', [
+            'form' => $form,
             'event' => $event,
             'participants' => $participants,
-            'isParticipant' => $isParticipant,
-            'form' => $form->createView(),
-            'messages' => $messages
-
+            'isParticipant' => $isParticipant
         ]);
     }
 }

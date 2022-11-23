@@ -16,6 +16,8 @@ route_name: app_index
 
     <!-- si l'utilisateur connecté-->
     {% if app.user %}
+       
+
             <!-- On inclut la navbar-->
         {{ include('partials/_navbar.html.twig')}}
         <h1>Bienvenu dans la page d'acceuil</h1>
@@ -25,6 +27,10 @@ route_name: app_index
         <br>
         <a href="{{path("app_event_creation")}}">Créer un événement</a>
 
+
+        {# ajouter contact #}
+
+        
     <!--Affiche tous les utilisateurs -->
         <h1>Tous nos utilisateurs</h1>
         <ul>
@@ -34,7 +40,7 @@ route_name: app_index
                 {% if user == app.user %}
                     <a href="{{path("app_profile")}}"><li>{{user.username}}</li></a></a>
                 {% else %}
-
+                         
                     <a href="{{path("app_show_profile", {username : user.username})}}"><li>{{user.username}}</li></a>
                 <!-- Sinon on l'amméne vers la page de profil d'un autre utilisateur -->
                 {% endif %}
@@ -54,7 +60,7 @@ route_name: app_index
             {% endfor %}
         </ul>
         <!--Mes abonnements -->
-        <h1>Tous Mes abonnements</h1>
+        <h1>Tous Mes abonnement</h1>
         <ul>
         
             <!--On prend chaque participation dans la liste des participations->
@@ -64,8 +70,8 @@ route_name: app_index
                
             {% endfor %}
         </ul>
-        
 
+   
     <!-- si l'utilisateur n'est pas connecté-->
     {% else %}
         <a href="{{path("app_login")}}">Connecter vous</a>
@@ -73,6 +79,8 @@ route_name: app_index
         <a href="{{path("app_register")}}">Inscrivez vous</a>
 
     {% endif %}
-	
+
+
+
 {% endblock %}
 

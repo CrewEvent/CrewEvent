@@ -50,7 +50,7 @@ class EventController extends AbstractController
 
         //ça affiche page de création d'événement
         return $this->render('pages/event/event_creation.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 

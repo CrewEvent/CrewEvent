@@ -16,6 +16,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\ChangePasswordType;
+use App\Repository\ContactRepository;
 use App\Repository\UserRepository;
 use App\Repository\EventRepository;
 use App\Repository\ParticipantRepository;
@@ -102,9 +103,9 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        return $this->render(
+        return $this->renderForm(
             'pages/edit_profile.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form]
 
         );
     }
@@ -142,9 +143,9 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        return $this->render(
+        return $this->renderForm(
             'pages/app_change_password.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form]
 
         );
     }
@@ -153,9 +154,18 @@ class IndexController extends AbstractController
     //En attribut si on indique username dans la route et que l'on injecte User
     //symfony sait que l'entité que l'on va utiliser est la méme que celui de la route
     #[Route('/show_profile/{username}', name: 'app_show_profile')]
-    public function show_profile(UserRepository $userRepo, User $user): Response
+    public function show_profile(ContactRepository $contactRepo, User $user): Response
     {
+        //On regarde d'abord si cet utilisateur est déja contact
+        $isContact = false;
 
-        return $this->render('pages/show_profile.html.twig', ['user' => $user]);
+
+        //s'il se trouve dans la liste on enléve le bouton ajouter
+        if ($contactRepo->findBy(['user' => $user->getId()])) {
+
+            $isContact = true;
+        }
+
+        return $this->render('pages/show_profile.html.twig', ['user' => $user, 'isContact' => $isContact]);
     }
 }

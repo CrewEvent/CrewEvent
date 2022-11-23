@@ -41,9 +41,9 @@ route_name: app_show_profile
                                     <!-- affiche le prenom et l'identifiant -->
                                         <h4 class="m-t-10 m-b-5">{{user.prenom}}</h4>
                                         <p class="m-b-10">@ {{user.username}}</p>
-                                      
-                                        
-                                        <a href="#" class="btn btn-sm btn-info mb-2">Ajouter à la liste d'amis</a>
+                                        {% if not isContact %}
+                                            <a href="{{path('add_contact',{username: user.username})}}" class="btn btn-sm btn-info mb-2">Ajouter à la liste de contact</a>
+                                        {% endif %}
                                         <a href="#" class="btn btn-sm btn-info mb-2">Envoyer message</a>
 
                                     </div>
