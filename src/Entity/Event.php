@@ -23,8 +23,9 @@ class Event
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Assert\NotBlank()]
-    #[ORM\Column(length: 255)]
+
+    #[Assert\Length(min: 6, minMessage: "le nom doit étre au moins de {limit} charatéres")]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -63,11 +64,15 @@ class Event
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class)]
     private Collection $participants;
 
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: ChatEvent::class)]
+    private Collection $chatEvents;
+
 
     public function __construct()
     {
         $this->username = new ArrayCollection();
         $this->participants = new ArrayCollection();
+        $this->chatEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,6 +232,36 @@ class Event
             // set the owning side to null (unless already changed)
             if ($participant->getEvent() === $this) {
                 $participant->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ChatEvent>
+     */
+    public function getChatEvents(): Collection
+    {
+        return $this->chatEvents;
+    }
+
+    public function addChatEvent(ChatEvent $chatEvent): self
+    {
+        if (!$this->chatEvents->contains($chatEvent)) {
+            $this->chatEvents->add($chatEvent);
+            $chatEvent->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChatEvent(ChatEvent $chatEvent): self
+    {
+        if ($this->chatEvents->removeElement($chatEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($chatEvent->getEvent() === $this) {
+                $chatEvent->setEvent(null);
             }
         }
 

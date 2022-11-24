@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\ChatEvent;
 /*
 Controller pour la gestion d'événement
 */
@@ -26,9 +27,8 @@ class EventController extends AbstractController
 
         //On crée un nouveau événement
         $event = new Event;
-
-        //On crée une nouvelle formulaire de création d'événement
-        $form = $this->createForm(EventCreationType::class);
+        //On crée un nouveau formulaire de création d'événement
+        $form = $this->createForm(EventCreationType::class, $event);
 
 
         //on dit au formulaire de gérer les requettes
@@ -50,7 +50,7 @@ class EventController extends AbstractController
 
         //ça affiche page de création d'événement
         return $this->render('pages/event/event_creation.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 
@@ -58,13 +58,13 @@ class EventController extends AbstractController
     #[Route('/event/show/{name}', name: 'app_show_event', methods: ['POST', 'GET'])]
     public function event_show(Event $event, ParticipantRepository $participantRepo): Response
     {
+
         //On récupére l'identifiant de l'utilisateur connecté
         $username = $this->getUser()->getUserIdentifier();
 
         //Cherche si l'utilisateur est déja participant
         // $isParticipant = $this->search_if_participant($username, $event->getName());
 
-        //On cherche si l'utilisateur est déja participant
         $isParticipant = false;
 
         //On prend tous les objets participants qui ont pour attribut le nom de l'événement
