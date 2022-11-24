@@ -103,9 +103,9 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        return $this->render(
+        return $this->renderForm(
             'pages/edit_profile.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form]
 
         );
     }

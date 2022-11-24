@@ -104,18 +104,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Event::class, orphanRemoval: true)]
     private Collection $events;
 
-<<<<<<< HEAD
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Telephone = null;
-=======
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Contact::class)]
-    private Collection $contacts;
->>>>>>> 2eb000bed9fb770659b69f0265c742ca0a4975db
-
     public function __construct()
     {
         $this->events = new ArrayCollection();
-        $this->contacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -435,47 +426,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
                 $event->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-<<<<<<< HEAD
-    public function getTelephone(): ?string
-    {
-        return $this->Telephone;
-    }
-
-    public function setTelephone(?string $Telephone): self
-    {
-        $this->Telephone = $Telephone;
-=======
-    /**
-     * @return Collection<int, Contact>
-     */
-    public function getContacts(): Collection
-    {
-        return $this->contacts;
-    }
-
-    public function addContact(Contact $contact): self
-    {
-        if (!$this->contacts->contains($contact)) {
-            $this->contacts->add($contact);
-            $contact->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContact(Contact $contact): self
-    {
-        if ($this->contacts->removeElement($contact)) {
-            // set the owning side to null (unless already changed)
-            if ($contact->getUser() === $this) {
-                $contact->setUser(null);
-            }
-        }
->>>>>>> 2eb000bed9fb770659b69f0265c742ca0a4975db
 
         return $this;
     }

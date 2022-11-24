@@ -1,29 +1,21 @@
 {# chat/message.stream.html.twig #}
 
-{# Les nouveaux messages reçu par mercure sont mis dans le div de partials/_chat.html.twig "messages" ID. #}
+{# New messages received through the Mercure connection are appended to the div with the "messages" ID. #}
 <turbo-stream action="append" target="messages">
      <template>
-
-
-        {# <div class="d-flex flex-row justify-content-end mb-4">      #}
-
-        {# On render le sender #}
-        <div class="d-flex ms-3 justify-content-center align-items-center">
-            {% if sender == app.user.username %}
-                <a href="{{path('app_profile')}}"><span class="small text-primary">{{sender}}</span></a>
-            {% else %}
-                <a href="{{path('app_show_profile')}}"><span class="small text-primary">{{sender}}</span></a>
-            {% endif %}
-            
-            <span class="small text-muted"> &nbsp;à&nbsp; {{"now"|format_datetime('none', 'short', locale='fr') }}</span>
-        </div>
-                
-          {# Puis on render le message       #}
-        <div class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">{{ message }}</div>
+        {# <div class="card-body overflow-auto " id="chat-scroll-el"  style="position: relative; height: 500px">  
+            <div class="d-flex flex-row justify-content-start">
+                <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">{{message}}</p>
+            </div>
+        </div> #}
+        
+        {# <div class="d-flex flex-row justify-content-start"> #}
+            <div class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">{{ message }}</div>
         {# </div> #}
-            
+        
 	</template>
 </turbo-stream>
-
+{# <p class="small ms-3 mb-3 rounded-3 text-muted">{{ message.createdAt|date("m/d/Y  H:i:s") }}</p> #}
+{# <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">{{message.content}}</p> #}
 
 

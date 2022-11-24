@@ -11,8 +11,6 @@
   {{ include('partials/_navbar.html.twig') }}
 
 
-
-
   <div class="row">
     <div class="col">
       {{ include('partials/_sidebar.html.twig') }}
@@ -20,21 +18,6 @@
     </div>
     <div class="col-7">
       <h1>Infos générales</h1>
-
-      {# On ajoute un message flash pour dire à l'utilisateur qu'il faut qu'il participe pour pouvoir discuter #}
-      {% for message in app.flashes('danger') %}
-        <div class="alert alert-danger">
-          {{ message }}
-        </div>
-      {% endfor %}
-
-    {# On rajoute le bouton pour participer si ce n'est pas le cas #}
-      {% if not isParticipant %}
-        <h3>Vous devez participez à cet événement pour pouvoir chatter.</h3>
-        <a href="{{path("app_add_participant",{name : event.name})}}">
-          <button type="button" class="btn btn-primary">Participer</button>
-        </a>
-      {% endif %}
     </div>
     <div class="col">
       {{ include('partials/_partie_sub.html.twig') }}
