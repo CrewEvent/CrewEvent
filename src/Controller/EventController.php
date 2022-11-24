@@ -27,7 +27,7 @@ class EventController extends AbstractController
 
         //On crée un nouveau événement
         $event = new Event;
-        //On crée une nouvelle formulaire de création d'événement
+        //On crée un nouveau formulaire de création d'événement
         $form = $this->createForm(EventCreationType::class, $event);
 
 
