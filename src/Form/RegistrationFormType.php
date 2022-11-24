@@ -64,8 +64,8 @@ class RegistrationFormType extends AbstractType
                     'second_options' => ['attr' => ['placeholder' => 'confirmer le mot de passe', 'class' => 'mb-3'], 'label' => ' ']
 
                 ]
-            )
-            ->add('Telephone');
+                );
+            //->add('Telephone')
     }
 
     public function configureOptions(OptionsResolver $resolver): void
