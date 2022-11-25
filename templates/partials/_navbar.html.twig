@@ -48,14 +48,14 @@
         <div class="d-flex align-items-center ">
             
             <!-- Icon messagerie -->
-            <a class="text-reset me-3 " href="#" >
+            <a class="text-reset me-3 " href="{{path('private_message')}}" >
                 <i class="fas fa-comment fa-2x"></i>
                 {# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
             </a>
 
             <!-- Notifications -->
 
-                <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <a class="text-reset me-3 " href="#">
                     <i class="fas fa-bell fa-2x"></i>
                     {# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
                 </a>
@@ -75,9 +75,9 @@
                     <li>
                         <a class="dropdown-item" href="{{path("app_profile")}}">My profile</a>
                     </li>
-                    <li>
+                    {# <li>
                         <a class="dropdown-item" href="#">Settings</a>
-                    </li>
+                    </li> #}
                     <li>
                         <a class="dropdown-item" href="{{path("app_logout")}}">Logout</a>
                     </li>
