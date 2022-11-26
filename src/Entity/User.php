@@ -278,6 +278,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
         return $this;
     }
+    
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
     public function updateTimestamp()
