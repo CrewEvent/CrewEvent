@@ -51,6 +51,10 @@
 </div>
 
 
-
+{{form(FindContactType)}}
+    {% for contact in contacts %}
+        <li>{{contact.contactUsername}}</li>      
+    {% endfor %}
+</ul>
 
 {% endblock %}

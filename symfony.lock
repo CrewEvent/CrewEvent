@@ -189,6 +189,15 @@
             "./config/packages/mercure.yaml"
         ]
     },
+    "symfony/mercure-notifier": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.3",
+            "ref": "ae4620ee823a67e41f65aabec525fa52c79a8b09"
+        }
+    },
     "symfony/messenger": {
         "version": "5.4",
         "recipe": {

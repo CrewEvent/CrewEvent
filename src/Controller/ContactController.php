@@ -7,10 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Contact;
+use App\Form\FindContactType;
 use App\Repository\ContactRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends AbstractController
 {
@@ -53,10 +55,24 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact', name: 'app_contacts')]
-    public function show_contacts(ContactRepository $contactRepo)
+    public function show_contacts(ContactRepository $contactRepo, Request $request, EntityManagerInterface $em)
     {
-
+        $contact = new Contact;
         $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
-        return $this->render('contact/show_contacts.html.twig', ['contacts' => $contacts]);
+
+        $form = $this->createForm(FindContactType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $query = $em->createQuery(
+                'SELECT contact FROM App\Entity\Contact contact WHERE contact.username = :username AND contact.contactUsername LIKE :contact_username'
+            )
+                ->setParameter('username', $this->getUser()->getUserIdentifier())
+                ->setParameter('contact_username', '%' . $form->getData()->getContactUsername() . '%');
+
+            $contacts = $query->getResult();
+        }
+
+
+        return $this->render('contact/show_contacts.html.twig', ['contacts' => $contacts, 'FindContactType' => $form->createView()]);
     }
 }

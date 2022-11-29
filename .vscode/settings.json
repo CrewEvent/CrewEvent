@@ -13,5 +13,6 @@
             "name": "crewevent_dev",
             "password": ""
         }
-    ]
+    ],
+    "nuxt.isNuxtApp": false
 }
