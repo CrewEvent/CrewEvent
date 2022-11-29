@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f11f45b6824773984f154f754d74b1e",
+    "content-hash": "cc9b6dda492b7395a7bf7237c7c5c792",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5074,6 +5074,75 @@
                 }
             ],
             "time": "2022-06-12T17:10:33+00:00"
+        },
+        {
+            "name": "symfony/mercure-notifier",
+            "version": "v5.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mercure-notifier.git",
+                "reference": "83d392cd9b73e88e2f21ed6c4c181b480f3c07d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mercure-notifier/zipball/83d392cd9b73e88e2f21ed6c4c181b480f3c07d0",
+                "reference": "83d392cd9b73e88e2f21ed6c4c181b480f3c07d0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.2.5",
+                "symfony/mercure": "^0.5.2|^0.6",
+                "symfony/notifier": "^5.3|^6.0",
+                "symfony/service-contracts": "^1.10|^2|^3"
+            },
+            "type": "symfony-notifier-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Notifier\\Bridge\\Mercure\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathias Arlaud",
+                    "email": "mathias.arlaud@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Mercure Notifier Bridge",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mercure",
+                "notifier"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/mercure-notifier/tree/v5.4.13"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-09-29T09:01:59+00:00"
         },
         {
             "name": "symfony/messenger",
