@@ -5,16 +5,30 @@
 {% block body %}
     {{include('partials/_navbar.html.twig')}}
     <h1>Resulats de la recherche</h1>
+    {% if events|length or users|length  %}
+        <h3>{{events|length + users|length}} résultats trouvés</h3>
+    {% else %}
+        <h3>Pas de résultats trouvés</h3>
+    {% endif %}
 
-    
-    {# <ul>
+    <ul>
+        {# On affiche la recherche par utilisateur #}
+        {% for user in users %}
+            {% if user == app.user %}
+                <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>
+            {% else %}
+                <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>
+            {% endif %}
+        {% endfor %}
+        {# Le résultat de la recherche par événement #}
+        {% for event in events %}
+            <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>
+        {% endfor %}    
 
-    {% for event in events %}
-        <li>{{event.name}}</li>
-    {% endfor %}
-    {% for user in users %}
-        <li>{{user.username}}</li>
-    {% endfor %}
-    </ul> #}
+    </ul>
+
+    <div class="m-auto">
+            {{ knp_pagination_render(events) }}
+    </div>
 
 {% endblock  %}
