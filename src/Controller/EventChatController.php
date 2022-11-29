@@ -3,28 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Event;
-use App\Form\ChatType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mercure\HubInterface;
-use Symfony\Component\Mercure\PublisherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mercure\Update;
 use App\Repository\ParticipantRepository;
-use App\Entity\ChatEvent;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\ChatEventRepository;
-use Symfony\Component\Mercure\Authorization;
-use Symfony\Component\Mercure\Discovery;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class EventChatController extends AbstractController
 {
     #[Route('/event/{name}/chat', name: 'app_event_chat')]
-    public function event_chat(Event $event, ParticipantRepository $participantRepo, Request $request, EntityManagerInterface $em, ChatEventRepository $chatRepo, HubInterface $hub, Discovery $discovery, Authorization $authorization): Response
+    public function event_chat(Event $event, ParticipantRepository $participantRepo, Request $request, HubInterface $hub): Response
     {
 
         //On récupére l'identifiant de l'utilisateur connecté
@@ -45,9 +37,6 @@ class EventChatController extends AbstractController
                 $isParticipant = true;
             }
         }
-
-        //On créé un nouveau message
-        $chatEvent = new ChatEvent;
 
 
         //On crée le formulaire de message
@@ -77,16 +66,6 @@ class EventChatController extends AbstractController
 
                 //On prend les données du formulaire cad le contenu du message
                 $data = $form->getData();
-
-                //On fait des enregistrements pour la bdd
-                $chatEvent->setContent($data['message']);
-                $chatEvent->setSender($username);
-                $chatEvent->setEvent($event);
-
-                //On envoie dans la bdd
-                $em->persist($chatEvent);
-                $em->flush();
-
 
                 // 🔥 The magic happens here! 🔥
                 // The HTML update is pushed to the client using Mercure

@@ -1,0 +1,50 @@
+<div class="mx-5">
+    <h5 class="text-primary">@ {{user.username}} </h5> 
+    <div class="row">
+         
+        <div class="col">
+            <ul class="list-unstyled">
+                {# Render le chat #}
+                <div class="card-body overflow-auto " id="chat-scroll"  style="position: relative; height: 600px">
+                    
+                    {# chat utilisateur connecté #}
+                    {% for message in messages %}
+                        <li class="d-flex justify-content-start mb-4">
+                            <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between p-2 align-items-center">
+                                    <p class="fw-bold mb-0">{{message.sender}}</p>&nbsp;&nbsp;
+                                    <p class="text-muted small mb-0">
+                                        <i class="far fa-clock"></i>
+                                        &nbsp;&nbsp;{{message.createdAt|format_datetime('none', 'short', locale='fr') }}</p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">
+                                    {{message.content}} 
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    
+                    <div id="private_messages" {{ turbo_stream_listen(canal) }}>
+                                            
+                    </div>
+                </div>  
+                <li class="bg-white mb-3">
+                    {# C'est le formulaire d'envoie de message à chaque post c'est juste cette partie et le turbo qui change la page ne change pas #}
+                    <turbo-frame id="message_form">
+                        {{ form_start(form) }}
+                            <div class="card-footer text-muted d-flex  align-items-center p-3">
+                                {{form_widget(form.message)}}
+                                <button class="btn btn-white" type="submit"> <i class="fas fa-paper-plane fa-2x"></i></button>
+                            </div>
+                        {{form_end(form)}}
+                    </turbo-frame>
+                </li>
+                
+            </ul>
+
+        </div>
+    </div>
+</div>

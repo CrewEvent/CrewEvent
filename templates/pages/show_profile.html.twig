@@ -46,7 +46,7 @@ route_name: app_show_profile
                                         {% else %}
                                             <a href="{{path('remove_contact',{username: user.username})}}" class="btn btn-sm btn-info mb-2">Retirer de la liste des contacts</a>
                                         {% endif %}
-                                        <a href="#" class="btn btn-sm btn-info mb-2">Envoyer message</a>
+                                        <a href="{{path('send_private_message',{username : user.username})}}" class="btn btn-sm btn-info mb-2">Envoyer message</a>
 
                                     </div>
                                     <!-- END profile-header-info -->
