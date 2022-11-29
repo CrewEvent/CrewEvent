@@ -1,8 +1,8 @@
-<!-- 
+{# <!-- 
 Page de profile 
 route: /profile 
 route_name: app_profile
--->
+--> #}
 
 {% extends 'pages_base.html.twig' %}
 
@@ -11,6 +11,7 @@ route_name: app_profile
 
 {% block body %}
 	{% if app.user %}
+
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
             <div class="row">
@@ -22,7 +23,7 @@ route_name: app_profile
                             <div
                                 class="profile-header">
                                 <!-- BEGIN profile-header-cover -->
-                                <div class="profile-header-cover"></div>
+                                <div class="profile-header-cover"></div> 
                                 <!-- END profile-header-cover -->
                                 <!-- BEGIN profile-header-content -->
                                 <div
@@ -31,7 +32,7 @@ route_name: app_profile
                                     <div class="profile-header-img">
                                     <!-- uploade le photo de profil  -->
                                     <!-- oublié de mettre le filtre-->
-                                         <img src="{{app.user.photoProfileFile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
+                                         <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="">
 
                                     </div>
                                     <!-- END profile-header-img -->
@@ -48,23 +49,17 @@ route_name: app_profile
                                 <!-- END profile-header-content -->
                                 <!-- BEGIN profile-header-tab -->
                                 <ul class="profile-header-tab nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a href="#" target="__blank" class="nav-link_">A propos</a>
+                                 <li class="nav-item">
+                                        <a href="{{path('app_index')}}"  class="nav-link_">Acceuil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" target="__blank" class="nav-link_">Photos</a>
+                                        <a href="#"  class="nav-link_">A propos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" target="__blank" class="nav-link_">Evénements</a>
+                                        <a href="#"  class="nav-link_">Photos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" target="__blank" class="nav-link_">Amis</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{path('app_index')}}" target="__blank" class="nav-link_">Acceuil</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{path('app_logout')}}" target="__blank" class="nav-link_">Deconnection</a>
+                                        <a href="#"  class="nav-link_">Evénements</a>
                                     </li>
                                 </ul>
                                 <!-- END profile-header-tab -->

@@ -1,0 +1,15 @@
+{% extends 'default_base.html.twig' %}
+
+{% block title %}Hello PrivateMessageController!
+{% endblock %}
+
+{% block body %}
+
+	{{ include('partials/_navbar.html.twig')}}
+	{{ include('partials/_send_private_message.html.twig')}}
+    <script>
+		var objDiv = document.getElementById("chat-scroll");
+		objDiv.scrollTop = objDiv.scrollHeight;
+	</script>
+{% endblock %}
+

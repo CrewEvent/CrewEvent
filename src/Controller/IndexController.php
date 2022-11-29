@@ -15,13 +15,17 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ChangePasswordType;
+use App\Repository\ContactRepository;
+use App\Repository\UserRepository;
+use App\Repository\EventRepository;
+use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use App\Form\ChangePasswordType;
 
 class IndexController extends AbstractController
 {
@@ -31,11 +35,36 @@ class IndexController extends AbstractController
     */
 
     #[Route('/', name: 'app_index')]
-    public function index(): Response
+    public function index(UserRepository $userRepo, EventRepository $eventRepo, ParticipantRepository $participantRepo): Response
     {
-        return $this->render('pages/index.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
+        // prend tous les utilisateurs dans le repo user
+        $users = $userRepo->findAll();
+
+        //On récupére l'utilisateur connécté
+        $user = $this->getUser();
+
+
+
+        //On fait cette partie si c'est un utilisateur connecté
+        if ($user) {
+
+            //prend tous les événements dans le repo event
+            $events = $eventRepo->findAll();
+
+            //On prend tous les événements dont l'utilisateur a participé
+            //c'est à dire dans la table participant on recherche le username
+            $participants = $participantRepo->findBy(['participantUsername' => $user->getUserIdentifier()]);
+            return $this->render(
+                'pages/index.html.twig',
+                [
+                    'users' => $users,
+                    'events' => $events,
+                    'participants' => $participants
+                ]
+            );
+        } else {
+            return $this->render('pages/index.html.twig');
+        }
     }
 
     /* 
@@ -62,7 +91,6 @@ class IndexController extends AbstractController
     {
         //on récupére les informations de l'utilisateur conrant qu'on stocke dans $user 
         $user = $this->getUser();
-
         //On crée une formulaire de type UserType
         $form = $this->createForm(UserType::class, $user);
 
@@ -75,9 +103,9 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        return $this->render(
+        return $this->renderForm(
             'pages/edit_profile.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form]
 
         );
     }
@@ -115,10 +143,29 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        return $this->render(
+        return $this->renderForm(
             'pages/app_change_password.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form]
 
         );
+    }
+
+    //Affiche la page de profil d'un utilisateur en mode view only pas d'édition
+    //En attribut si on indique username dans la route et que l'on injecte User
+    //symfony sait que l'entité que l'on va utiliser est la méme que celui de la route
+    #[Route('/show_profile/{username}', name: 'app_show_profile')]
+    public function show_profile(ContactRepository $contactRepo, User $user): Response
+    {
+        //On regarde d'abord si cet utilisateur est déja contact
+        $isContact = false;
+
+
+        //s'il se trouve dans la liste on enléve le bouton ajouter
+        if ($contactRepo->findBy(['user' => $user->getId()])) {
+
+            $isContact = true;
+        }
+
+        return $this->render('pages/show_profile.html.twig', ['user' => $user, 'isContact' => $isContact]);
     }
 }

@@ -1,29 +1,86 @@
-<!-- 
+{# <!-- 
 Page d'acceuil dans le site 
 route: / 
 route_name: app_index
--->
+--> #}
 
-{% extends 'base.html.twig' %}
+{% extends 'default_base.html.twig' %}
 
 {% block title %}page d'acceuil
 {% endblock %}
 
+
+
 {% block body %}
+
+
     <!-- si l'utilisateur connecté-->
     {% if app.user %}
+       
+
+            <!-- On inclut la navbar-->
+        {{ include('partials/_navbar.html.twig')}}
         <h1>Bienvenu dans la page d'acceuil</h1>
         <a href="{{path("app_logout")}}">Deconnection</a>
         <br>
         <a href="{{path("app_profile")}}">Page de profil</a>
+        <br>
+        <a href="{{path("app_event_creation")}}">Créer un événement</a>
 
-    <!-- si l'utilisateur connecté-->
+
+        {# ajouter contact #}
+
+        
+    <!--Affiche tous les utilisateurs -->
+        <h1>Tous nos utilisateurs</h1>
+        <ul>
+            <!--On prend chaque utilisateur de la liste des utilisateurs-->
+            {% for user in users %}
+                <!-- Si c'est l'utilisateur courant on le redirige dans la page d'acceuil -->
+                {% if user == app.user %}
+                    <a href="{{path("app_profile")}}"><li>{{user.username}}</li></a></a>
+                {% else %}
+                         
+                    <a href="{{path("app_show_profile", {username : user.username})}}"><li>{{user.username}}</li></a>
+                <!-- Sinon on l'amméne vers la page de profil d'un autre utilisateur -->
+                {% endif %}
+               
+            {% endfor %}
+        </ul>
+
+        <!--Affiche tous les événements -->
+        <h1>Tous nos événements</h1>
+        <ul>
+        
+            <!--On prend chaque événement de la liste des événements-->
+            {% for event in events %}
+                    <!--Puis on les affiche-->
+                    <a href="{{path("app_show_event", {name : event.name})}}"><li>{{event.name}}</li></a>
+               
+            {% endfor %}
+        </ul>
+        <!--Mes abonnements -->
+        <h1>Tous Mes abonnement</h1>
+        <ul>
+        
+            <!--On prend chaque participation dans la liste des participations->
+            {% for participant in participants %}
+                    <!--Puis on les affiche-->
+                    <a href="{{path("app_show_event", {name : participant.eventName})}}"><li>{{participant.eventName}}</li></a>
+               
+            {% endfor %}
+        </ul>
+
+   
+    <!-- si l'utilisateur n'est pas connecté-->
     {% else %}
         <a href="{{path("app_login")}}">Connecter vous</a>
         <br>
         <a href="{{path("app_register")}}">Inscrivez vous</a>
 
     {% endif %}
-	
+
+
+
 {% endblock %}
 

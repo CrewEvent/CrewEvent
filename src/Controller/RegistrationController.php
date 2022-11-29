@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setPhotoProfile("pas_de_photo.png");
+            $user->setPhotoProfile(NULL);
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -81,7 +81,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+            'registrationForm' => $form->createView()
         ]);
     }
 

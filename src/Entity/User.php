@@ -9,6 +9,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -95,9 +97,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
      *         "image/jpg", "image/gif", "image/jpeg", "image/png"
      *     }
      * )
-     * @var File
+     * @var File | null
      */
     private $photoProfileFile;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Event::class, orphanRemoval: true)]
+    private Collection $events;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Contact::class)]
+    private Collection $contacts;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: PrivateMessage::class, orphanRemoval: true)]
+    private Collection $privateMessages;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Member::class, orphanRemoval: true)]
+    private Collection $members;
+
+    public function __construct()
+    {
+        $this->events = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+        $this->privateMessages = new ArrayCollection();
+        $this->members = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -256,6 +278,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
         return $this;
     }
+    
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
     public function updateTimestamp()
@@ -388,5 +411,125 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
             $this->password,
             //$this->active,
         ] = \unserialize($serialized, [self::class]);
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contact>
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts->add($contact);
+            $contact->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getUser() === $this) {
+                $contact->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PrivateMessage>
+     */
+    public function getPrivateMessages(): Collection
+    {
+        return $this->privateMessages;
+    }
+
+    public function addPrivateMessage(PrivateMessage $privateMessage): self
+    {
+        if (!$this->privateMessages->contains($privateMessage)) {
+            $this->privateMessages->add($privateMessage);
+            $privateMessage->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrivateMessage(PrivateMessage $privateMessage): self
+    {
+        if ($this->privateMessages->removeElement($privateMessage)) {
+            // set the owning side to null (unless already changed)
+            if ($privateMessage->getUser() === $this) {
+                $privateMessage->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Member>
+     */
+    public function getMembers(): Collection
+    {
+        return $this->members;
+    }
+
+    public function addMember(Member $member): self
+    {
+        if (!$this->members->contains($member)) {
+            $this->members->add($member);
+            $member->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMember(Member $member): self
+    {
+        if ($this->members->removeElement($member)) {
+            // set the owning side to null (unless already changed)
+            if ($member->getUser() === $this) {
+                $member->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

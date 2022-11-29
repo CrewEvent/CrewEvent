@@ -3,7 +3,10 @@
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
         "@hotwired/stimulus": "^3.0.0",
+        "@hotwired/turbo": "^7.0.1",
         "@symfony/stimulus-bridge": "^3.2.0",
+        "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
+        "@symfony/ux-turbo-mercure": "file:vendor/symfony/ux-turbo-mercure/Resources/assets",
         "@symfony/webpack-encore": "^4.0.0",
         "bootstrap": "^5.2.2",
         "core-js": "^3.23.0",
@@ -25,5 +28,8 @@
     "engines": {
         "node": "v18.9.*",
         "npm": "8.19.*"
+    },
+    "dependencies": {
+        "mdb-ui-kit": "^6.0.0"
     }
 }

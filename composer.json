@@ -24,9 +24,11 @@
         "symfony/flex": "^1.17|^2",
         "symfony/form": "5.4.*",
         "symfony/framework-bundle": "5.4.*",
+        "symfony/google-mailer": "5.4.*",
         "symfony/http-client": "5.4.*",
         "symfony/intl": "5.4.*",
         "symfony/mailer": "5.4.*",
+        "symfony/mercure-bundle": "^0.3.5",
         "symfony/mime": "5.4.*",
         "symfony/monolog-bundle": "^3.0",
         "symfony/notifier": "5.4.*",
@@ -40,14 +42,17 @@
         "symfony/string": "5.4.*",
         "symfony/translation": "5.4.*",
         "symfony/twig-bundle": "5.4.*",
+        "symfony/ux-turbo": "^2.5",
+        "symfony/ux-turbo-mercure": "^2.5",
         "symfony/validator": "5.4.*",
         "symfony/web-link": "5.4.*",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "5.4.*",
         "symfonycasts/verify-email-bundle": "^1.12",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.4",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^1.21"
+        "vich/uploader-bundle": "^2.0"
     },
     "config": {
         "allow-plugins": {
@@ -94,7 +99,8 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "5.4.*"
+            "require": "5.4.*",
+            "docker": true
         }
     },
     "require-dev": {
