@@ -64,16 +64,13 @@ class EventRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    /**
-     * @return Event[] Returns an array of Event objects
-     */
-    public function findBySearch($data): array
+
+    public function findBySearch($data)
     {
         return $this->createQueryBuilder('e')
             ->andWhere('e.name = :data or e.tag = :data')
             ->setParameter('data', $data)
             ->orderBy('e.createdAt', 'ASC')
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 }

@@ -12,18 +12,23 @@
     {% endif %}
 
     <ul>
+        {# On affiche la recherche par utilisateur #}
+        {% for user in users %}
+            {% if user == app.user %}
+                <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>
+            {% else %}
+                <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>
+            {% endif %}
+        {% endfor %}
+        {# Le résultat de la recherche par événement #}
+        {% for event in events %}
+            <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>
+        {% endfor %}    
 
-    {% for event in events %}
-        <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>
-    {% endfor %}
-    {% for user in users %}
-        {% if user == app.user %}
-            <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>
-       {% else %}
-            <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>
-        {% endif %}
-    {% endfor %}
     </ul>
 
+    <div class="m-auto">
+            {{ knp_pagination_render(events) }}
+    </div>
 
 {% endblock  %}
