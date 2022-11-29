@@ -17,7 +17,7 @@
                 <img src="{{asset("images/crewevent.png")}}" width="110" alt="Crewevent logo" loading="lazy"/>
             </a>
 
-        <form class="d-flex input-group w-auto" action="{{path('app_recherche')}}" method="post" role="form">
+        <form class="d-flex input-group w-auto" action="{{path('app_recherche')}}" method="get" role="form">
             <input
                 name="recherche"
                 class="form-control rounded"
@@ -25,7 +25,7 @@
                 aria-label="Search"
                 aria-describedby="search-addon"
             />
-                <button type="submit" class="btn btn-primary" name="btnSubmit">
+                <button type="submit" class="btn btn-primary">
                     <i class="fas fa-search"></i>
                 </button>
         </form>
