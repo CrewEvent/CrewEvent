@@ -21,10 +21,11 @@ class RechercheController extends AbstractController
         //Je prend les données du formulaire de recherche de la navbar
         $data = $request->query->get('recherche');
 
+        //On recherche dans colonne nom et puis dans la colonne tag
+        $events = $eventRepo->findBySearch($data);
 
-        $events = $eventRepo->findBy(['name' => $data]);
-
-        $users = $userRepo->findBy(['username' => $data]);
+        //On recherche dans la colonne identifiant, prenom et nom
+        $users = $userRepo->findBySearch($data);
 
         return $this->render('recherche/recherche.html.twig', [
             'events' => $events,
