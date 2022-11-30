@@ -9,6 +9,7 @@ use Doctrine\Migrations\AbstractMigration;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
+ * en faisant une migrations, symfony auto génère le chagement dans le controller user_type
  */
 final class Version20221124210638 extends AbstractMigration
 {

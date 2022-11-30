@@ -12,26 +12,90 @@ route_name: app_profile
 {% block body %}
 
 	{% if app.user %}
-  <div class="my-5">
+        <div class="my-5">
             <h3>Mon profil</h3>
-            <hr />
-          </div>
+                      <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+              <!-- Toggle button -->
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+              </button>
+
+              <!-- Collapsible wrapper -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- logo brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                  <img
+                    src="{{asset('images/crewevent-b.png')}}"
+                    height="30"
+                    alt="CrewEvent Logo"
+                    loading="lazy"/>
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_index')}}">Acceuil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">A Propos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Photos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Evénements</a>
+                  </li>
+                </ul>
+                <!-- Left links -->
+              </div>
+              <!-- Collapsible wrapper -->
+
+              <!--<div class="d-flex align-items-center">
+              
+                            <!--Profil element -->
+                <!--<li class="nav-item me-3 me-lg-1"> -->
+                  <a class="nav-link d-sm-flex align-items-sm-center" href="#"<a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" 
+                      class="rounded-circle" height="22" alt="profile photo" loading="lazy"/>&nbsp;&nbsp;
+                      
+                    <strong class="d-none d-sm-block ms-1">{{app.user.username}}</strong>&nbsp;&nbsp;<!--show username in strong element -->
+                  </a>
+                    <!--Profil dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                      <li>
+                        <a class="dropdown-item" href="{{path("app_logout")}}">Déconnexion</a>
+                      </li>
+                     <!-- </li> <!--End Profil dropdown menu -->
+                    </ul>   
+                <!--End Profil element -->
+                 
+              <!--</div>
+               <!-- End Logo elements -->
+          
+            <!-- Container wrapper -->
+          </nav>
+          <!-- Navbar -->
+          <hr/>
+        </div>
+
+
+
    <div class="container">
     <div class="main-body">
     
           <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-              <li class="breadcrumb-item"><a href="{{path('app_index')}}">Acceuil</a></li>
-              <li class="breadcrumb-item"><a href="#">A Propos</a></li>
-              <li class="breadcrumb-item"><a href="#">Photos</a></li>
-              <li class="breadcrumb-item"><a href="#">Evénements</a></li>
-              
-            </ol>
-          </nav>
+         
           <!-- /Breadcrumb -->
-    
+           <!-- start photo de profile -->
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -42,13 +106,17 @@ route_name: app_profile
                     <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" alt="photo" class="rounded-circle" width="110">
                     <!--<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> -->
                     <div class="mt-3">
-                        <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>
-                        <p class="m-b-10">@ {{app.user.username}}</p>
+                  
+                        <h4 class="m-t-10 m-b-5">{{app.user.prenom}}</h4>  <!-- show firts name in profile in profile pic -->
+                        <p class="m-b-10">@ {{app.user.username}}</p>  <!-- show username in profile in profile pic -->
+                          <!-- buton pour chager le mdp-->
                         <a href="{{path("app_change_password")}}" class="btn btn-outline-primary">Changer le mot de passe</a>
+                        <!-- end buton for password change -->
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- end photo de profile -->
               <!--
               <div class="card mt-3">
                 <ul class="list-group list-group-flush">
@@ -76,8 +144,8 @@ route_name: app_profile
               </div>
               -->
             </div>
+
             <!-- debut du formulaire -->
-            
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -86,13 +154,13 @@ route_name: app_profile
                       <h6 class="mb-0 text-primary">Nom Complet</h6>
                     </div>
                     <div class="col-sm-9 ">
-                      {{app.user.prenom}}&nbsp;{{app.user.nom}}
+                      {{app.user.prenom}}&nbsp;{{app.user.nom}}   <!-- render  first and seconde name -->
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0 text-primary">Email</h6>
+                      <h6 class="mb-0 text-primary">Email</h6>  <!-- render email -->
                     </div>
                     <div class="col-sm-9 ">
                      {{app.user.email}}
@@ -101,7 +169,7 @@ route_name: app_profile
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0 text-primary">Telephone</h6>
+                      <h6 class="mb-0 text-primary">Telephone</h6><!-- render Telephone-->
                     </div>
                     <div class="col-sm-9 ">
                       {{app.user.Telephone}}
@@ -110,7 +178,7 @@ route_name: app_profile
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0 text-primary">Identifiant</h6>
+                      <h6 class="mb-0 text-primary">Identifiant</h6><!-- render username (identifiant) -->
                     </div>
                     <div class="col-sm-9 ">
                       {{app.user.username}}
@@ -119,7 +187,7 @@ route_name: app_profile
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0 text-primary">Pays</h6>
+                      <h6 class="mb-0 text-primary">Pays</h6><!-- render country-->
                     </div>
                     <div class="col-sm-9 ">
                       {{app.user.country}}
@@ -128,7 +196,7 @@ route_name: app_profile
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0 text-primary">Ville</h6>
+                      <h6 class="mb-0 text-primary">Ville</h6> <!-- render city (ville) -->
                     </div>
                     <div class="col-sm-9 ">
                       {{app.user.city}}
@@ -137,7 +205,7 @@ route_name: app_profile
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0 text-primary">Sexe</h6>
+                      <h6 class="mb-0 text-primary">Sexe</h6> <!-- render email -->
                     </div>
                     <div class="col-sm-9 ">
                       {{app.user.gender}}
@@ -146,30 +214,34 @@ route_name: app_profile
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-primary px-4" href="{{path("app_edit_profile")}}">Modifier</a>
+                      <a class="btn btn-primary px-4" href="{{path("app_edit_profile")}}">Modifier</a> <!-- enregistre le formulaire -->
                     </div>
                   </div>
                 </div>
               </div>
                <!-- fin du formulaire -->
 
+                <!-- Box de description-->
                 <div class="row gutters-sm">
                   <div class="col-sm-6 mb-3">
                     <div class="card h-100">
                       <div class="card-body">
                           <h6 class="d-flex align-items-center mb-3 text-primary"><i class="material-icons text-info mr-2"></i>Description</h6>
-                          {{app.user.description}}
+                          {{app.user.description}} <!-- render le type de descriptions entrer-->
                     </div>
                   </div>
                 </div>
-
+                <!-- end Box de description-->
+                <!-- Box d'evènement-->
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2 text-primary"></i>Evenement crée</h6>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2 text-primaryche"></i>Evenement crée</h6> <!-- Pas encore développer,
+                                                                                                                                                      (vas render les evenement crée par l'utilisateur dans le proilfe)-->
                     </div>
                   </div>
                 </div>
+                <!-- end Box d'evènement-->
 
 
 

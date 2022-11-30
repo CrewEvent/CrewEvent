@@ -47,21 +47,21 @@ class UserType extends AbstractType
             //     ]
             // )
 
-            ->add('username')
+            ->add('username') // ajout a column username dans la table user
             //->add('roles')
-            ->add('email')
-            ->add('prenom')
-            ->add('nom')
+            ->add('email') //ajout a column email dans la table user
+            ->add('prenom') //ajout a column prenom dans la table user
+            ->add('nom') // ajout a column nom dans la table user
             //->add('isVerified')
             //->add('createdAt')
             //->add('updatedAt')
-            ->add('description')
-            ->add('country')
-            ->add('city')
-            ->add('gender')
+            ->add('description') // ajout a column description dans la table user
+            ->add('country') // ajout a column country dans la table user
+            ->add('city') // ajout a column city dans la table user
+            ->add('gender') // ajout la column gender dans la table user
             //->add('birthday')
            // ->add('language')
-            ->add('Telephone');
+            ->add('Telephone'); //ajout a column telephone dans la table user
 
         // ->add(
         //     'photoProfileFile',
