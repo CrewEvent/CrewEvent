@@ -52,7 +52,7 @@
 
 
 {{form(FindContactType)}}
-    {% for contact in contacts %}
+{% for contact in ordered_contacts %}
         <li>{{contact.contactUsername}}</li>      
     {% endfor %}
 </ul>

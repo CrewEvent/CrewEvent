@@ -15,7 +15,8 @@ class FindContactType extends AbstractType
     {
         $builder
             ->add('contactUsername', TextType::class, [
-                'attr' => ['placeholder' => 'Rechercher des contacts']
+                'attr' => ['placeholder' => 'Rechercher des contacts'],
+                'label' => 'Trouver des contacts : '
             ])
             ->add('submit', SubmitType::class);
     }
