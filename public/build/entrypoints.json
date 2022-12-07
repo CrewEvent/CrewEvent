@@ -2,40 +2,37 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
-        "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js",
-        "/build/app.js"
+        "/build/runtime.9a71ee5d.js",
+        "/build/49.5ced1f7a.js",
+        "/build/app.5014a21f.js"
       ],
       "css": [
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
-        "/build/app.css"
+        "/build/49.7c334eb0.css",
+        "/build/app.dd8ee3e8.css"
       ]
     },
     "profile": {
       "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
-        "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js",
-        "/build/profile.js"
+        "/build/runtime.9a71ee5d.js",
+        "/build/49.5ced1f7a.js",
+        "/build/profile.901e85c2.js"
       ],
       "css": [
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
-        "/build/profile.css"
+        "/build/49.7c334eb0.css",
+        "/build/profile.2a4130bf.css"
       ]
     },
     "default": {
       "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
-        "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.js",
-        "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js",
-        "/build/default.js"
+        "/build/runtime.9a71ee5d.js",
+        "/build/49.5ced1f7a.js",
+        "/build/935.8b1d4f84.js",
+        "/build/default.c6d35662.js"
       ],
       "css": [
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
-        "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js-node_modules_mdb-ui-kit_css_mdb_min_css.css",
-        "/build/default.css"
+        "/build/49.7c334eb0.css",
+        "/build/935.d48dde61.css",
+        "/build/default.b299f273.css"
       ]
     }
   }
