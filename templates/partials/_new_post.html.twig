@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card gedf-card">
+        <div class="card-header">
+            <h4>Faites une publication</h4>
+        </div>
+        <div class="card-body">
+            <form class="" action="{{path('app_new_post')}}" method="get" role="form">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                        <div class="form-group">
+                            <label class="sr-only" for="message">post</label>
+                            {# <input autocomplete="off" type="search" class="form-control rounded" placeholder="Recherche" style="min-width: 125px" name="recherche"/> #}
+                            <textarea class="form-control" name="post" id="message" rows="3" placeholder="Quoi de neuf ?" ></textarea>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="btn-toolbar justify-content-between my-4">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Publier</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -4,11 +4,9 @@ namespace App\Entity;
 
 use App\Repository\PrivateMessageRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 #[ORM\Entity(repositoryClass: PrivateMessageRepository::class)]
-#[Broadcast]
 #[HasLifecycleCallbacks]
 #[ORM\Table(name: 'private_messages')]
 class PrivateMessage
