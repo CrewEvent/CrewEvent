@@ -10,32 +10,18 @@
            
       
         <!-- Font Awesome -->
-        <link
-        rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-        <!-- Google Fonts Roboto -->
-        {# <link
-        rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/> #}
-
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+       
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
 		
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('default') }}
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous"/>
-
-        <!-- MDB -->
-        	{# <link rel="stylesheet" href="css/mdb.min.css"/> #}
-			
 		{% endblock %}
 
 		{% block javascripts %}
-            {# <script src="js/mdb.min.js"></script> #}
-
 			{{ encore_entry_script_tags('default') }}
 		{% endblock %}
 	</head>
@@ -45,6 +31,7 @@
 
         {% endblock %}
 	</body>
+	
 </html>
 
 

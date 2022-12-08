@@ -29,17 +29,18 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-
-            ->add('email')
             ->add('username')
+            ->add('email')
+
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label'  => ' ',
                 'constraints' => [
                     new IsTrue([
                         'message' => "Tu dois accépter les termes d'utilisations",
                     ]),
                 ],
-                'attr' => ['class' => 'form-check-input']
+                'attr' => ['class' => 'form-check-input me-2']
             ])
 
             ->add(
@@ -59,9 +60,8 @@ class RegistrationFormType extends AbstractType
                             'max' => 4096
                         ])
 
-                    ],
-                    'first_options'  => ['attr' => ['placeholder' => 'mot de passe', 'class' => 'mb-2'], 'label' => ' '],
-                    'second_options' => ['attr' => ['placeholder' => 'confirmer le mot de passe', 'class' => 'mb-3'], 'label' => ' ']
+                    ]
+
 
                 ]
             );
