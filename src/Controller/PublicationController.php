@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\UX\Turbo\TurboBundle;
 
 class PublicationController extends AbstractController
 {
@@ -34,12 +35,35 @@ class PublicationController extends AbstractController
     }
 
     #[Route('/like/{id}', name: 'post_like', methods: ['get', 'post'])]
-    public function like(Publication $publication, EntityManagerInterface $em)
+    public function like(Publication $publication, EntityManagerInterface $em, Request $request)
     {
+        //On récupére l'utilisateur connecté
         $user = $this->getUser()->getUserIdentifier();
-        $publication->setLikes(['liker' => $user]);
+        $liked = false;
+
+        //On commence à chercher s'il y'a des likes
+
+        //On cherche si l'utilisateur a déja liké le post
+        foreach ($publication->getLikes() as $liker) {
+            if ($liker['liker'] == $user) {
+                $liked = true;
+                $publication = $publication->unlike($user);
+            }
+        }
+
+
+        if (!$liked) {
+            //On définit l'utilisateur qui a liké dans la bdd
+            $publication->setLikes(['liker' => $user]);
+        }
+
+
+
+        //On enregistre dans la bdd
         $em->persist($publication);
         $em->flush();
+
+        $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
         return $this->render('like/like.stream.html.twig', ['publication' => $publication]);
     }
 }

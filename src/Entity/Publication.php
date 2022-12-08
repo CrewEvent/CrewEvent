@@ -108,4 +108,16 @@ class Publication
 
         return $this;
     }
+    public function unlike(?String $user): self
+    {
+        //On supprime juste une l'identifiant 
+        $i = 0;
+        foreach ($this->likes as $like) {
+            if ($like['liker'] == $user) {
+                unset($this->likes[$i]);
+            }
+            $i++;
+        }
+        return $this;
+    }
 }

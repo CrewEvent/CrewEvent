@@ -22,14 +22,14 @@
                             </p>
 
                             <div class="small d-flex justify-content-between">
-                                <a href="{{path('post_like')}}" class="d-flex align-items-center me-3">
-                                    <i class="far fa-thumbs-up fa-lg"></i>
-                                    
-                                    <div id="like-{{post_card.id}}">
-                                        <p class="mx-3 my-0">{{post_card.likes|length}}</p>
-                                    </div>
-                                    
-                                </a>
+                               
+                                    <a href="{{path('post_like',{id : post_card.id})}}" class="d-flex align-items-center me-3">
+                                        <i class="far fa-thumbs-up fa-lg"></i>
+                                        <p class="mx-3 my-0" id="like-{{post_card.id}}">{{post_card.likes|length}}</p>
+                                    </a>
+                                
+
+
                                 <a href="#collapse-{{post_card.id}}" class="d-flex align-items-center me-3" aria-expanded="false"
                                     aria-controls="collapse-{{post_card.id}}" data-mdb-toggle="collapse">
                                     <i class="far fa-comment-dots fa-lg"></i>
