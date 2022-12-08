@@ -3,6 +3,7 @@
 {% block title %}Welcome home{% endblock %}
 
 {% block body %}
+    {{include('partials/_navbar.html.twig')}}
     {{include('partials/_new_post.html.twig')}}
     {{include('partials/_publication.html.twig')}}
 {% endblock %}
