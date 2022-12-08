@@ -51,10 +51,15 @@
 </div>
 
 
+
+
 {{form(FindContactType)}}
-{% for contact in ordered_contacts %}
-        <li>{{contact.contactUsername}}</li>      
+
+<ul>
+    {% for result in ordered_contacts %}
+        <li>{{ result }}</li>
     {% endfor %}
 </ul>
+
 
 {% endblock %}

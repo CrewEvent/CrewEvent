@@ -18,7 +18,13 @@ class FindContactType extends AbstractType
                 'attr' => ['placeholder' => 'Rechercher des contacts'],
                 'label' => 'Trouver des contacts : '
             ])
-            ->add('submit', SubmitType::class);
+            ->add(
+                'submit',
+                SubmitType::class,
+                [
+                    'attr' => ['id' => ''],
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
