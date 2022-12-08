@@ -34,7 +34,7 @@ class IndexController extends AbstractController
 
     */
 
-    #[Route('/', name: 'app_index')]
+    #[Route('/index', name: 'app_index')]
     public function index(UserRepository $userRepo, EventRepository $eventRepo, ParticipantRepository $participantRepo): Response
     {
         // prend tous les utilisateurs dans le repo user

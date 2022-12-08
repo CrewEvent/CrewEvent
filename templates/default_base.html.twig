@@ -7,9 +7,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 		<meta http-equiv="x-ua-compatible" content="ie=edge"/>
-            <!-- MDB icon -->
-        <link
-        rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"/>
+           
+      
         <!-- Font Awesome -->
         <link
         rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
@@ -22,20 +21,20 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		{% block stylesheets %}
+			{{ encore_entry_link_tags('default') }}
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous"/>
 
         <!-- MDB -->
-        	<link rel="stylesheet" href="css/mdb.min.css"/>
-			{{ encore_entry_link_tags('default') }}
+        	{# <link rel="stylesheet" href="css/mdb.min.css"/> #}
+			
 		{% endblock %}
 
 		{% block javascripts %}
-            <script src="js/mdb.min.js"></script>
+            {# <script src="js/mdb.min.js"></script> #}
 
 			{{ encore_entry_script_tags('default') }}
 		{% endblock %}
