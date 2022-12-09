@@ -1,0 +1,77 @@
+
+<section style="background-color: #eee;">
+    <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10 col-xl-8">
+                {% for post_card in post %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex flex-start align-items-center">
+                                <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
+                                <div>
+                                    <h6 class="fw-bold text-primary mb-1">{{post_card.publisher}}</h6>
+                                    <p class="text-muted small mb-0">
+                                        {{post_card.createdAt|date("m/d/Y")}}
+                                        {# Shared publicly - Jan 2020 #}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p class="mt-3 mb-4 pb-2">
+                                {{post_card.content}}
+                            </p>
+
+                            <div class="small d-flex justify-content-between">
+                               
+                                    <a href="{{path('post_like',{id : post_card.id})}}" class="d-flex align-items-center me-3">
+                                        <i class="far fa-thumbs-up fa-lg"></i>
+                                        <p class="mx-3 my-0" id="like-{{post_card.id}}">{{post_card.likes|length}}</p>
+                                    </a>
+                                
+
+
+                                <a href="#collapse-{{post_card.id}}" class="d-flex align-items-center me-3" aria-expanded="false"
+                                    aria-controls="collapse-{{post_card.id}}" data-mdb-toggle="collapse">
+                                    <i class="far fa-comment-dots fa-lg"></i>
+                                    <p class="mx-3 my-0">{{post_card.comments|length}}</p>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="collapse mt-3"  id="collapse-{{post_card.id}}">
+                            <div class="card-footer py-3 border-0"  style="background-color: #f8f9fa;">
+                                <turbo-frame id="comment-form">
+                                    <form class="" action="{{path('app_comment', {id : post_card.id})}}" method="get" role="form">
+                                        <div class="d-flex flex-start w-100">
+                                            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
+                                            <div class="form-outline w-100">
+                                                <textarea class="form-control" id="textAreaExample" rows="1" style="background: #fff;" name="comment"></textarea>
+                                                <label class="form-label" for="textAreaExample">Message</label>
+                                            </div>
+                                        </div>
+                                        <div class="float-end mt-2 pt-1">
+                                            <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+                                            {# <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button> #}
+                                        </div>
+                                    </form>
+                                </turbo-frame>
+                            
+                            </div>
+
+                            {# On affiche ici les commentaires à l'aide de turbo #}
+                            <div id="comment-{{post_card.id}}">
+                        
+                                
+                            </div>
+                            <div class="mt-5">
+                                {{include('partials/_comments.html.twig')}}
+                            </div>
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

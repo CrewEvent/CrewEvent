@@ -1,0 +1,27 @@
+<turbo-stream action="append" target="comment-{{id}}">
+	<template>
+        <div class="card">
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex flex-start">
+                            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="65" height="65"/>
+                            <div class="flex-grow-1 flex-shrink-1">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-1">
+                                            {{commenter}}
+                                        </p>
+                                    </div>
+                                    <p class="small mb-0">
+                                    {{comment}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+	</template>
+</turbo-stream>
