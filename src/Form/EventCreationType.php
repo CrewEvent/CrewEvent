@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EventCreationType extends AbstractType
 {
@@ -27,7 +28,7 @@ class EventCreationType extends AbstractType
                 'name',
                 TextType::class,
                 [
-                    'attr' => ['class' => 'form-control'],
+
                     'constraints' => [
                         new NotBlank([
                             'message' => "entrer un nom s'il vous plait",
@@ -59,29 +60,28 @@ class EventCreationType extends AbstractType
             //->add('updatedAt')
             ->add(
                 'description',
-                TextareaType::class,
-                [
-                    'attr' => ['class' => 'form-control']
-
-                ]
+                TextareaType::class
 
             )
-            ->add(
-                'tag',
-                TextType::class,
-                [
-                    'attr' => ['class' => 'form-control']
-
-                ]
-            )
+            ->add('tag', ChoiceType::class, [
+                'choices'  => [
+                    'le tag de votre événement' => '',
+                    'Gaming' => 'gaming',
+                    'Sport' => 'sport',
+                    'Santé' => 'santé',
+                    'Politique' => 'politique',
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label'  => ' ',
                 'mapped' => false,
+                'required' => true,
                 'constraints' => [
                     new IsTrue([
                         'message' => "Tu dois accépter les termes d'utilisations",
                     ]),
-                ],
-                'attr' => ['class' => 'form-check-input me-2']
+                ]
+
             ])
             //->add('user')
         ;

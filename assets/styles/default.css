@@ -13,7 +13,7 @@ body {
 .form-control:focus {
     color: white;
     background-color: white;
-    border-color: #8bbafe;
+    border-color: white;
     outline: 0;
     box-shadow: none
 }

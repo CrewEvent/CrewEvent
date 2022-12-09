@@ -8,9 +8,6 @@
 {% endblock %}
 
 {% block body %}
-	{# On affiche la barre de navigation #}
-	{{ include('partials/_navbar.html.twig') }}
-
 	{# On affiche juste la side bar et la liste des participants #}
 	{% for message in app.flashes('danger') %}
 		<div class="alert alert-danger">
