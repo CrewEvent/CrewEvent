@@ -1,7 +1,7 @@
 
 <div class="" id="chat2">
   <div class="card-header d-flex justify-content-between align-items-center p-3" >
-    <h5 class="mb-0">Chat</h5>
+    <h1 class="mb-2 text-primary">@chat général</h1>
   </div>
   <div class="card-body overflow-auto " id="chat-scroll-el"  style="position: relative; height: 800px">  
 
@@ -10,7 +10,7 @@
       <div class="d-flex flex-row justify-content-start mb-4">
 
         {# Tous les nouveaux messages seront display ici dans le turbo_stream #}
-        <div id="messages" {{ turbo_stream_listen(event.name) }}>
+        <div id="messages" {{ turbo_stream_listen(canal) }}>
             
         </div>
       </div>
@@ -23,27 +23,31 @@
 
 	<div class="sticky-bottom">
 
-	{# C'est le formulaire d'envoie de message à chaque post c'est juste cette partie et le turbo qui change la page ne change pas #}
-	<turbo-frame id="message_form">
+    {# C'est le formulaire d'envoie de message à chaque post c'est juste cette partie et le turbo qui change la page ne change pas #}
+    <turbo-frame id="message_form">
 
-  <div class="row">
-    <div class="col-md-8"></div>
+    <div class="row justify-content-md-center">
+      <div class="col">
+        {{ form_start(form) }}
+        <div class="row p-3">
+          <div class="col-md-10 form-group">
+            {{form_widget(form.message, { attr: { class: 'form-control', id: 'exampleInput' } })}}
 
-  </div>
-		{{ form_start(form) }}
-		<div class="card-footer text-muted d-flex align-items-center p-3">
-      <div class="form-group my-3">
-        {{form_widget(form.message, { attr: { class: 'form-control', id: 'exampleInput' } })}}
-        
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary w-50" type="submit">
+             <i class="far fa-paper-plane  fa-lg"></i>
+
+            </button>
+          </div>
+        </div>
+        {{form_end(form)}}
+
       </div>
-			<button class="btn btn-primary" type="submit">
-				envoyer
-			</button>
-		</div>
-		{{form_end(form)}}
 
-
-	</turbo-frame>
+    </div>
+    
+    </turbo-frame>
 </div>
 
 
