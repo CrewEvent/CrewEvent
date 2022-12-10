@@ -33,7 +33,7 @@ class UserType extends AbstractType
 
         */
         $builder
-            /*->add(
+            ->add(
                 'photoProfileFile',
                 VichImageType::class,
                 [
@@ -45,7 +45,7 @@ class UserType extends AbstractType
                     'delete_label' => 'supprimer',
                     'download_uri' => false,
                 ]
-            )*/
+            )
 
             ->add('username')
             //->add('roles')
@@ -61,23 +61,24 @@ class UserType extends AbstractType
             ->add('gender')
             //->add('birthday')
             ->add('language');
-        // ->add(
-        //     'photoProfileFile',
-        //     VichImageType::class,
-        //     [
-        //         'required' => false,
-        //         'allow_delete' => true,
-        //         'label' => "Image au format JPG ou PNG",
-        //         'delete_label' => 'supprimer',
-        //         'download_label' => false,
-        //         'download_uri' => false,
-        //         'image_uri' => true,
-        //         'imagine_pattern' => 'my_thumb',
-        //     ]
+                 
+            // ->add(
+            //     'photoProfileFile',
+            //     VichImageType::class,
+            //     [
+            //         'required' => false,
+            //         'allow_delete' => true,
+            //         'label' => "Image au format JPG ou PNG",
+            //         'delete_label' => 'supprimer',
+            //         'download_label' => false,
+            //         'download_uri' => false,
+            //         'image_uri' => true, 
+            //         'imagine_pattern' => 'my_thumb',
+            //     ]
 
 
-        // );
-    }
+            // );
+        }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
