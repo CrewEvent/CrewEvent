@@ -85,6 +85,10 @@ class EventController extends AbstractController
                 $isParticipant = true;
             }
         }
+
+        if ($isParticipant == false) {
+            $this->addFlash("warning", "Vous n'avez pas encore participé à cet événément");
+        }
         //retourne la page
         return $this->render('pages/event/event_show.html.twig', [
             'event' => $event,

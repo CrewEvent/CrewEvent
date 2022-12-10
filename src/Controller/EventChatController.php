@@ -71,7 +71,7 @@ class EventChatController extends AbstractController
                 // The HTML update is pushed to the client using Mercure
 
                 $hub->publish(new Update(
-                    'chat',
+                    $event->getName(),
                     $this->renderView('chat/message.stream.html.twig', ['message' => $data['message'], 'sender' => $username])
                 ));
 

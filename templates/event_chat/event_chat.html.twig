@@ -3,7 +3,7 @@
 {# Page de l'événement #}
 
 {% block title %}
-	Page de L'événement
+	Chattons !
 	{{ event.name }}
 {% endblock %}
 
@@ -16,16 +16,18 @@
 	{% endfor %}
 
 	<div class="row">
-		<div class="col">
-			{{ include('partials/_sidebar.html.twig') }}
-		</div>
-		<div class="col-7">
-			{{ include('partials/_chat.html.twig') }}
-		</div>
-		<div class="col">
+		<div class="col-md-3">
+			{{ include('partials/_sidebar.html.twig',{
+				"active_ig" : "",
+				"active_dis" : "active",
+				"active_ar" : ""
+			})}}
+
 			{{ include('partials/_partie_sub.html.twig') }}
 		</div>
-
+		<div class="col-md-9">
+			{{ include('partials/_chat.html.twig') }}
+		</div>
 	</div>
 {% endblock %}
 
