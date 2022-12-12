@@ -1,17 +1,16 @@
 
 <div class="" id="chat2">
   <div class="card-header d-flex justify-content-between align-items-center p-3" >
-    <h5 class="mb-0">Chat</h5>
+    <h1 class="mb-2 text-primary">@chat général</h1>
   </div>
-
-  <div class="card-body overflow-auto " id="chat-scroll-el"  style="position: relative; height: 500px">  
+  <div class="card-body overflow-auto " id="chat-scroll-el"  style="position: relative; height: 800px">  
 
     
       {# <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;"> #}
       <div class="d-flex flex-row justify-content-start mb-4">
 
         {# Tous les nouveaux messages seront display ici dans le turbo_stream #}
-        <div id="messages" {{ turbo_stream_listen('chat') }}>
+        <div id="messages" {{ turbo_stream_listen(canal) }}>
             
         </div>
       </div>
@@ -22,32 +21,42 @@
 
   </div>
 
+	<div class="sticky-bottom">
 
+    {# C'est le formulaire d'envoie de message à chaque post c'est juste cette partie et le turbo qui change la page ne change pas #}
+    <turbo-frame id="message_form">
 
+    <div class="row justify-content-md-center">
+      <div class="col">
+        {{ form_start(form) }}
+        <div class="row p-3">
+          <div class="col-md-10 form-group">
+            {{form_widget(form.message, { attr: { class: 'form-control', id: 'exampleInput' } })}}
 
-  {# C'est le formulaire d'envoie de message à chaque post c'est juste cette partie et le turbo qui change la page ne change pas #}
-  <turbo-frame id="message_form">
-    
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary w-50" type="submit">
+             <i class="far fa-paper-plane  fa-lg"></i>
 
-    {{ form_start(form) }}
-      <div class="card-footer text-muted d-flex  align-items-center p-3">
-        {{form_widget(form.message)}}
-        <button class="btn btn-white" type="submit"> <i class="fas fa-paper-plane fa-2x"></i></button>
+            </button>
+          </div>
+        </div>
+        {{form_end(form)}}
+
       </div>
-    {{form_end(form)}}
+
+    </div>
     
-  </turbo-frame>
+    </turbo-frame>
+</div>
+
 
   
+
 </div>
-<style>
-  .btn-white:hover,.btn-white,.btn-white:active,.btn-white:focus {
-    color:  #38b6ff !important;
-    text-decoration: none !important;
-    background-color: white !important;
-    box-shadow: none !important;
-  }
-</style>
+
+
+
 <script>
 	var objDiv = document.getElementById("chat-scroll-el");
   objDiv.scrollTop = objDiv.scrollHeight;

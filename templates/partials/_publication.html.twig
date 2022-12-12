@@ -1,6 +1,5 @@
 
-<section style="background-color: #eee;">
-    <div class="container my-5 py-5">
+    <section >
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
                 {% for post_card in post %}
@@ -9,7 +8,12 @@
                             <div class="d-flex flex-start align-items-center">
                                 <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
                                 <div>
-                                    <h6 class="fw-bold text-primary mb-1">{{post_card.publisher}}</h6>
+                                    {% if post_card.publisher == app.user.username %} 
+                                        <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_profile')}}">{{post_card.publisher}}</a></h6>
+                                        {% else %}
+                                        <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_show_profile', {username: post_card.publisher})}}">{{post_card.publisher}}</a></h6>
+                                    {% endif %}
+                                    
                                     <p class="text-muted small mb-0">
                                         {{post_card.createdAt|date("m/d/Y")}}
                                         {# Shared publicly - Jan 2020 #}
@@ -40,14 +44,15 @@
                         </div>
 
                         <div class="collapse mt-3"  id="collapse-{{post_card.id}}">
-                            <div class="card-footer py-3 border-0"  style="background-color: #f8f9fa;">
+                            <div class=" py-3 border-0">
                                 <turbo-frame id="comment-form">
                                     <form class="" action="{{path('app_comment', {id : post_card.id})}}" method="get" role="form">
                                         <div class="d-flex flex-start w-100">
                                             <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
-                                            <div class="form-outline w-100">
-                                                <textarea class="form-control" id="textAreaExample" rows="1" style="background: #fff;" name="comment"></textarea>
+                                            <div class="form-group w-100">
                                                 <label class="form-label" for="textAreaExample">Message</label>
+                                                <textarea class="form-control" id="textAreaExample" rows="1" name="comment"></textarea>
+                                                
                                             </div>
                                         </div>
                                         <div class="float-end mt-2 pt-1">
@@ -73,5 +78,4 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
-</section>
+    </section>

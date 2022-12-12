@@ -6,15 +6,18 @@
 
 body {
     font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
     margin-top: 20px;
+=======
+>>>>>>> bf832244e219a062a7aab52e25c7628a095930a9
     margin-left: 10%;
     margin-right: 10%;
 }
 
 .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #8bbafe;
+    color: white;
+    background-color: white;
+    border-color: white;
     outline: 0;
     box-shadow: none
 }

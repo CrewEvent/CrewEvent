@@ -34,6 +34,13 @@ class EventController extends AbstractController
         //on dit au formulaire de gérer les requettes
         $form->handleRequest($request);
 
+        //Si le formulaire est soumis mais pas valide
+        if ($form->isSubmitted() && !$form->isValid()) {
+
+
+            $this->addFlash('warning', 'Vérifier que les éléments soient bien renseignés');
+            return $this->redirectToRoute('app_event_creation');
+        }
         //Si le formulaire est soumis et valid
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -47,6 +54,8 @@ class EventController extends AbstractController
             //on récupére le nom dans le formulaire qu'on donne en paramétre à app_show_event   
             return $this->redirectToRoute('app_add_participant', ['name' => $form->get('name')->getData()]);
         }
+
+
 
         //ça affiche page de création d'événement
         return $this->render('pages/event/event_creation.html.twig', [
@@ -75,6 +84,10 @@ class EventController extends AbstractController
             if ($participant->getParticipantUsername() == $username) {
                 $isParticipant = true;
             }
+        }
+
+        if ($isParticipant == false) {
+            $this->addFlash("warning", "Vous n'avez pas encore participé à cet événément");
         }
         //retourne la page
         return $this->render('pages/event/event_show.html.twig', [

@@ -1,0 +1,47 @@
+    
+  <body>
+    <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                
+                <a class="navbar-brand page-scroll" href="{{path('app_landing_page')}}"> Crewevent</a>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">A propos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header id="first">
+        <div class="header-content">
+            <div class="inner">
+                <h1 class="cursive">Mettez en avant vos événements</h1>
+                <h4>N'attendez pas</h4>
+                <hr>    
+                <a href="{{path('app_login')}}"  class="btn btn-primary btn-xl">Connectez vous</a> &nbsp; <a href="{{path('app_register')}}" class="btn btn-primary btn-xl page-scroll">Créer un compte</a>
+            </div>
+        </div>
+       
+    </header>
+    <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2 class="text-center">Crewevent</h2>
+                    <h5 class="text-center">
+                        Crewevent est un réseau social pour l'événementciel
+                    </h5>
+                    <p class="text-justify">
+                        C'est pour vous
+                    </p>
+                    
+                    <br/>
+                    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true"> OK </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>

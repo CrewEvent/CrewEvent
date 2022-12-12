@@ -16,32 +16,31 @@ Side bar page événement
 
     <div class="list-group list-group-flush border-bottom scrollarea">
 
+
+      <!--Partie informations générales-->
+      <a href="{{path("app_show_event",{name : event.name})}}" class="list-group-item list-group-item-action py-3 lh-tight {{active_ig}}">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Informations générales</strong>
+        </div>
+      </a>
+
+
      <!--Activitées récentes-->
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight {{active_ar}}" aria-current="true">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">Activitées récentes</strong>
         </div>
       </a>
-
-      <!--Partie informations générales-->
-      <a href="{{path("app_show_event",{name : event.name})}}" class="list-group-item list-group-item-action py-3 lh-tight">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">Informations</strong>
-        </div>
-      </a>
+  
+      
 
       <!--Partie discussions générales-->
-      <a href="{{path("app_event_chat", {name : event.name})}}" class="list-group-item list-group-item-action py-3 lh-tight">
+      <a href="{{path("app_event_chat", {name : event.name})}}" class="list-group-item list-group-item-action py-3 lh-tight {{active_dis}}">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">Discussions</strong>
         </div>
       </a>
-      <!-- Partie evenement -->
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">Evènement</strong>
-        </div>
-      </a>
+     
 
      
       

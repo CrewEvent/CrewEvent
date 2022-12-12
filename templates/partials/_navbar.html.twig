@@ -13,8 +13,8 @@
 				<i class="fas fa-bars fa-lg"></i>
 			</button>
 			<!-- logo Brand -->
-			<a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{path("app_index")}}">
-				<img src="{{asset('images/crewevent-b.png')}}" height="30" alt="" loading="lazy" style="margin-top: 2px"/>
+			<a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{path("app_home")}}">
+				<img src="{{asset('images/crewevent-b.png')}}" height="50" alt="" loading="lazy" style="margin-top: 1px"/>
 			</a>
 			<!-- End logo Brand -->
 
@@ -33,11 +33,11 @@
 
 		<!--Home elements -->
 			<ul class="navbar-nav flex-row d-none d-md-flex"> <li class="nav-item me-3 me-lg-1 active">
-				<a class="nav-link" href="{{path("app_index")}}">
+				<a class="nav-link" href="{{path("app_home")}}">
 					<span>
 						<i class="fas fa-home fa-lg"></i>
 					</span>
-					<span class="badge rounded-pill badge-notification bg-danger">1</span>
+					{# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
 				</a>
 			</li>
 			<!-- End Home elements -->
@@ -69,7 +69,7 @@
 					<span>
 						<i class="fas fa-users fa-lg"></i>
 					</span>
-					<span class="badge rounded-pill badge-notification bg-danger">2</span>
+					{# <span class="badge rounded-pill badge-notification bg-danger">2</span> #}
 				</a>
 			</li>
 			<!--End Friend Notification element -->
@@ -80,7 +80,7 @@
 			<li class="nav-item dropdown me-3 me-lg-1">
 				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 					<i class="fas fa-bell fa-lg"></i>
-					<span class="badge rounded-pill badge-notification bg-danger">12</span>
+					{# <span class="badge rounded-pill badge-notification bg-danger">12</span> #}
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
 					<li>
@@ -112,7 +112,7 @@
 				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 					<i class="fas fa-comments fa-lg"></i>
 
-					<span class="badge rounded-pill badge-notification bg-danger">6</span>
+					{# <span class="badge rounded-pill badge-notification bg-danger">6</span> #}
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
 					<li>
@@ -126,35 +126,7 @@
 					</li>
 				</ul>
 			</li>
-			<!--End messagerie privé element -->
-
-
-			<!--Profil element -->
-			{# <li class="nav-item me-3 me-lg-1">
-				<a{{app.user.username}}</strong
-					class="nav-link d-sm-flex align-items-sm-center" href="#" <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                     <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" class="rounded-circle" height="22" alt="profile photo" loading="lazy" /> 
-                     <strong class="d-none d-sm-block ms-1">><!--show username in strong element -->
-				</a>
-				<!--Profil dropdown menu -->
-				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-					<li>
-						<a class="dropdown-item" href="{{path("app_profile")}}">Profil</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Paramètres</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="{{path("app_logout")}}">Déconnexion</a>
-					</li>
-					<!--End Profil dropdown menu -->
-
-					<!--End Profil element -->
-
-
-				</ul>
-				<!--  End Right elements -->
-			</li> #}
+			
 
 
             <li class="nav-item dropdown me-3 me-lg-1">

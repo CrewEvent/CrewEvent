@@ -1,14 +1,10 @@
 {
-  "build/app.css": "/build/app.css",
-  "build/app.js": "/build/app.js",
-  "build/profile.css": "/build/profile.css",
-  "build/profile.js": "/build/profile.js",
-  "build/default.css": "/build/default.css",
-  "build/default.js": "/build/default.js",
-  "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css": "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
-  "build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js": "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
-  "build/vendors-node_modules_mdb-ui-kit_css_mdb_min_css.css": "/build/vendors-node_modules_mdb-ui-kit_css_mdb_min_css.css",
-  "build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js.js": "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js.js",
-  "build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js": "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js"
+  "build/app.css": "/build/app.dd8ee3e8.css",
+  "build/app.js": "/build/app.5d4f8480.js",
+  "build/profile.js": "/build/profile.787b9d4a.js",
+  "build/default.js": "/build/default.879eae49.js",
+  "build/runtime.js": "/build/runtime.3e1e989d.js",
+  "build/329.d070717a.js": "/build/329.d070717a.js",
+  "build/977.b066e685.css": "/build/977.b066e685.css",
+  "build/338.679bd6c6.js": "/build/338.679bd6c6.js"
 }

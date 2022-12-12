@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to crewevent{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('styles/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('styles/landing_page.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('scripts/jquery.min.js')}}" defer></script>
+    <script src="{{asset('scripts/bootstrap.min.js')}}" defer></script>
+     <script  >
+        
+            window.onload = function() { 
+             if(!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+             }
+            }
+            window.onload();
+    
+    </script>
+{% endblock %}
+
+{% block body %}
+    {{include('partials/_landing_page.html.twig')}}
+   
+   
+{% endblock %}

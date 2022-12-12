@@ -56,7 +56,7 @@ class EventChatController extends AbstractController
         $form->handleRequest($request);
 
 
-
+        $canal = strval($event->getId());
         //Si le formulaire est soumis
         if ($form->isSubmitted() && $form->isValid()) {
             //On regarde si l'utilisateur est participant dans l'événement pour pouvoir envoyer des messages
@@ -71,7 +71,7 @@ class EventChatController extends AbstractController
                 // The HTML update is pushed to the client using Mercure
 
                 $hub->publish(new Update(
-                    'chat',
+                    $canal,
                     $this->renderView('chat/message.stream.html.twig', ['message' => $data['message'], 'sender' => $username])
                 ));
 
@@ -80,7 +80,7 @@ class EventChatController extends AbstractController
                 $form = $emptyForm;
             } else {
                 //Sinon on le redirrige vers la pasge informations générales et lui afficher un message flash pour qu'il s'abonne  
-                $this->addFlash('danger', 'Vous devez vous participer à cet événement pour envoyer un message');
+
                 return $this->redirectToRoute('app_show_event', ['name' => $event->getName()]);
             }
         }
@@ -91,7 +91,8 @@ class EventChatController extends AbstractController
             'form' => $form,
             'event' => $event,
             'participants' => $participants,
-            'isParticipant' => $isParticipant
+            'isParticipant' => $isParticipant,
+            'canal' => $canal
         ]);
     }
 }
