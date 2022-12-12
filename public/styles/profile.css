@@ -1,3 +1,16 @@
+
+
+/* start of  profile css */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/* impprt bootstrap */
+
+@import '~mdb-ui-kit/css/mdb.min.css';
+@import "~bootstrap";
+
+
 body {
     background-color: #efefef;
 }

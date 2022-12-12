@@ -18,30 +18,33 @@
 			<div class="row">
 				<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
 					<div class="card card-profile shadow">
-						<div class="card-img-top text-center row justify-content-center">
+						<div class="row justify-content-center">
 							<div class="col-lg-3 order-lg-2">
-								{# Added by DE PALMES #}
-								<div class="row ">
-									<div class="small-12 medium-2 large-2 columns">
-										<div class="circle">
-											<img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
-										</div>
-										<div class="p-image">
-											<i class="fa fa-camera upload-button"></i>
-											<input class="file-upload" type="file" accept="image/*"/>
-										</div>
-									</div> 
+								<div class="card-profile-image">
+									<div class ="rounded-circle">
+										<img class="profile-pic rounded-circle upload-button" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+										{# <i class="fa fa-camera upload-button"></i> #}
+										<input class="file-upload d-none" type="file" accept="image/*"/>
+									</div>
 								</div>
-								{# Added by DE PALMES #}
 							</div>
 						</div>
-						{# <div class="card-header text-center border-0 pt-4 pt-md-2 pb-0 pb-md-8">
-												</div> #}
-						<div class="card-body pt-4 pt-md-4 ">
+						
+
+						<div class="card-header text-center border-0 pt- pt-md-4 pb-0 pb-md-4 mt-8">
+							{# <div class="d-flex justify-content-between">
+							</div> #}
+						</div>
+						<center class="pt-4">
+						<div>
+							<a href="#" class=" btn btn-sm btn-info">Enregistré</a>
+							
+						</div>
+						</center>
+						<div class="card-body pt-0 pt-md-4">
 							<div class="row">
 								<div class="col">
-									<div class="card-profile-stats d-flex justify-content-center mt-md-0">
-
+									<div class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
 											<span class="heading">22</span>
 											<span class="description">Friends</span>
@@ -59,7 +62,7 @@
 							</div>
 							<div class="text-center">
 								<h3>
-									{{app.user.nom}}<span class="font-weight-light">, 27</span>
+									Jessica Jones<span class="font-weight-light">, 27</span>
 								</h3>
 								<div class="h5 font-weight-300">
 									<i class="ni location_pin mr-2"></i>Bucharest, Romania
@@ -71,6 +74,8 @@
 									<i class="ni education_hat mr-2"></i>University of Computer Science
 								</div>
 								<hr class="my-4">
+								<p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+								<a href="#">Show more</a>
 							</div>
 						</div>
 					</div>
@@ -173,8 +178,8 @@
 		<div class="row align-items-center justify-content-xl-between">
 			<div
 				class="col-xl-6 m-auto text-center"><!--<div class="copyright">
-																																																																		          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
-																																																																		        </div> -->
+																																																																							          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
+																																																																							        </div> -->
 			</div>
 		</div>
 	</footer>
