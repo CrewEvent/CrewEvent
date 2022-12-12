@@ -168,4 +168,14 @@ class IndexController extends AbstractController
 
         return $this->render('pages/show_profile.html.twig', ['user' => $user, 'isContact' => $isContact]);
     }
+
+    #[Route('/profile/photo/change', name: 'change_profile_photo')]
+    public function change_profile_photo(): Response
+    {
+        dd('lalalala');
+
+        return $this->render(
+            'pages/profile.html.twig'
+        );
+    }
 }

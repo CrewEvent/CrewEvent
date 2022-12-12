@@ -8,10 +8,7 @@
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
         "@symfony/ux-turbo-mercure": "file:vendor/symfony/ux-turbo-mercure/assets",
         "@symfony/webpack-encore": "^4.0.0",
-        "bootstrap": "^5.2.3",
         "core-js": "^3.23.0",
-        "jquery": "^3.6.1",
-        "popper.js": "^1.16.1",
         "regenerator-runtime": "^0.13.9",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
@@ -24,12 +21,5 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
-    },
-    "engines": {
-        "node": "v18.9.*",
-        "npm": "8.19.*"
-    },
-    "dependencies": {
-        "mdb-ui-kit": "^6.0.0"
     }
 }
