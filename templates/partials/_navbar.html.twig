@@ -1,5 +1,5 @@
 
-
+{# 
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg  navbar-light bg-light">
@@ -38,113 +38,47 @@
 						<i class="fas fa-home fa-lg"></i>
 					</span>
 					{# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
-				</a>
-			</li>
-			<!-- End Home elements -->
-
-			<!--Event element -->
-			<li class="nav-item me-3 me-lg-1">
-				<a class="nav-link" href="{{path('app_event_creation')}}">
-					<span>
-						<i class="fas fa-plus-circle fa-lg"></i>
-					</span>
-				</a>
-			</li>
-			<!--End Event element -->
 
 
-			<!--Messagerie public elements -->
-			<li class="nav-item me-3 me-lg-1">
-				<a class="nav-link" href="{{path('private_message')}}">
-					<span>
-						<i class="fas fa-message fa-lg"></i>
-					</span>
-				</a>
-			</li>
-			<!--End Messagerie public elements -->
+<nav class="navbar navbar-expand-xxl bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+	
+	<div>
 
-			<!--Friend Notification element -->
-			<li class="nav-item me-3 me-lg-1">
-				<a class="nav-link" href="{{path('app_contacts')}}">
-					<span>
-						<i class="fas fa-users fa-lg"></i>
-					</span>
-					{# <span class="badge rounded-pill badge-notification bg-danger">2</span> #}
-				</a>
-			</li>
-			<!--End Friend Notification element -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+				<path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+			</svg>
+		</button>
 
-
-			<!--Notification element -->
-
-			<li class="nav-item dropdown me-3 me-lg-1">
-				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-					<i class="fas fa-bell fa-lg"></i>
-					{# <span class="badge rounded-pill badge-notification bg-danger">12</span> #}
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-					<li>
-						<a class="dropdown-item" href="#">Some news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Another news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</li>
-				</ul>
-			</li>
-			<!-- End Notification element -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill me-2">
+				<path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+			</svg>
+		</button>
+	</div>
 
 
-		</ul>
-		<!-- End Center elements -->
-
-
-		<!-- Begin Right elements -->
-
-		<ul
-			class="navbar-nav flex-row">
-
-			<!--messagerie privé element -->
-
-			<li class="nav-item dropdown me-3 me-lg-1">
-				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-					<i class="fas fa-comments fa-lg"></i>
-
-					{# <span class="badge rounded-pill badge-notification bg-danger">6</span> #}
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-					<li>
-						<a class="dropdown-item" href="#">Some news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Another news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</li>
-				</ul>
-			</li>
-			
-
-
-            <li class="nav-item dropdown me-3 me-lg-1">
-                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                  <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" class="rounded-circle" height="22" alt="profile photo" loading="lazy" /> 
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li>
-                        <a class="dropdown-item" href="{{path('app_profile')}}">profile</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a>
-                    </li>
-                   
-                </ul>
-            </li>
-
-
-		</div>
-	</nav>
-	<!-- End Navbar -->
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">Hidden brand</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

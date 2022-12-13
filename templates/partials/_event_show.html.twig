@@ -1,16 +1,20 @@
-<h1>Infos générales</h1>
-
-{# On ajoute un message flash pour dire à l'utilisateur qu'il faut qu'il participe pour pouvoir discuter #}
-{% for message in app.flashes('warning') %}
-	<div class="alert alert-danger">
-		{{ message }}
+<div>
+	<div class="p-3 bg-primary bg-opacity-10 border border-primary border rounded mb-2">
+  		<h3># infos générales</h3>
 	</div>
-{% endfor %}
 
-{# On rajoute le bouton pour participer si ce n'est pas le cas #}
-{% if not isParticipant %}
-	<a href="{{path("app_add_participant",{name : event.name})}}">
-		<button type="button" class="btn btn-primary">Participer</button>
-	</a>
-{% endif %}
 
+	{# On ajoute un message flash pour dire à l'utilisateur qu'il faut qu'il participe pour pouvoir discuter #}
+	{% for message in app.flashes('warning') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	{# On rajoute le bouton pour participer si ce n'est pas le cas #}
+	{% if not isParticipant %}
+		<a href="{{path("app_add_participant",{name : event.name})}}">
+			<button type="button" class="btn btn-primary">Participer</button>
+		</a>
+	{% endif %}
+</div>

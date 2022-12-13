@@ -97,20 +97,13 @@ class EventController extends AbstractController
 
         ]);
     }
-
-    //Fonction recherche si l'utilisateur est déja participant à l'événement
-    // public function search_if_participant(String $username, String $event_name)
-    // {
-
-    //     $ParticipantRepo = $this->getDoctrine()->getRepository(Participant::class);
-    //     $participants = $ParticipantRepo->findAll();
-
-    //     foreach ($participants as $participant) {
-    //         if ($participant->getParticipantUsername() == $username && $participant->getEventName() == $event_name) {
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-    //     }
-    // }
+    #[Route('/event/show/{name}/news', name: 'app_event_news', methods: ['POST', 'GET'])]
+    public function event_news(Event $event, ParticipantRepository $participantRepo): Response
+    {
+        $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
+        return $this->render('evenement/news.html.twig', [
+            'event' => $event,
+            'participants' => $participants
+        ]);
+    }
 }
