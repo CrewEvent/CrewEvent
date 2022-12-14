@@ -23,4 +23,21 @@ $(document).ready(function () {
     $(".upload-button").on('click', function () {
         $(".file-upload").click();
     });
+
+    $('.save_img').on('click', function () {
+        var data = $('.file-upload').val();
+
+        // $.ajax({
+        //     url: './profile/photo/edit',
+        //     data: data,
+        //     success: function (response) {
+        //         console.log(repsonse)
+        //     },
+        //     error: function (response) {
+        //         console.log(response);
+        //     }
+        // });
+
+        $('form.edit_img_form').submit();
+    })
 });
