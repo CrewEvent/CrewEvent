@@ -16,6 +16,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\ChangePasswordType;
+use App\Form\EditPhotoType;
 use App\Repository\ContactRepository;
 use App\Repository\UserRepository;
 use App\Repository\EventRepository;
@@ -75,8 +76,24 @@ class IndexController extends AbstractController
     public function profile(): Response
     {
 
+        $user = $this->getUser();
+        $photoProfile = $user->getphotoProfile();
+        $form = $this->createForm(EditPhotoType::class, null, [
+            'action' => $this->generateUrl('profile_editphoto'),
+            'method' => 'POST',
+            'attr' => [
+                'class' => 'edit_img_form'
+            ]
+        ]);
+
+        dump($photoProfile);
+
         return $this->render(
-            'pages/profile.html.twig'
+            'pages/profile.html.twig',
+            [
+                'Form' => $form->createView(),
+                'photoProfile' => $photoProfile ? 'images/' . $photoProfile : 'images/pas_de_photo.png'
+            ]
         );
     }
 
