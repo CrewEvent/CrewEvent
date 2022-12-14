@@ -26,19 +26,20 @@
 										class="profile-pic rounded-circle upload-button" src="{{ asset(photoProfile) }}">
 										{# <i class="fa fa-camera upload-button"></i> #}
 										{{ form(Form) }}
-											{# <form class="edit_img_form" action="{{ path('profile_editphoto') }}" method="GET">
-																																																																																								<input name="photo" class="file-upload d-none" type="file" accept="image/*"/>
-																																																																																								<input type="submit" class="d-none" />
-																																																																																							</form> #}
+											{#  <form class="edit_img_form" action="{{ path('profile_editphoto') }}" method="GET"> 
+																																																																																																																																		<input name="photo" class="file-upload d-none" type="file" accept="image/*"/>
+																																																																																																																																				<input type="submit" class="d-none" />
+																																																																																																																																			</form> #}
 										</div>
 									</div>
 								</div>
 							</div>
-
+							{# {{dump(app.user)}} #}
+							{# {{dump(photoProfile)}} #}
 
 							<div
 								class="card-header text-center border-0 pt- pt-md-4 pb-0 pb-md-4 mt-8">{# <div class="d-flex justify-content-between">
-																																																																														</div> #}
+																																																																																																																		</div> #}
 							</div>
 							<center class="pt-4">
 								<div>
@@ -50,23 +51,23 @@
 									<div class="col">
 										<div class="card-profile-stats d-flex justify-content-center mt-md-5">
 											<div>
-												<span class="heading">22</span>
-												<span class="description">Friends</span>
+												<span class="heading">0</span>
+												<span class="description">Amis</span>
 											</div>
 											<div>
-												<span class="heading">10</span>
-												<span class="description">Photos</span>
+												<span class="heading">0</span>
+												<span class="description">Évènements</span>
 											</div>
 											<div>
-												<span class="heading">89</span>
-												<span class="description">Comments</span>
+												<span class="heading">0</span>
+												<span class="description">Photo</span>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="text-center">
 									<h3>
-										Jessica Jones<span class="font-weight-light">, 27</span>
+										{{app.user.nom}}&nbsp;{{app.user.prenom}}<span class="font-weight-light"></span>
 									</h3>
 									<div class="h5 font-weight-300">
 										<i class="ni location_pin mr-2"></i>Bucharest, Romania
@@ -77,9 +78,6 @@
 									<div>
 										<i class="ni education_hat mr-2"></i>University of Computer Science
 									</div>
-									<hr class="my-4">
-									<p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-									<a href="#">Show more</a>
 								</div>
 							</div>
 						</div>
@@ -89,11 +87,11 @@
 							<div class="card-header bg-white border-0">
 								<div class="row align-items-center">
 									<div class="col-8">
-										<h3 class="mb-0">My account</h3>
+										<h3 class="mb-0">Profile</h3>
 									</div>
-									<div class="col-4 text-right">
+									<div class="col-4 text-right d-flex justify-content-between ml-8">
 
-										<a href="#!" class="btn btn-sm btn-info ">Paramètres</a>
+										<a href="{{path('app_change_password')}}" class="btn btn-sm btn-info  ">Modifier le mot de passe</a>
 										<a href="#!" class="btn btn-sm btn-secondary">Modifier</a>
 
 									</div>
@@ -182,8 +180,8 @@
 			<div class="row align-items-center justify-content-xl-between">
 				<div
 					class="col-xl-6 m-auto text-center"><!--<div class="copyright">
-																																																																																																																						          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
-																																																																																																																						        </div> -->
+																																																																																																																																														          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
+																																																																																																																																														        </div> -->
 				</div>
 			</div>
 		</footer>

@@ -92,7 +92,7 @@ class IndexController extends AbstractController
             'pages/profile.html.twig',
             [
                 'Form' => $form->createView(),
-                'photoProfile' => $photoProfile ? 'images/' . $photoProfile : 'images/pas_de_photo.png'
+                'photoProfile' => $photoProfile ? 'images/' . $photoProfile : 'images/No_image.jpg'
             ]
         );
     }
