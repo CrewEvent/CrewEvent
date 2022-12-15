@@ -127,7 +127,7 @@
 			
 			<li class="nav-item dropdown me-3 me-lg-1">
 				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-					<img src="{{ asset('/images/' ~ app.user.photoProfile)  ? asset('/images/' ~ app.user.photoProfile)  :  asset('images/No_image.jpg') }}" class="rounded-circle" height="22" alt="Photo Profile" loading="lazy"/>
+					<img src="{{ app.user.PhotoProfile  ? asset('images/' ~ app.user.PhotoProfile)  :  asset('images/No_image.jpg') }}" class="rounded-circle" height="22" alt="Photo Profile" loading="lazy"/>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
 					<li>
