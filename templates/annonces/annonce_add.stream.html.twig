@@ -1,0 +1,19 @@
+<turbo-stream action="append" target="info-{{id}}">
+    <template>
+        <div class="my-3 " id="card-{{annonce.title}}">
+            <div class="card">
+                <div class="card-header">
+                    <h4>{{ annonce.title }}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ annonce.content }}</p>
+
+                </div>
+                <div class="card-footer">
+                    <a type="button" class="btn btn-primary" href="{{ path('app_event_update_annonce',{name : event.name, annonce_title : annonce.title}) }}" >éditer</a>
+                    <a type="button" class="btn btn-danger"href="{{ path('app_event_delete_annonce',{name : event.name, annonce_title : annonce.title}) }}">supprimer</a>
+                </div>
+            </div>
+        </div>
+    </template>
+</turbo-stream>

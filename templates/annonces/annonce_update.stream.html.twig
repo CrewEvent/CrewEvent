@@ -1,0 +1,22 @@
+<turbo-stream action="update" target="card-{{title}}">
+    <template>
+        <div class="card card-body">
+
+            <form class="input-group d-flex flex-column" action="{{path('event_annonce_update_success',{name : event.name, index : index})}}" method="get" role="form" id="info-form">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">titre</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ title }}" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">contenu</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content">{{ content }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">valider</button>
+                    <a type="button" class="btn btn-danger"href="{{ path('event_annonce_update_cancel',{name : event.name}) }}">annuler</a>
+                </div>
+            </form>
+        </div>
+
+    </template>
+</turbo-stream>

@@ -106,7 +106,7 @@ class EventInfosController extends AbstractController
         // Symfony UX Turbo is all about progressively enhancing your apps!
     }
 
-    #[Route('/event//info/update/success/{name}/{index}', name: 'event_info_update_success', methods: ['POST', 'GET'])]
+    #[Route('/event/info/update/success/{name}/{index}', name: 'event_info_update_success', methods: ['POST', 'GET'])]
     public function event_info_update_success(Event $event, int $index, EntityManagerInterface $em, Request $request)
     {
         $data = $request->query->all();

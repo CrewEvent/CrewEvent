@@ -67,6 +67,9 @@ class Event
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $infoGenerale = [];
 
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $Annonces = [];
+
 
 
     public function __construct()
@@ -263,5 +266,29 @@ class Event
         return $this;
     }
 
+    public function getAnnonces(): array
+    {
+        return $this->Annonces;
+    }
+
+    public function setAnnonces(?array $Annonces): self
+    {
+        array_push($this->Annonces , $Annonces);
+        return $this;
+    }
+
+    public function deleteAnnonce(?int $key): self
+    {
+
+        unset($this->Annonces[$key]);
+        $this->Annonces = array_values($this->Annonces);
+        return $this;
+
+    }
+
+    public function updateAnnonce(array $values, int $index){
+        $this->Annonces[$index] = $values;
+        return $this;
+    }
 
 }

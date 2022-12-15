@@ -99,6 +99,21 @@ class EventController extends AbstractController
         ]);
     }
 
+    //Page de l'événement
+    #[Route('/event/update/{name}', name: 'app_event_update', methods: ['POST', 'GET'])]
+    public function event_update(Event $event, Request $request)
+    {
+        //On crée un nouveau formulaire de création d'événement
+        $form = $this->createForm(EventCreationType::class, $event);
+
+        //on dit au formulaire de gérer les requettes
+        $form->handleRequest($request);
+
+        //ça affiche page de création d'événement
+        return $this->render('pages/event/event_creation.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
 
 
