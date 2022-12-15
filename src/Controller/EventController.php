@@ -8,10 +8,12 @@ use App\Entity\Participant;
 use App\Form\EventCreationType;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\UX\Turbo\TurboBundle;
 
 /*
 Controller pour la gestion d'événement
@@ -51,7 +53,7 @@ class EventController extends AbstractController
             $em->persist($event);
             $em->flush();
             //redirection vers la page de l'événement
-            //on récupére le nom dans le formulaire qu'on donne en paramétre à app_show_event   
+            //on récupére le nom dans le formulaire qu'on donne en paramétre à app_show_event
             return $this->redirectToRoute('app_add_participant', ['name' => $form->get('name')->getData()]);
         }
 
@@ -94,9 +96,10 @@ class EventController extends AbstractController
             'event' => $event,
             'participants' => $participants,
             'isParticipant' => $isParticipant
-
         ]);
     }
+
+    //Partie annonces de l'événement
     #[Route('/event/show/{name}/news', name: 'app_event_news', methods: ['POST', 'GET'])]
     public function event_news(Event $event, ParticipantRepository $participantRepo): Response
     {
@@ -106,4 +109,57 @@ class EventController extends AbstractController
             'participants' => $participants
         ]);
     }
+
+    //Partie Ajout de nouvelles infos générales
+    #[Route('/event/show/{name}/add_infos', name: 'app_event_infos', methods: ['POST', 'GET'])]
+    public function event_add_infos(Event $event, Request $request, EntityManagerInterface $em)
+    {
+        //On récupére d'abord les donnéees
+        $data = $request->query->all();
+
+        //On récupére l'indice du tableau en chaine de charactére pour mettre dans le titre
+        $pos=strval(count($event->getInfoGenerale()) + 1).". ";
+        $values = ['title' => $pos.$data['title'] ,'content' => $data['content']];
+        $event->setInfoGenerale($values);
+
+        //On enregistre dans la base de donnée
+        $em->persist($event);
+        $em->flush();
+
+        // 🔥 The magic happens here! 🔥
+
+        // If the request comes from Turbo, set the content type as text/vnd.turbo-stream.html and only send the HTML to update
+        $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+        return $this->render('info_generale/info_generale.stream.html.twig', ['id' => $event->getId(), 'info' => $values]);
+
+
+        // If the client doesn't support JavaScript, or isn't using Turbo, the form still works as usual.
+        // Symfony UX Turbo is all about progressively enhancing your apps!
+    }
+
+    //Partie suppression de l'info
+    #[Route('/event/delete/{name}/{info_title}', name: 'app_event_delete_info', methods: ['POST', 'GET'])]
+    public function event_info_delete(Event $event, string $info_title, EntityManagerInterface $em)
+    {
+        //On recherche la clé du titre dans la liste des infos avec arra_search():key
+        //On supprime avaec unset(key)
+
+        $infos = $event->getInfoGenerale();
+
+        $i = 0;
+        foreach ($infos as $elt){
+            $i ++;
+
+            if(array_search($info_title, $elt )){
+                $res = $i;
+            }
+        }
+
+       unset($event->getInfoGenerale()[$res]);
+        $em->persist($event);
+        $em->flush();
+
+        dd($event->getInfoGenerale());
+    }
+
 }

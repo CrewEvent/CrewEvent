@@ -2,72 +2,84 @@
 Side bar page événement
  #}
 <div class="offcanvas-xxl offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
+	<div class="offcanvas-header">
+		<h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+		<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></button>
 
-  <div class="offcanvas-body">
-  <div class="d-flex flex-column flex-shrink-0 p-3 " style="width: 280px;">
-      <a href="{{path('app_show_event',{name : event.name})}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        
-        <h1>{{event.name}}</h1>
-      </a>
-      <hr>
+	</div>
 
-      <ul class="nav nav-pills flex-column mb-auto">
+	<div class="offcanvas-body">
+		<div class="d-flex flex-column flex-shrink-0 p-3 " style="width: 280px;">
+			<a href="{{path('app_show_event',{name : event.name})}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 
-        <li class="nav-item">
-          <a href="{{path('app_show_event',{name : event.name})}}" class="nav-link {{general}}" aria-current="page">
-            {# <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg> #}
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill me-2" >
-                  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-              </svg>
-            <span>Générale<span>
-          </a>
-        </li>
+				<h1>{{event.name}}</h1>
+			</a>
+			<hr>
 
-        <li>
-          <a href="{{path('app_event_news',{name: event.name})}}" class="nav-link {{news}}">
-            {# <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg> #}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper me-2" viewBox="0 0 16 16">
-                  <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
-                  <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
-              </svg>
-            <span>Annonces</span>
-          </a>
-        </li>
-        {# <li>
-          <a href="#" class="nav-link link-dark">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-            Planning
-          </a>
-        </li> #}
-        <li>
-          <a href="{{path('app_event_chat',{name : event.name})}}" class="nav-link {{chat}}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text-fill me-2" viewBox="0 0 16 16">
-                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
-              </svg>
-            <span>Discussions</span>
-          </a>
-        </li>
+			<ul class="nav nav-pills flex-column mb-auto">
 
-      
+				<li class="nav-item">
+					<a
+						href="{{path('app_show_event',{name : event.name})}}" class="nav-link {{general}}" aria-current="page">
+						{# <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg> #}
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill me-2">
+							<path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+						</svg>
+						<span>Générale<span></a>
+						</li>
 
-      </ul>
-      <hr>
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="" class="rounded-circle me-2" width="32" height="32">
-          <strong>Paramétres</strong>
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-          <li><a class="dropdown-item" href="#">modifier</a></li>
-          <li><a class="dropdown-item" href="#">supprimer</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+						<li>
+							<a
+								href="{{path('app_event_news',{name: event.name})}}" class="nav-link {{news}}">
+								{# <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg> #}
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper me-2" viewbox="0 0 16 16">
+									<path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+									<path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+								</svg>
+								<span>Annonces</span>
+							</a>
+						</li>
 
+						{# <li>
+						  <a href="#" class="nav-link link-dark">
+							<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+							Planning
+						  </a>
+						</li> #}
+
+						<li>
+							<a href="{{path('app_event_chat',{name : event.name})}}" class="nav-link {{chat}}">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text-fill me-2" viewbox="0 0 16 16">
+									<path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+								</svg>
+								<span>Discussions</span>
+							</a>
+						</li>
+
+
+					</ul>
+
+					<hr>
+
+					{% if app.user.id == event.user.id %}
+
+						<div class="dropdown">
+							<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+								<img src="https://github.com/mdo.png" alt="" class="rounded-circle me-2" width="32" height="32">
+								<strong>Paramétres</strong>
+							</a>
+							<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+								<li>
+									<a class="dropdown-item" href="#">modifier</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#">supprimer</a>
+								</li>
+							</ul>
+						</div>
+
+					{% endif %}
+				</li>
+			</div>
+		</div>
+	</div>

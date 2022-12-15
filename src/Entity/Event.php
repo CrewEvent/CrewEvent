@@ -64,6 +64,8 @@ class Event
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class)]
     private Collection $participants;
 
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $infoGenerale = [];
 
 
 
@@ -235,4 +237,18 @@ class Event
 
         return $this;
     }
+
+    public function getInfoGenerale(): array
+    {
+        return $this->infoGenerale;
+    }
+
+    public function setInfoGenerale(?array $infoGenerale): self
+    {
+        array_push($this->infoGenerale , $infoGenerale);
+
+        return $this;
+    }
+
+
 }
