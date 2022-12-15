@@ -69,14 +69,12 @@
 									<h3>
 										{{app.user.nom}}&nbsp;{{app.user.prenom}}<span class="font-weight-light"></span>
 									</h3>
-									<div class="h5 font-weight-300">
+									{# <div class="h5 font-weight-300">
 										<i class="ni location_pin mr-2"></i>Bucharest, Romania
-									</div>
-									<div class="h5 mt-4">
-										<i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-									</div>
+									</div> #}
 									<div>
-										<i class="ni education_hat mr-2"></i>University of Computer Science
+										<i class="ni education_hat mr-2"></i>
+										{{app.user.description}}
 									</div>
 								</div>
 							</div>
@@ -91,8 +89,8 @@
 									</div>
 									<div class="col-4 text-right d-flex  justify-content-end">
 
-										<a href="{{path('app_change_password')}}" class="btn btn-sm btn-info mr-6">Modifier le mot de passe</a>
-										<a href="#!" class="btn btn-sm btn-secondary">Modifier le profile</a>
+										<a href="{{path('app_change_password')}}" class="btn btn-sm btn-primary mr-6">Modifier le mot de passe</a>
+										<a href="{{path('app_edit_profile')}}" class="btn btn-sm btn-secondary">Modifier le profile</a>
 
 									</div>
 								</div>
@@ -126,8 +124,20 @@
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group focused">
-													<label class="form-control-label" for="input-last-name">Prenom</label>
+													<label class="form-control-label" for="input-last-name">Prénom</label>
 													<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.prenom}}">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group focused">
+													<label class="form-control-label" for="input-last-name">Langue</label>
+													<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.language}}">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group focused">
+													<label class="form-control-label" for="input-last-name">Date de naissance</label>
+													<input type="date" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.birthday}}">
 												</div>
 											</div>
 										</div>
@@ -156,6 +166,12 @@
 												<div class="form-group focused">
 													<label class="form-control-label" for="input-country">Pays</label>
 													<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.country}}>
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="form-group">
+													<label class="form-control-label" for="input-country">Telephone</label>
+													<input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.Telephone}}>
 												</div>
 											</div>
 											<div class="col-lg-4">
