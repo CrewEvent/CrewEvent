@@ -1,0 +1,16 @@
+
+<div class="my-3" id="card-{{info_elt.title}}">
+    <div class="card">
+        <div class="card-header">
+            <h4>{{ info_elt.title }}</h4>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ info_elt.content }}</p>
+        </div>
+        <div class="card-footer">
+            <a type="button" class="btn btn-primary" href="{{ path('app_event_update_info',{name : event.name, info_title : info_elt.title}) }}" >éditer</a>
+            <a type="button" class="btn btn-danger"href="{{ path('app_event_delete_info',{name : event.name, info_title : info_elt.title}) }}">supprimer</a>
+        </div>
+
+    </div>
+</div>
