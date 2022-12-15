@@ -15,25 +15,19 @@
 		</div>
 	{% endfor %}
 
-	<div class="row my-3">
-		<div class="col-xxl-3">
-
-   {{ include('partials/_sidebar.html.twig',{
-				"general" : "link-dark",
-				"news" : "link-dark",
-				"chat" : "link-white active"
+	<div class="row">
+		<div class="col-md-3">
+			{{ include('partials/_sidebar.html.twig',{
+				"active_ig" : "",
+				"active_dis" : "active",
+				"active_ar" : ""
 			})}}
 
+			{{ include('partials/_partie_sub.html.twig') }}
+		</div>
+		<div class="col-md-9">
+			{{ include('partials/_chat.html.twig') }}
+		</div>
 	</div>
-
-	<div class="col-xxl-6 ">
-		{{ include('partials/_chat.html.twig') }}
-	</div>
-
-  <div class="col-xxl-3 ">
-  
-      {{include('partials/_partie_sub.html.twig')}}
-  </div>
-</div>
 {% endblock %}
 

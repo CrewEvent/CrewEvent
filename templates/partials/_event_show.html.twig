@@ -1,110 +1,16 @@
-<div>
-	<div class="p-3 bg-primary bg-opacity-10 border border-primary border rounded mb-2">
-  		<h3># infos générales</h3>
+<h1>Infos générales</h1>
+
+{# On ajoute un message flash pour dire à l'utilisateur qu'il faut qu'il participe pour pouvoir discuter #}
+{% for message in app.flashes('warning') %}
+	<div class="alert alert-danger">
+		{{ message }}
 	</div>
+{% endfor %}
 
-	{# On ajoute un message flash pour dire à l'utilisateur qu'il faut qu'il participe pour pouvoir discuter #}
-	<div>
+{# On rajoute le bouton pour participer si ce n'est pas le cas #}
+{% if not isParticipant %}
+	<a href="{{path("app_add_participant",{name : event.name})}}">
+		<button type="button" class="btn btn-primary">Participer</button>
+	</a>
+{% endif %}
 
-		{% for message in app.flashes('warning') %}
-			<div class="alert alert-danger">
-				{{ message }}
-			</div>
-		{% endfor %}
-
-	</div>
-
-	{#Ajouter la description#}
-	<div class="my-3">
-		<div class="card">
-			<div class="card-header">
-				<h4>Description</h4>
-			</div>
-			<div class="card-body">
-				<p class="card-text">{{ event.description }}</p>
-
-			</div>
-		</div>
-
-	</div>
-
-
-	{# partie ou on met les infos générales #}
-
-	{% for info_elt in event.infoGenerale %}
-
-			<div class="my-3" id="card-{{info_elt.title}}">
-				<div class="card">
-					<div class="card-header">
-						<h4>{{ info_elt.title }}</h4>
-					</div>
-					<div class="card-body">
-						<p class="card-text">{{ info_elt.content }}</p>
-					</div>
-					<div class="card-footer">
-						<a type="button" class="btn btn-primary" href="{{ path('app_event_update_info',{name : event.name, info_title : info_elt.title}) }}" >éditer</a>
-						<a type="button" class="btn btn-danger"href="{{ path('app_event_delete_info',{name : event.name, info_title : info_elt.title}) }}">supprimer</a>
-					</div>
-
-				</div>
-			</div>
-
-	{% endfor %}
-
-	{# Ajouter les infos aprés ajout dans le formulaire #}
-	<div id="info-{{event.id}}">
-
-
-	</div>
-
-	{% if (app.user.id == event.user.id) %}
-		{# Ajouter une partie infos supplémentaires #}
-		<div>
-			<div class="mb-3">
-				<button class="btn btn-primary rounded-pill p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd">
-					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-						<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-					</svg>
-					<strong>Ajouter une info</strong>
-				</button>
-			</div>
-
-			<div class="collapse" id="collapseAdd">
-
-
-				<div class="card card-body">
-					<div class="d-flex justify-content-end">
-						<button type="button" class="btn-close" data-bs-toggle="collapse" aria-controls="collapseAdd" data-bs-target="#collapseAdd" ></button>
-					</div>
-
-					<form class="input-group d-flex flex-column" action="{{path('app_event_infos',{name : event.name})}}" method="get" role="form" id="info-form">
-						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">titre</label>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="titre de l'info" name="title">
-						</div>
-						<div class="mb-3">
-							<label for="exampleFormControlTextarea1" class="form-label">contenu</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content"></textarea>
-						</div>
-						<div class="mb-3">
-							<button type="submit" class="btn btn-primary">valider</button>
-							<button type="button" class="btn btn-danger" onclick="document.getElementById('info-form').reset()">réinitialiser</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	{% endif %}
-
-	{# On rajoute le bouton pour participer si ce n'est pas le cas #}
-	<div>
-
-		{% if not isParticipant %}
-			<a href="{{path("app_add_participant",{name : event.name})}}">
-				<button type="button" class="btn btn-primary">Participer</button>
-			</a>
-		{% endif %}
-
-	</div>
-
-</div>

@@ -84,7 +84,7 @@ class EventChatController extends AbstractController
                 return $this->redirectToRoute('app_show_event', ['name' => $event->getName()]);
             }
         }
-        
+
 
         //Affichage de la page
         return $this->renderForm('event_chat/event_chat.html.twig', [
