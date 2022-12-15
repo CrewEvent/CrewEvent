@@ -1,6 +1,6 @@
 <turbo-stream action="append" target="info-{{id}}">
     <template>
-        <div class="my-3">
+        <div class="my-3 " id="card-{{info.title}}">
             <div class="card">
                 <div class="card-header">
                     <h4>{{ info.title }}</h4>
@@ -10,8 +10,8 @@
 
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary">éditer</button>
-                    <button type="button" class="btn btn-danger">supprimer</button>
+                    <a type="button" class="btn btn-primary" href="{{ path('app_event_update_info',{name : event.name, info_title : info.title}) }}" >éditer</a>
+                    <a type="button" class="btn btn-danger"href="{{ path('app_event_delete_info',{name : event.name, info_title : info.title}) }}">supprimer</a>
                 </div>
             </div>
         </div>

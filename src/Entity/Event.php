@@ -250,5 +250,18 @@ class Event
         return $this;
     }
 
+    public function deleteInfoGenerale(?int $key): self
+    {
+
+        unset($this->infoGenerale[$key]);
+        $this->infoGenerale = array_values($this->infoGenerale);
+        return $this;
+
+    }
+    public function updateInfoGenerale(array $values, int $index){
+        $this->infoGenerale[$index] = $values;
+        return $this;
+    }
+
 
 }
