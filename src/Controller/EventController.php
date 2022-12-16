@@ -8,6 +8,7 @@ use App\Entity\Participant;
 use App\Form\EventCreationType;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,6 +30,7 @@ class EventController extends AbstractController
 
         //On crée un nouveau événement
         $event = new Event;
+
         //On crée un nouveau formulaire de création d'événement
         $form = $this->createForm(EventCreationType::class, $event);
 
@@ -101,17 +103,50 @@ class EventController extends AbstractController
 
     //Page de l'événement
     #[Route('/event/update/{name}', name: 'app_event_update', methods: ['POST', 'GET'])]
-    public function event_update(Event $event, Request $request)
+    public function event_update(Event $event, Request $request, ParticipantRepository $participantRepo, EntityManagerInterface $em)
     {
+        //On prend tous les objets participants qui ont pour attribut le nom de l'événement
+        $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
+
         //On crée un nouveau formulaire de création d'événement
         $form = $this->createForm(EventCreationType::class, $event);
 
         //on dit au formulaire de gérer les requettes
         $form->handleRequest($request);
 
+        //Si le formulaire est soumis mais pas valide
+        if ($form->isSubmitted() && !$form->isValid()) {
+
+
+            $this->addFlash('warning', 'Vérifier que les éléments soient bien renseignés');
+
+            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+            return $this->render('error_layouts/event_modification.stream.html.twig');
+        }
+        //Si le formulaire est soumis et valid
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            //On set le nouveau non de l'événement dans la liste des membres
+            foreach ($participants as $participant){
+                $participant->setEventName($form->get('name')->getData());
+                $em->persist($participant);
+            }
+            //Enregistrement dans la base de donnée
+            $em->persist($event);
+            $em->flush();
+
+            //On update la liste des membres de l'événement, on change juste le nom
+            return $this->redirectToRoute('app_show_event', ['name' => $event->getName()]);
+
+        }
+
+
         //ça affiche page de création d'événement
-        return $this->render('pages/event/event_creation.html.twig', [
-            'form' => $form->createView()
+        return $this->render('pages/event/event_modification.html.twig', [
+            'event' =>$event,
+            'form' => $form->createView(),
+            'participants' => $participants,
         ]);
     }
 
