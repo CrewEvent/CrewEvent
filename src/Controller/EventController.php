@@ -159,4 +159,16 @@ class EventController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
+    //Page de l'événement
+    #[Route('/event/participant/quit/{participantUsername}', name: 'event_participant_quit', methods: ['POST', 'GET'])]
+    public function event_participant_quit(Participant $participant, EntityManagerInterface $em)
+    {
+
+        $event = $participant->getEvent();
+        $event->removeParticipant($participant);
+        $em->persist($event);
+        $em->flush();
+        return $this->redirectToRoute('app_home');
+    }
+
 }

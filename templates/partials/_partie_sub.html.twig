@@ -41,6 +41,19 @@
 								{% endif %}
 
 							{% endfor %}
+							{% for participant in participants %}
+
+								{% if app.user.id != event.user.id and participant.participantUsername == app.user.username %}
+									<li class="list-group-item  list-group-item-danger">
+										<a href=""
+										   class="link-dark d-inline-flex text-decoration-none rounded"
+										   data-mdb-toggle="modal" data-mdb-target="#quitModal">
+											quitter
+										</a>
+									</li>
+									{{ include('partials/_quit_event_modal.html.twig') }}
+								{% endif %}
+							{% endfor %}
 
 						</ul>
 
