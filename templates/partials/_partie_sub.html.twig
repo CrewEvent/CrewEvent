@@ -21,10 +21,12 @@
 					<!--Liste des participants -->
 					<div class="card my-2">
 						<ul class="list-group list-group-flush">
+
 							{% for participant in participants %}
 								{% if participant.participantUsername == app.user.username %}
 
 									<li class="list-group-item">
+
 										<a href="{{path("app_profile")}}" class="link-dark d-inline-flex text-decoration-none rounded">{{participant.participantUsername}}
 										</a>
 									</li>

@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Entity\Participant;
 use App\Form\EventCreationType;
+use App\Repository\EventRepository;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -150,7 +151,12 @@ class EventController extends AbstractController
         ]);
     }
 
-
-
+    //Page de l'événement
+    #[Route('/event/deletion/{name}', name: 'event_deletion', methods: ['POST', 'GET'])]
+    public function event_deletion(Event $event,EventRepository $eventRepo)
+    {
+        $eventRepo->remove($event,true);
+        return $this->redirectToRoute('app_home');
+    }
 
 }

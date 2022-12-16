@@ -61,7 +61,7 @@ class Event
      */
     private $imageFile;
 
-    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class)]
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class, orphanRemoval: true)]
     private Collection $participants;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
