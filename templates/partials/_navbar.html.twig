@@ -1,150 +1,153 @@
-
-
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-	<div
-		class="container-fluid justify-content-between">
-		<!-- Left elements -->
-		<div
-			class="d-flex my-2 my-sm-0">
-			<!-- Toggler -->
-			<button data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn shadow-0 p-0 ms-2 me-3 d-block d-xl-none" aria-controls="#sidenav-1" aria-haspopup="true">
-				<i class="fas fa-bars fa-lg"></i>
-			</button>
-			<!-- logo Brand -->
-			<a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{path("app_home")}}">
-				<img src="{{asset('images/crewevent-b.png')}}" height="50" alt="" loading="lazy" style="margin-top: 1px"/>
-			</a>
-			<!-- End logo Brand -->
+    <div
+            class="container-fluid justify-content-between">
+        <!-- Left elements -->
+        <div
+                class="d-flex my-2 my-sm-0">
+            <!-- Toggler -->
+            <button data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1"
+                    class="btn shadow-0 p-0 ms-2 me-3 d-block d-xl-none" aria-controls="#sidenav-1"
+                    aria-haspopup="true">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- logo Brand -->
+            <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{ path("app_home") }}">
+                <img src="{{ asset('images/crewevent-b.png') }}" height="50" alt="" loading="lazy"
+                     style="margin-top: 1px"/>
+            </a>
+            <!-- End logo Brand -->
 
-			<!-- Search form -->
-			<form class="input-group w-auto my-auto d-none d-sm-flex" action="{{path('app_recherche')}}" method="get" role="form">
-				<input autocomplete="off" type="search" class="form-control rounded" placeholder="Recherche" style="min-width: 125px" name="recherche"/>
-				<button type="submit" class="btn btn-primary">
-		            <i class="fas fa-search"></i>
-	            </button>
-			</form>
-		</div>
+            <!-- Search form -->
+            <form class="input-group w-auto my-auto d-none d-sm-flex" action="{{ path('app_recherche') }}" method="get"
+                  role="form">
+                <input autocomplete="off" type="search" class="form-control rounded" placeholder="Recherche" style="min-width: 125px" name="recherche"/>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
 
-		<!-- End Search form -->
+        <!-- End Search form -->
 
-		<!-- Begin Center elements -->
+        <!-- Begin Center elements -->
 
-		<!--Home elements -->
-			<ul class="navbar-nav flex-row d-none d-md-flex"> <li class="nav-item me-3 me-lg-1 active">
-				<a class="nav-link" href="{{path("app_home")}}">
+        <!--Home elements -->
+        <ul class="navbar-nav flex-row d-none d-md-flex">
+            <li class="nav-item me-3 me-lg-1 active">
+                <a class="nav-link" href="{{ path("app_home") }}">
 					<span>
 						<i class="fas fa-home fa-lg"></i>
 					</span>
-					{# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
-				</a>
-			</li>
-			<!-- End Home elements -->
+                    {# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
+                </a>
+            </li>
+            <!-- End Home elements -->
 
-			<!--Event element -->
-			<li class="nav-item me-3 me-lg-1">
-				<a class="nav-link" href="{{path('app_event_creation')}}">
+            <!--Event element -->
+            <li class="nav-item me-3 me-lg-1">
+                <a class="nav-link" href="{{ path('app_event_creation') }}">
 					<span>
 						<i class="fas fa-plus-circle fa-lg"></i>
 					</span>
-				</a>
-			</li>
-			<!--End Event element -->
+                </a>
+            </li>
+            <!--End Event element -->
 
 
-			<!--Messagerie public elements -->
-			<li class="nav-item me-3 me-lg-1">
-				<a class="nav-link" href="{{path('private_message')}}">
+            <!--Messagerie public elements -->
+            <li class="nav-item me-3 me-lg-1">
+                <a class="nav-link" href="{{ path('private_message') }}">
 					<span>
 						<i class="fas fa-message fa-lg"></i>
 					</span>
-				</a>
-			</li>
-			<!--End Messagerie public elements -->
+                </a>
+            </li>
+            <!--End Messagerie public elements -->
 
-			<!--Friend Notification element -->
-			<li class="nav-item me-3 me-lg-1">
-				<a class="nav-link" href="{{path('app_contacts')}}">
+            <!--Friend Notification element -->
+            <li class="nav-item me-3 me-lg-1">
+                <a class="nav-link" href="{{ path('app_contacts') }}">
 					<span>
 						<i class="fas fa-users fa-lg"></i>
 					</span>
-					{# <span class="badge rounded-pill badge-notification bg-danger">2</span> #}
-				</a>
-			</li>
-			<!--End Friend Notification element -->
+                    {# <span class="badge rounded-pill badge-notification bg-danger">2</span> #}
+                </a>
+            </li>
+            <!--End Friend Notification element -->
 
 
-			<!--Notification element -->
-
-			<li class="nav-item dropdown me-3 me-lg-1">
-				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-					<i class="fas fa-bell fa-lg"></i>
-					{# <span class="badge rounded-pill badge-notification bg-danger">12</span> #}
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-					<li>
-						<a class="dropdown-item" href="#">Some news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Another news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</li>
-				</ul>
-			</li>
-			<!-- End Notification element -->
-
-
-		</ul>
-		<!-- End Center elements -->
-
-
-		<!-- Begin Right elements -->
-
-		<ul
-			class="navbar-nav flex-row">
-
-			<!--messagerie privé element -->
-
-			<li class="nav-item dropdown me-3 me-lg-1">
-				<a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-					<i class="fas fa-comments fa-lg"></i>
-
-					{# <span class="badge rounded-pill badge-notification bg-danger">6</span> #}
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-					<li>
-						<a class="dropdown-item" href="#">Some news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Another news</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</li>
-				</ul>
-			</li>
-			
-
+            <!--Notification element -->
 
             <li class="nav-item dropdown me-3 me-lg-1">
-                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                  <img src="{{app.user.photoProfile ? vich_uploader_asset(app.user) : asset('images/pas_de_photo.png')}}" class="rounded-circle" height="22" alt="profile photo" loading="lazy" /> 
+                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-bell fa-lg"></i>
+                    {# <span class="badge rounded-pill badge-notification bg-danger">12</span> #}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="{{path('app_profile')}}">profile</a>
+                        <a class="dropdown-item" href="#">Some news</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a>
+                        <a class="dropdown-item" href="#">Another news</a>
                     </li>
-                   
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Notification element -->
+
+
+        </ul>
+        <!-- End Center elements -->
+
+
+        <!-- Begin Right elements -->
+
+        <ul
+                class="navbar-nav flex-row">
+
+            <!--messagerie privé element -->
+
+            <li class="nav-item dropdown me-3 me-lg-1">
+                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-comments fa-lg"></i>
+
+                    {# <span class="badge rounded-pill badge-notification bg-danger">6</span> #}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">Some news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
                 </ul>
             </li>
 
 
-		</div>
-	</nav>
-	<!-- End Navbar -->
+            <li class="nav-item dropdown me-3 me-lg-1">
+                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ app.user.photoProfile ? asset('images/' ~ app.user.photoProfile) : asset('images/pas_de_photo.png') }}"
+                         class="rounded-circle" height="22" alt="profile photo" loading="lazy"/>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="{{ path('app_profile') }}">profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}">Deconnexion</a>
+                    </li>
+
+                </ul>
+            </li>
+    </div>
+</nav>
+<!-- End Navbar -->
