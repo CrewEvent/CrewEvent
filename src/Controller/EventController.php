@@ -138,4 +138,23 @@ class EventController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
+    //My events
+    #[Route('/my_events', name: 'app_my_events', methods: ['POST', 'GET'])]
+    public function my_events(ParticipantRepository $participantRepo,EventRepository $eventRepo,EntityManagerInterface $em):response
+    {
+        //On regarde dans la liste des événements pour voir les événements qu'on a crée
+        //On retourne donc un tableau des événements que j'ai crée
+        $created = $eventRepo->findBy(['user'=> $this->getUser()->getId()]);
+
+        //On regarde la liste des participants
+        //On retourne donc la liste des événments que j'ai participés
+        $participated = $participantRepo->findBy(['participantUsername'=> $this->getUser()->getUserIdentifier()]);
+
+        return $this->render('pages/event/my_events.html.twig',[
+            'events_created'=>$created,
+            'events_participated'=>$participated
+        ]);
+    }
+
+
 }
