@@ -30,6 +30,7 @@
         "npm": "8.19.*"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.10.2",
         "mdb-ui-kit": "^6.0.0"
     }
 }
