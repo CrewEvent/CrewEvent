@@ -85,16 +85,25 @@
 		<div class="container-fluid mt--7">
 			<div class="row">
 				<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-					<div class="card card-profile shadow">
+					<div
+						class="card card-profile shadow">
+						<!-- début du profile d'un autre user  -->
 						<div class="row justify-content-center">
-							<div class="col-lg-3 order-lg-2">
+							<div
+								class="col-lg-3 order-lg-2">
+								<!-- affiche la Pp profile de show_user -->
 								<div class="card-profile-image">
 									<img src="{{ user.PhotoProfile ? asset('images/' ~ user.PhotoProfile) : asset('images/No_image.jpg')}}" class="rounded-circle" width="100%">
 								</div>
 							</div>
 						</div>
-						<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-							<div class="d-flex justify-content-around">
+						<!-- fin -->
+						<div
+							class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+							<!-- permet d'ajouter ou de supprimer un user dans nos contact -->
+							<div
+								class="d-flex justify-content-around">
+								<!-- une conditons  permetant d'ajouter , ou de supprimer un use s'il est déja ajouter dans les contacts-->
 								{% if not isContact %}
 									<a href="{{path('add_contact',{username: user.username})}}" class="btn btn-sm btn-info mr-4 mt-4">
 										<i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -106,6 +115,8 @@
 										<i class="fa fa-user-times" aria-hidden="true"></i>
 									</a>
 								{% endif %}
+								<!-- fin de la condition -->
+								<!-- affiche l'icone de message pour envoyer un message à un user -->
 								<a href="{{path('send_private_message',{username : user.username})}}" class="btn btn-sm btn-info float-right ml-4 mt-4">
 									<i class="fa fa-comment" aria-hidden="true"></i>
 
@@ -115,7 +126,9 @@
 
 						<div class="card-body pt-0 pt-md-4 ">
 							<div class="row">
-								<div class="col">
+								<div
+									class="col">
+									<!-- affiche le nombres de stats de la carte profile -->
 									<div class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
 											<span class="heading">0</span>
@@ -132,16 +145,23 @@
 									</div>
 								</div>
 							</div>
-							<div class="text-center">
+							<!-- fin -->
+							<!------------------------------------------------------------------>
+							<div
+								class="text-center">
+								<!-- affiche le nom et prenom  d'un autre user-->
 								<h3>
 									{{user.nom}}&nbsp;{{user.prenom}}<span class="font-weight-light"></span>
 								</h3>
+								<!-- affiche la description d'un autre user -->
 								<div class="h5 font-weight-300">
 									<i class="ni location_pin mr-2"></i>
 									{{user.description}}
 								</div>
 							</div>
+							<!-- fin -->
 						</div>
+						<!-- fin du card body -->
 
 					</div>
 
@@ -149,20 +169,22 @@
 				<div class="col-xl-8 order-xl-1">
 					<div class="card bg-secondary shadow">
 						<div class="card-header bg-white border-0">
-							<div class="row align-items-center">
+							<div
+								class="row align-items-center">
+								<!-- affiche le nom et prenom dans le show_profil /un autre user, à gauche -->
 								<div class="col-8">
 									<h3 class="mb-0">
 										{{user.nom}}&nbsp;{{user.prenom}}</h3>
 								</div>
+								<!-- à laisser en commentaire! -->
 								<div
 									class="col-4 text-right d-flex justify-content-between ml-8">{# 
-																																																																					<a href="{{path('app_change_password')}}" class="btn btn-sm btn-info  ">Modifier le mot de passe</a>
-																																																												
-																																																																					<a href="#!" class="btn btn-sm btn-secondary">Modifier</a> #}
-
+									<a href="{{path('app_change_password')}}" class="btn btn-sm btn-info  ">Modifier le mot de passe</a>
+									<a href="#!" class="btn btn-sm btn-secondary">Modifier</a> #}
 								</div>
 							</div>
 						</div>
+						<!-- début des informations personnels pour le show_profile /l'autre user-->
 						<div class="card-body">
 							<form>
 								<h6 class="heading-small text-muted mb-4">Informations Personnels</h6>
@@ -170,12 +192,14 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group focused">
+											<!-- affiche  l'identifiant de l'autre useret le render dans le input-->
 												<label class="form-control-label" for="input-username">Identifiant :</label>
 												<input type="view" id="input-username" class="form-control form-control-alternative" placeholder="" disabled value={{user.username}}>
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group">
+												<!-- affiche l'address mail de l'autre user et le render dans le input -->
 												<label class="form-control-label" for="input-email">Address mail :
 												</label>
 												<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="exemple@emple.com" disabled value={{user.email}}>
@@ -186,24 +210,28 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group focused">
+											<!-- affiche le nom d'un autre user et le render dans input -->
 												<label class="form-control-label" for="input-first-name">Nom</label>
 												<input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="" disabled value={{user.nom}}>
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group focused">
+											<!-- affiche  le prenom d'un autre user et le render dans input -->
 												<label class="form-control-label" for="input-last-name">Prenom</label>
 												<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{user.prenom}}">
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group focused">
+											<!-- affiche la langue d'un autre user et le render dans input -->
 												<label class="form-control-label" for="input-last-name">Langue</label>
 												<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{user.language}}">
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group focused">
+											<!-- affiche la date de naissance d'un autre user et le render dans input -->
 												<label class="form-control-label" for="input-last-name">Date de naissance</label>
 												<input type="date" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{user.birthday}}">
 											</div>
@@ -214,11 +242,13 @@
 								<hr
 								class="my-4">
 								<!-- Address -->
+								<!-- début de la partie contact  -->
 								<h6 class="heading-small text-muted mb-4">Contact</h6>
 								<div class="pl-lg-4">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group focused">
+											<!-- affiche  l'adresse d'un autre user et le render dans input -->
 												<label class="form-control-label" for="input-address">Address</label>
 												<input id="input-address" class="form-control form-control-alternative" placeholder="" disabled value="" type="text">
 											</div>
@@ -227,24 +257,28 @@
 									<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group focused">
+												<!-- affiche la ville d'un autre utilisateur et le render  dans input -->
 												<label class="form-control-label" for="input-city">Ville</label>
 												<input type="text" id="input-city" class="form-control form-control-alternative" placeholder="" disabled value={{user.city}}>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group focused">
+											<!-- affiche  le pays d'un autre utilisateur et le render dans input  -->
 												<label class="form-control-label" for="input-country">Pays</label>
 												<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" disabled value={{user.country}}>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group focused">
+											<!-- affiche  le tel d'un autre utilisateur et le render dans input  -->
 												<label class="form-control-label" for="input-country">Telephone</label>
 												<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" disabled value={{user.Telephone}}>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
+											<!-- affiche  le se d'un autre utilisateur et le render dans input  -->
 												<label class="form-control-label" for="input-country">Sexe</label>
 												<input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="" disabled value={{user.gender}}>
 											</div>
@@ -265,14 +299,14 @@
 		<div class="row align-items-center justify-content-xl-between">
 			<div
 				class="col-xl-6 m-auto text-center"><!--<div class="copyright">
-																																																																																																										          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
-																																																																																																										        </div> -->
+																																																																																																															          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
+																																																																																																															        </div> -->
 			</div>
 		</div>
 	</footer>
 
 </form>
-
+<!-- partie css du profile -->
 <style>:root
 {
 	--blue: #5e72e4;

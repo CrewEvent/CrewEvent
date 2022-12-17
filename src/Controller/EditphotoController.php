@@ -21,12 +21,22 @@ class EditphotoController extends AbstractController
         if ($file) {
             $filename = 'profile_' .  $username . '.' .  $file->guessExtension();
             $file->move($this->getParameter(name: 'uploads_dir'), $filename);
+            $user->setPhotoProfile($filename);
+            $em->persist($user);
+            $em->flush();
         }
-
-        $user->setPhotoProfile($filename);
-        $em->persist($user);
-        $em->flush();
-
         return $this->redirectToRoute('app_profile');
     }
+
+    #[Route('/delete', name: 'profile_deletephoto')]
+    public function remove(Request $request, EntityManagerInterface $em)
+    {
+        $user = $this->getUser();
+        $user->setPhotoProfile(null);
+        $em->persist($user);
+        $em->flush();
+        return $this->redirectToRoute('app_profile');    
+    }
 }
+
+

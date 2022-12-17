@@ -34,7 +34,8 @@ class ContactController extends AbstractController
         $em->flush($contact);
 
         //puis on redirigige dans la page d'acceuil ?? à revoir
-        return $this->redirectToRoute('app_index');
+        //rajout la redirection vers show_profile
+        return $this->redirectToRoute('app_show_profile',['username' =>$this->getUser()->getUserIdentifier()]);
     }
 
     #[Route('/contact/remove/{username}', name: 'remove_contact')]
@@ -42,12 +43,14 @@ class ContactController extends AbstractController
     {
         $contact = $contactRepo->findOneBy(['user' => $user->getId(), 'username' => $this->getUser()->getUserIdentifier()]);
 
-        //On retire le contact de la base de donnée
+        //On retire le contact de la base de donnée_
         $em->remove($contact);
         $em->flush($contact);
 
         //puis on redirigige dans la page d'acceuil ?? à revoir
-        return $this->redirectToRoute('app_index');
+        //rajout la redirection vers show_profile
+        
+        return $this->redirectToRoute('app_show_profile', ['username' =>$this->getUser()->getUserIdentifier()]);
     }
 
     // Recherche de contacts
