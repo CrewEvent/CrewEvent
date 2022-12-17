@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,11 +11,46 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Turbo\TurboBundle;
 
+
+
 class EventInfosController extends AbstractController
 {
+    //Page de l'événement
+    #[Route('/event/show/{name}', name: 'app_show_event', methods: ['POST', 'GET'])]
+    public function event_show(Event $event, ParticipantRepository $participantRepo): Response
+    {
+
+        //On récupére l'identifiant de l'utilisateur connecté
+        $username = $this->getUser()->getUserIdentifier();
+
+        //Cherche si l'utilisateur est déja participant
+        // $isParticipant = $this->search_if_participant($username, $event->getName());
+
+        $isParticipant = false;
+
+        //On prend tous les objets participants qui ont pour attribut le nom de l'événement
+        $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
+
+        //Pour chque objet on regarde si le nom d'utilisateur est celui de l'utilisateur connecté
+        foreach ($participants as $participant) {
+            if ($participant->getParticipantUsername() == $username) {
+                $isParticipant = true;
+            }
+        }
+
+        if ($isParticipant == false) {
+            $this->addFlash("warning", "Vous n'avez pas encore participé à cet événément");
+        }
+        //retourne la page
+        return $this->render('pages/event/event_show.html.twig', [
+            'event' => $event,
+            'participants' => $participants,
+            'isParticipant' => $isParticipant
+        ]);
+    }
     //Partie Ajout de nouvelles infos générales
-    #[Route('/event/show/{name}/add_infos', name: 'app_event_infos', methods: ['POST', 'GET'])]
-    public function event_add_infos(Event $event, Request $request, EntityManagerInterface $em)
+    #[Route('/event/info/add/{name}', name: 'event_info_add', methods: ['POST', 'GET'])]
+    public function event_info_add(Event $event, Request $request, EntityManagerInterface $em)
     {
         //On récupére d'abord les donnéees
         $data = $request->query->all();
@@ -27,21 +63,16 @@ class EventInfosController extends AbstractController
         $em->persist($event);
         $em->flush();
 
-        // 🔥 The magic happens here! 🔥
-
-        // If the request comes from Turbo, set the content type as text/vnd.turbo-stream.html and only send the HTML to update
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
-        return $this->render('info_generale/info_generale_add.stream.html.twig', ['id' => $event->getId(),'event' => $event, 'info' => $values]);
+        return $this->render('info_generale/info_generale_add.stream.html.twig', ['event' => $event, 'info' => $values]);
 
-
-        // If the client doesn't support JavaScript, or isn't using Turbo, the form still works as usual.
-        // Symfony UX Turbo is all about progressively enhancing your apps!
     }
 
     //Partie suppression de l'info
-    #[Route('/event/delete/{name}/{info_title}', name: 'app_event_delete_info', methods: ['POST', 'GET'])]
+    #[Route('/event/delete/info/{name}/{info_title}', name: 'event_info_delete', methods: ['POST', 'GET'])]
     public function event_info_delete(Event $event, string $info_title, EntityManagerInterface $em, Request $request)
     {
+
         //On recherche la clé du titre dans la liste des infos avec arra_search():key
         //On supprime avaec unset(key)
 
@@ -80,8 +111,6 @@ class EventInfosController extends AbstractController
     #[Route('/event/update/{name}/{info_title}', name: 'app_event_update_info', methods: ['POST', 'GET'])]
     public function event_info_update(Event $event, string $info_title, Request $request)
     {
-
-
 
         $infos = $event->getInfoGenerale();
 

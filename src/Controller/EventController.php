@@ -68,39 +68,6 @@ class EventController extends AbstractController
         ]);
     }
 
-    //Page de l'événement
-    #[Route('/event/show/{name}', name: 'app_show_event', methods: ['POST', 'GET'])]
-    public function event_show(Event $event, ParticipantRepository $participantRepo): Response
-    {
-
-        //On récupére l'identifiant de l'utilisateur connecté
-        $username = $this->getUser()->getUserIdentifier();
-
-        //Cherche si l'utilisateur est déja participant
-        // $isParticipant = $this->search_if_participant($username, $event->getName());
-
-        $isParticipant = false;
-
-        //On prend tous les objets participants qui ont pour attribut le nom de l'événement
-        $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
-
-        //Pour chque objet on regarde si le nom d'utilisateur est celui de l'utilisateur connecté
-        foreach ($participants as $participant) {
-            if ($participant->getParticipantUsername() == $username) {
-                $isParticipant = true;
-            }
-        }
-
-        if ($isParticipant == false) {
-            $this->addFlash("warning", "Vous n'avez pas encore participé à cet événément");
-        }
-        //retourne la page
-        return $this->render('pages/event/event_show.html.twig', [
-            'event' => $event,
-            'participants' => $participants,
-            'isParticipant' => $isParticipant
-        ]);
-    }
 
     //Page de l'événement
     #[Route('/event/update/{name}', name: 'app_event_update', methods: ['POST', 'GET'])]

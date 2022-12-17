@@ -5,7 +5,7 @@
 
 	</div>
 
-	<div class="offcanvas-body d-flex justify-content-end">
+	<div class="offcanvas-body d-flex flex-column">
 		<ul class="nav nav-pills flex-column mb-auto">
 
 			<li class="nav-item">
@@ -16,31 +16,13 @@
 					<strong class="">Participants</strong>
 				</a>
 
-				<div
-					class="collapse mx-2" id="collapseExample">
+				<div class="collapse mx-2" id="collapseExample">
 					<!--Liste des participants -->
 					<div class="card my-2">
 						<ul class="list-group list-group-flush">
 
-							{% for participant in participants %}
-								{% if participant.participantUsername == app.user.username %}
 
-									<li class="list-group-item">
 
-										<a href="{{path("app_profile")}}" class="link-dark d-inline-flex text-decoration-none rounded">{{participant.participantUsername}}
-										</a>
-									</li>
-
-								{% else %}
-
-									<li class="list-group-item">
-										<a href="{{path("app_show_profile", {username : participant.participantUsername })}}" class="link-dark d-inline-flex text-decoration-none rounded">{{participant.participantUsername}}
-										</a>
-									</li>
-
-								{% endif %}
-
-							{% endfor %}
 							{% for participant in participants %}
 
 								{% if app.user.id != event.user.id and participant.participantUsername == app.user.username %}
@@ -54,12 +36,23 @@
 									{{ include('partials/_quit_event_modal.html.twig') }}
 								{% endif %}
 							{% endfor %}
-
 						</ul>
-
 					</div>
-				</li>
+				</div>
 			</li>
 		</ul>
+		<div class="list-group">
+			{% for participant in participants %}
+				{% if participant.participantUsername == app.user.username %}
+					<a href="{{path("app_profile")}}" class="list-group-item list-group-item-action">{{participant.participantUsername}}</a>
+				{% else %}
+					<a href="{{path("app_show_profile", {username : participant.participantUsername })}}" class="list-group-item list-group-item-action">{{participant.participantUsername}}</a>
+				{% endif %}
+			{% endfor %}
+
+		</div>
+
+
+
 	</div>
 </div>

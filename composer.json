@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
+        "dsentker/url-signature": "^1.2",
         "knplabs/knp-paginator-bundle": "5.*",
         "liip/imagine-bundle": "^2.9",
         "phpdocumentor/reflection-docblock": "^5.3",

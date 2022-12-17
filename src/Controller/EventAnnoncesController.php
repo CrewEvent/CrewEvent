@@ -25,7 +25,7 @@ class EventAnnoncesController extends AbstractController
     }
 
     //Partie Ajout de nouvelles infos générales
-    #[Route('/event/annonces/{name}/add_annonce', name: 'event_annonce_add', methods: ['POST', 'GET'])]
+    #[Route('/event/annonce/add/{name}', name: 'event_annonce_add', methods: ['POST', 'GET'])]
     public function event_annonce_add(Event $event, Request $request, EntityManagerInterface $em)
     {
         //On récupére d'abord les donnéees
@@ -46,9 +46,10 @@ class EventAnnoncesController extends AbstractController
 
 
     //Partie suppression de l'info
-    #[Route('/event/delete/{name}/{annonce_title}', name: 'app_event_delete_annonce', methods: ['POST', 'GET'])]
+    #[Route('/event/delete/annonce/{name}/{annonce_title}', name: 'app_event_delete_annonce', methods: ['POST', 'GET'])]
     public function event_annonce_delete(Event $event, string $annonce_title, EntityManagerInterface $em, Request $request)
     {
+
         //On recherche la clé du titre dans la liste des infos avec arra_search():key
         //On supprime avaec unset(key)
 

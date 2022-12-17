@@ -40,7 +40,7 @@
 					{# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
 
 
-<nav class="navbar navbar-expand-xxl bg-light">
+<nav class="navbar navbar-expand-xxl bg-white">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -63,7 +63,9 @@
 
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Hidden brand</a>
+      <a class="navbar-brand" href="{{ path('app_home') }}">
+          <img src="{{ asset('images/crewevent.png') }}" width="">
+      </a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>

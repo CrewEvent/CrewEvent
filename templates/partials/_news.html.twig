@@ -16,11 +16,12 @@
 				<div class="card-body">
 					<p class="card-text">{{ annonce_elt.content }}</p>
 				</div>
-				<div class="card-footer">
-					<a type="button" class="btn btn-primary" href="{{ path('app_event_update_annonce',{name : event.name, annonce_title : annonce_elt.title}) }}" >éditer</a>
-					<a type="button" class="btn btn-danger"href="{{ path('app_event_delete_annonce',{name : event.name, annonce_title : annonce_elt.title}) }}">supprimer</a>
-				</div>
-
+				{% if (app.user.id == event.user.id) %}
+					<div class="card-footer">
+						<a type="button" class="btn btn-primary" href="{{ path('app_event_update_annonce',{name : event.name, annonce_title : annonce_elt.title}) }}" >éditer</a>
+						<a type="button" class="btn btn-danger"href="{{ path('app_event_delete_annonce',{name : event.name, annonce_title : annonce_elt.title}) }}">supprimer</a>
+					</div>
+				{% endif %}
 			</div>
 		</div>
 

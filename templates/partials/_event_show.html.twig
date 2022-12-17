@@ -51,15 +51,18 @@
 					<div class="card-body">
 						<p class="card-text">{{ info_elt.content }}</p>
 					</div>
+					{% if (app.user.id == event.user.id) %}
 					<div class="card-footer">
 						<a type="button" class="btn btn-primary" href="{{ path('app_event_update_info',{name : event.name, info_title : info_elt.title}) }}" >éditer</a>
-						<a type="button" class="btn btn-danger"href="{{ path('app_event_delete_info',{name : event.name, info_title : info_elt.title}) }}">supprimer</a>
+						<a type="button" class="btn btn-danger"href="{{ path('event_info_delete',{name : event.name, info_title : info_elt.title}) }}">supprimer</a>
 					</div>
+					{% endif %}
 
 				</div>
 			</div>
 
 	{% endfor %}
+
 
 	{# Ajouter les infos aprés ajout dans le formulaire #}
 	<div id="info-{{event.id}}">
@@ -87,7 +90,7 @@
 						<button type="button" class="btn-close" data-bs-toggle="collapse" aria-controls="collapseAdd" data-bs-target="#collapseAdd" ></button>
 					</div>
 
-					<form class="input-group d-flex flex-column" action="{{path('app_event_infos',{name : event.name})}}" method="get" role="form" id="info-form">
+					<form class="input-group d-flex flex-column" action="{{path('event_info_add',{name : event.name})}}" method="get" role="form" id="info-form">
 						<div class="mb-3">
 							<label for="exampleFormControlInput1" class="form-label">titre</label>
 							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="titre de l'info" name="title">
