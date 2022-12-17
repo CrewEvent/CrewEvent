@@ -96,13 +96,13 @@
 						<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
 							<div class="d-flex justify-content-around">
 								{% if not isContact %}
-									<a href="{{path('add_contact',{username: user.username})}}" class="btn btn-sm btn-primary mr-4 mt-4">
+									<a href="{{path('add_contact',{username: user.username})}}" class="btn btn-sm btn-info mr-4 mt-4">
 										<i class="fa fa-user-plus" aria-hidden="true"></i>
 
 									</a>
 
 								{% else %}
-									<a href="{{path('remove_contact',{username: user.username})}}" class="btn btn-sm btn-primary mr-4 mt-4">
+									<a href="{{path('remove_contact',{username: user.username})}}" class="btn btn-sm btn-info mr-4 mt-4">
 										<i class="fa fa-user-times" aria-hidden="true"></i>
 									</a>
 								{% endif %}
@@ -112,7 +112,7 @@
 								</a>
 							</div>
 						</div>
-						
+
 						<div class="card-body pt-0 pt-md-4 ">
 							<div class="row">
 								<div class="col">
