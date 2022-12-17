@@ -1,0 +1,19 @@
+
+<!-- Modal -->
+<div class="modal fade" id="quitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">😭 quitter</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text">Etes vous sûr de voulouir nous quitter ?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-mdb-dismiss="modal">Annuler</button>
+                <a href="{{ path('event_participant_quit',{participantUsername : app.user.username}) }}" type="button" class="btn btn-danger">Continuer</a>
+            </div>
+        </div>
+    </div>
+</div>

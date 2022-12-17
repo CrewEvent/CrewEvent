@@ -61,9 +61,14 @@ class Event
      */
     private $imageFile;
 
-    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class)]
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participant::class, orphanRemoval: true)]
     private Collection $participants;
 
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $infoGenerale = [];
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $Annonces = [];
 
 
 
@@ -235,4 +240,55 @@ class Event
 
         return $this;
     }
+
+    public function getInfoGenerale(): array
+    {
+        return $this->infoGenerale;
+    }
+
+    public function setInfoGenerale(?array $infoGenerale): self
+    {
+        array_push($this->infoGenerale , $infoGenerale);
+
+        return $this;
+    }
+
+    public function deleteInfoGenerale(?int $key): self
+    {
+
+        unset($this->infoGenerale[$key]);
+        $this->infoGenerale = array_values($this->infoGenerale);
+        return $this;
+
+    }
+    public function updateInfoGenerale(array $values, int $index){
+        $this->infoGenerale[$index] = $values;
+        return $this;
+    }
+
+    public function getAnnonces(): array
+    {
+        return $this->Annonces;
+    }
+
+    public function setAnnonces(?array $Annonces): self
+    {
+        array_push($this->Annonces , $Annonces);
+        return $this;
+    }
+
+    public function deleteAnnonce(?int $key): self
+    {
+
+        unset($this->Annonces[$key]);
+        $this->Annonces = array_values($this->Annonces);
+        return $this;
+
+    }
+
+    public function updateAnnonce(array $values, int $index){
+        $this->Annonces[$index] = $values;
+        return $this;
+    }
+
 }
