@@ -17,10 +17,22 @@ class EventAnnoncesController extends AbstractController
     #[Route('/event/show/{name}/news', name: 'app_event_news', methods: ['POST', 'GET'])]
     public function event_news(Event $event, ParticipantRepository $participantRepo): Response
     {
+        //On prend tous les objets participants qui ont pour attribut le nom de l'événement
+        $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
+
+        $isParticipant = false;
+        //Pour chque objet on regarde si le nom d'utilisateur est celui de l'utilisateur connecté
+        foreach ($participants as $participant) {
+            if ($participant->getParticipantUsername() == $this->getUser()->getUserIdentifier()) {
+                $isParticipant = true;
+            }
+        }
+
         $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
         return $this->render('evenement/news.html.twig', [
             'event' => $event,
-            'participants' => $participants
+            'participants' => $participants,
+            'isParticipant' =>$isParticipant
         ]);
     }
 
