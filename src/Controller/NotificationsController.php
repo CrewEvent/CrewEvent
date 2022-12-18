@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class NotificationsController extends AbstractController
 {
     #[Route('/notifications', name: 'app_notifications')]
-    public function index(): Response
+    public function notifications(): Response
     {
-        return $this->render('notifications/index.html.twig', [
-            'controller_name' => 'NotificationsController',
-        ]);
+
+        return $this->render('notifications/notifications.html.twig'
+        );
     }
 }
