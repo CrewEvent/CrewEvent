@@ -1,60 +1,52 @@
-<section >
-	<div class="container py-5"> 
 
-		<div class="row">
-            {# Partie gauche #}
-			<div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+<div class="text-center my-3">
+    <h2>Messagerie</h2>
+</div>
+<div class="container">
 
-			    <h1 class="font-weight-bold mb-3 text-center text-lg-start">Messages</h1>
-               {# On affiche ici les membres avec qui l'utilisateur a un tchat #}
-                {% for member in members %}
-                    <div class="card">
-					    <div class="card-body">
-                            <ul class="list-unstyled mb-0">
-                                <li class="p-2 border-bottom" style="background-color: #eee;">
-                                {# On ne veut pas que l'utilisateur tchat avec lui méme donc on teste et ion met l'utilisateur #}
-                                {% if app.user.username == member.username %}
-                                    <a href="{{path('send_private_message', {username : member.otherUsername})}}" class="d-flex justify-content-between">
-                                
-                                    
-                                        <div class="d-flex flex-row">
-                                            <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                                            <div class="pt-1">
-                                                <p class="fw-bold mb-0">{{member.otherUsername}}</p>
-                                                <p class="small text-muted">{{member.lastMessage}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-1">
-                                            <p class="small text-muted mb-1">{{member.updatedAt|format_datetime('none', 'short', locale='fr') }}</p>
-                                            
-                                            {# <span class="badge bg-danger float-end">1</span> #}
+    <div class="list-group">
+        {% for member in members %}
+            {# On ne veut pas que l'utilisateur tchat avec lui méme donc on teste et ion met l'utilisateur #}
+            {% if app.user.username == member.username %}
+                <a href="{{path('send_private_message', {username : member.otherUsername})}}"  class="list-group-item list-group-item-action">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                            <div>
+                                <h5 class="mb-1 text-primary">{{member.otherUsername}}</h5>
+                                <small class="text-muted">{{member.lastMessage}}</small>
+                            </div>
 
-                                        </div>
-                                    </a>
-                                    {% else %}
-                                        <a href="{{path('send_private_message', {username : member.username})}}" class="d-flex justify-content-between">
-                                            <div class="d-flex flex-row">
-                                                <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                                                <div class="pt-1">
-                                                    <p class="fw-bold mb-0">{{member.username}}</p>
-                                                    <p class="small text-muted">{{member.lastMessage}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="pt-1">
-                                                <p class="small text-muted mb-1">{{member.updatedAt|format_datetime('none', 'short', locale='fr') }}</p>
-                                                {# <span class="badge bg-danger float-end">1</span> #}
-                                            </div>
-                                        </a>
-                    
-                                    {% endif %}
-                                </li>		
-                            </ul>
-					    </div>
-				    </div>   
-                {% endfor %}
-				
-			</div>
-            {# Fin partie gauche #}
-        </div>
-	</div>
-</section>
+                        </div>
+                        <div class="">
+                            <small class="text-muted">{{member.updatedAt|format_datetime(locale='fr') }}</small>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                    </div>
+                </a>
+            {% else %}
+
+                <a href="{{path('send_private_message', {username : member.username})}}"  class="list-group-item list-group-item-action">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                            <div>
+                                <h5 class="mb-1 text-primary">{{member.username}}</h5>
+                                <small class="text-muted">{{member.lastMessage}}</small>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <small class="text-muted">{{member.updatedAt|format_datetime(locale='fr')  }}</small>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
