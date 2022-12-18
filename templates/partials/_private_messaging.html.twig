@@ -19,11 +19,13 @@
 
                         </div>
                         <div class="">
-                            <small class="text-muted">{{member.updatedAt|format_datetime(locale='fr') }}</small>
+                            {% if member.updatedAt|date("Y-m-d") == "now"|date("Y-m-d") %}
+                                <small class="text-muted">aujourd'hui {{member.updatedAt|date("H-i-s:") }}</small>
+                            {% else %}
+                                <small class="text-muted"> {{member.updatedAt|date("d M Y ") }}</small>
+                            {% endif %}
                         </div>
 
-                    </div>
-                    <div class="text-center">
                     </div>
                 </a>
             {% else %}
@@ -39,7 +41,12 @@
 
                         </div>
                         <div class="">
-                            <small class="text-muted">{{member.updatedAt|format_datetime(locale='fr')  }}</small>
+                            {% if member.updatedAt|date("Y-m-d") == "now"|date("Y-m-d") %}
+
+                                <small class="text-muted">aujourd'hui {{member.updatedAt|date("H-i-s:") }}</small>
+                            {% else %}
+                                 <small class="text-muted"> {{member.updatedAt|date("d M Y ") }}</small>
+                            {% endif %}
                         </div>
 
                     </div>
