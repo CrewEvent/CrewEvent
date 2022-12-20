@@ -1,81 +1,81 @@
+{% for post_card in post %}
+<div class="card  mt-4" >
+    <div class="card-header bg-transparent d-flex justify-content-between align-items-center ">
 
-    <section >
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 col-lg-10 col-xl-8">
-                {% for post_card in post %}
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="d-flex flex-start align-items-center">
-                                <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
-                                <div>
-                                    {% if post_card.publisher == app.user.username %} 
-                                        <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_profile')}}">{{post_card.publisher}}</a></h6>
-                                        {% else %}
-                                        <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_show_profile', {username: post_card.publisher})}}">{{post_card.publisher}}</a></h6>
-                                    {% endif %}
-                                    
-                                    <p class="text-muted small mb-0">
-                                        {{post_card.createdAt|date("m/d/Y")}}
-                                        {# Shared publicly - Jan 2020 #}
-                                    </p>
-                                </div>
-                            </div>
+        <div class="d-flex justify-content-start align-items-center">
+            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
 
-                            <p class="mt-3 mb-4 pb-2">
-                                {{post_card.content}}
-                            </p>
-
-                            <div class="small d-flex justify-content-between">
-                               
-                                    <a href="{{path('post_like',{id : post_card.id})}}" class="d-flex align-items-center me-3">
-                                        <i class="far fa-thumbs-up fa-lg"></i>
-                                        <p class="mx-3 my-0" id="like-{{post_card.id}}">{{post_card.likes|length}}</p>
-                                    </a>
-                                
-
-
-                                <a href="#collapse-{{post_card.id}}" class="d-flex align-items-center me-3" aria-expanded="false"
-                                    aria-controls="collapse-{{post_card.id}}" data-mdb-toggle="collapse">
-                                    <i class="far fa-comment-dots fa-lg"></i>
-                                    <p class="mx-3 my-0">{{post_card.comments|length}}</p>
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <div class="collapse mt-3"  id="collapse-{{post_card.id}}">
-                            <div class=" py-3 border-0">
-                                <turbo-frame id="comment-form">
-                                    <form class="" action="{{path('app_comment', {id : post_card.id})}}" method="get" role="form">
-                                        <div class="d-flex flex-start w-100">
-                                            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
-                                            <div class="form-group w-100">
-                                                <label class="form-label" for="textAreaExample">Message</label>
-                                                <textarea class="form-control" id="textAreaExample" rows="1" name="comment"></textarea>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="float-end mt-2 pt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
-                                            {# <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button> #}
-                                        </div>
-                                    </form>
-                                </turbo-frame>
-                            
-                            </div>
-
-                            {# On affiche ici les commentaires à l'aide de turbo #}
-                            <div id="comment-{{post_card.id}}">
-                        
-                                
-                            </div>
-                            <div class="mt-5">
-                                {{include('partials/_comments.html.twig')}}
-                            </div>
-                            
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+            {% if post_card.publisher == app.user.username %}
+                <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_profile')}}" class="text-decoration-none">{{post_card.publisher}}</a></h6>
+            {% else %}
+                <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_show_profile', {username: post_card.publisher})}}" class="text-decoration-none">{{post_card.publisher}}</a></h6>
+            {% endif %}
         </div>
-    </section>
+
+        <div>
+            <p class="text-muted small mb-0">
+                {% if post_card.createdAt|date("Y-m-d") == "now"|date("Y-m-d") %}
+                    <small class="text-muted">aujourd'hui à {{post_card.createdAt|date("H:s") }}</small>
+                {% else %}
+                    <small class="text-muted"> {{post_card.createdAt|date("d M Y ") }}</small>
+                {% endif %}
+
+            </p>
+        </div>
+
+
+    </div>
+    <div class="card-body ">
+        <p class="card-text">{{post_card.content}}</p>
+    </div>
+    <div class="card-footer bg-transparent d-flex flex-column">
+        <div class="d-flex justify-content-start align-items-center gap-4">
+            <a href="{{path('post_like',{id : post_card.id})}} " class="d-flex align-items-center text-decoration-none">
+                <i class="far fa-thumbs-up fa-lg"></i>
+                <span class="mx-2 my-0" id="like-{{post_card.id}}">{{post_card.likes|length}}</span>
+            </a>
+
+            <a href="#collapse-{{post_card.id}}" class="d-flex align-items-center me-3 text-decoration-none" aria-expanded="false"
+               aria-controls="collapse-{{post_card.id}}" data-bs-toggle="collapse">
+                <i class="far fa-comment-dots fa-lg"></i>
+                <p class="mx-2 my-0">{{post_card.comments|length}}</p>
+            </a>
+        </div>
+
+
+        <div class="collapse mt-3 "  id="collapse-{{post_card.id}}">
+            <div class="d-flex flex-column gap-2">
+                <turbo-frame id="comment-form">
+                    <form class="" action="{{path('app_comment', {id : post_card.id})}}" method="get" role="form">
+                        <div class="d-flex flex-start w-100">
+                            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
+                            <div class="form-group w-100">
+                                <label class="form-label" for="textAreaExample">Message</label>
+                                <textarea class="form-control" id="textAreaExample" rows="1" name="comment"></textarea>
+
+                            </div>
+                        </div>
+                        <div class="float-end my-1">
+                            <button type="submit" class="btn btn-primary btn-sm">poster</button>
+                        </div>
+                    </form>
+                </turbo-frame>
+                <div id="comment-{{post_card.id}}" class="d-flex flex-column gap-2">
+
+                </div>
+                <div class="d-flex flex-column gap-2">
+                    {{include('partials/_comments.html.twig')}}
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+

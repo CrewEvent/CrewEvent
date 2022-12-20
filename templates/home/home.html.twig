@@ -4,7 +4,22 @@
 
 
 {% block body %}
-   
-    {{include('partials/_new_post.html.twig')}}
-    {{include('partials/_publication.html.twig')}}
+    <div class="my-3 row">
+        <div class="col-xxl-3 border-3">
+
+        </div>
+
+        <div class="col-xxl-6 border-3 d-flex flex-column">
+
+            {{include('partials/_new_post.html.twig')}}
+            {{include('partials/_publication.html.twig')}}
+
+        </div>
+
+        <div class="col-xxl-3  border-3">
+
+        </div>
+    </div>
+
+
 {% endblock %}

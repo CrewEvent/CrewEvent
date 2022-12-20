@@ -1,27 +1,15 @@
 
 {% for item in post_card.comments %}
-    <div class="card">
-        <div class="card-body p-4">
-            <div class="row">
-                <div class="col">
-                    <div class="d-flex flex-start">
-                        <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="65" height="65"/>
-                        <div class="flex-grow-1 flex-shrink-1">
-                            <div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="mb-1">
-                                        {{item.commenter}}
-                                    </p>
-                                </div>
-                                <p class="small mb-0">
-                                   {{item.comment}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="card mx-xxl-5">
+        <div class="card-header bg-transparent d-flex justify-content-start align-items-center">
+            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
+            <span>{{item.commenter}}</span>
         </div>
-    </div>    
+        <div class="card-body">
+                <span class="small ">
+                    {{item.comment}}
+                </span>
+        </div>
+    </div>
 {% endfor %}
 
