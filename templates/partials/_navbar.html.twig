@@ -1,148 +1,108 @@
-{# 
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg  navbar-light bg-light">
-	<div
-		class="container-fluid justify-content-between">
-		<!-- Left elements -->
-		<div
-			class="d-flex my-2 my-sm-0">
-			<!-- Toggler -->
-			<button data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn shadow-0 p-0 ms-2 me-3 d-block d-xl-none" aria-controls="#sidenav-1" aria-haspopup="true">
-				<i class="fas fa-bars fa-lg"></i>
-			</button>
-			<!-- logo Brand -->
-			<a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{path("app_home")}}">
-				<img src="{{asset('images/crewevent-b.png')}}" height="50" alt="" loading="lazy" style="margin-top: 1px"/>
-			</a>
-			<!-- End logo Brand -->
-
-			<!-- Search form -->
-			<form class="input-group w-auto my-auto d-none d-sm-flex" action="{{path('app_recherche')}}" method="get" role="form">
-				<input autocomplete="off" type="search" class="form-control rounded" placeholder="Recherche" style="min-width: 125px" name="recherche"/>
-				<button type="submit" class="btn btn-primary">
-		            <i class="fas fa-search"></i>
-	            </button>
-			</form>
-		</div>
-
-		<!-- End Search form -->
-
-		<!-- Begin Center elements -->
-
-		<!--Home elements -->
-			<ul class="navbar-nav flex-row d-none d-md-flex"> <li class="nav-item me-3 me-lg-1 active">
-				<a class="nav-link" href="{{path("app_home")}}">
-					<span>
-						<i class="fas fa-home fa-lg"></i>
-					</span>
-					{# <span class="badge rounded-pill badge-notification bg-danger">1</span> #}
-
-
-<nav class="navbar navbar-expand-xxl fixed-top bg-white">
-
+<nav class="navbar navbar-expand-xxl bg-white">
 	<div class="container-fluid">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<a class="navbar-brand" href="{{ path('app_home') }}">
-			<img src="{{ asset('images/crewevent.png') }}" width="100">
-		</a>
 
-		<div>
-
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder" viewbox="0 0 16 16">
-					<path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
-				</svg>
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
+			<a class="navbar-brand" href="{{ path('app_home') }}">
+				<img src="{{ asset('images/crewevent.png') }}" width="100">
+			</a>
 
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2" aria-expanded="false">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill me-2">
-					<path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-				</svg>
-			</button>
-		</div>
+			<div>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder" viewbox="0 0 16 16">
+						<path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+					</svg>
+				</button>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill me-2">
+						<path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+					</svg>
+				</button>
+			</div>
 
 
-		<div class="collapse navbar-collapse " id="navbarTogglerDemo01">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+			<div class="collapse navbar-collapse " id="navbarTogglerDemo01">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 
-				<li class="nav-item">
-					<a class="nav-link active" href="{{ path('app_home') }}">
-						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-house-door" viewbox="0 0 16 16">
-							<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
-						</svg>
-					</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link active" href="{{ path('app_my_events' )}}">
-						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-calendar-event" viewbox="0 0 16 16">
-							<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-							<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-						</svg>
-					</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link active" href="{{ path('app_event_creation') }}">
-						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle" viewbox="0 0 16 16">
-							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-						</svg>
-					</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link active" href="#messageriePrivée">
-						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-chat-dots" viewbox="0 0 16 16">
-							<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-							<path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
-						</svg>
-					</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link active" href="#notifications">
-						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell" viewbox="0 0 16 16">
-							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-						</svg>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="{{ path('app_contacts') }}">
-						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-people" viewbox="0 0 16 16">
-							<path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
-						</svg>
-					</a>
-				</li>
-				<li class="nav-item mx-4">
-					<form class="d-flex" action="{{path('app_recherche')}}" method="get" role="form">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off" name="recherche">
-						<button class="btn btn-outline-primary" type="submit">Rechercher</button>
-					</form>
-				</li>
-
-			</ul>
-
-			<div class="dropdown">
-				<div class="" data-bs-toggle="dropdown" aria-expanded="false">
-					<a class="nav-link active " href="#mesévénementsParticipés">
-						<img src="{{ asset('images/pas_de_photo.png') }}" width="50" class="rounded-circle">
-					</a>
-				</div>
-				<ul class="dropdown-menu">
-					<li>
-						<a class="dropdown-item" href="{{ path('app_profile') }}">Profile</a>
+					<li class="nav-item">
+						<a class="nav-link active" href="{{ path('app_home') }}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-house-door" viewbox="0 0 16 16">
+								<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+							</svg>
+						</a>
 					</li>
-					<li>
-						<a class="dropdown-item" href="{{ path('app_logout') }}">Deconnection</a>
+
+					<li class="nav-item">
+						<a class="nav-link active" href="{{ path('app_my_events' )}}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-calendar-event" viewbox="0 0 16 16">
+								<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+								<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+							</svg>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" href="{{ path('app_event_creation') }}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle" viewbox="0 0 16 16">
+								<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+								<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+							</svg>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" href="#messageriePrivée">
+							<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-chat-dots" viewbox="0 0 16 16">
+								<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								<path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+							</svg>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active" href="#notifications">
+							<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell" viewbox="0 0 16 16">
+								<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+							</svg>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="{{ path('app_contacts') }}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-people" viewbox="0 0 16 16">
+								<path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+							</svg>
+						</a>
+					</li>
+					<li class="nav-item mx-4">
+						<form class="d-flex" action="{{path('app_recherche')}}" method="get" role="form">
+							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off" name="recherche">
+							<button class="btn btn-outline-primary" type="submit">Rechercher</button>
+						</form>
 					</li>
 
 				</ul>
-			</div>
 
+				<div class="dropdown">
+					<div class="" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link active " href="#mesévénementsParticipés">
+							<img src="{{ asset('images/pas_de_photo.png') }}" width="50" class="rounded-circle">
+						</a>
+					</div>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{ path('app_profile') }}">Profile</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_logout') }}">Deconnection</a>
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
 		</div>
-	</div>
-</nav>
+		<<<<<<<HEAD</nav>=======<divclass="collapsenavbar-collapse"id="navbarTogglerDemo01"><ulclass="navbar-navme-automb-2mb-lg-0"><liclass="nav-item"><aclass="nav-linkactive"href="{{path('app_home')}}"><svgxmlns="http://www.w3.org/2000/svg"width="28"height="28"fill="currentColor"class="bibi-house-door"viewBox="001616"><pathd="M8.3541.146a.5.5000-.7080l-66A.5.50001.57.5v7a.5.5000.5.5h4.5a.5.5000.5-.5v-4h2v4a.5.5000.5.5H14a.5.5000.5-.5v-7a.5.5000-.146-.354L135.793V2.5a.5.5000-.5-.5h-1a.5.5000-.5.5v1.293L8.3541.146ZM2.514V7.707l5.5-5.55.55.5V14H10v-4a.5.5000-.5-.5h-3a.5.5000-.5.5v4H2.5Z"/></svg></a></li><liclass="nav-item"><aclass="nav-linkactive"href="{{path('app_my_events')}}"><svgxmlns="http://www.w3.org/2000/svg"width="26"height="26"fill="currentColor"class="bibi-calendar-event"viewBox="001616"><pathd="M116.5a.5.5001.5-.5h1a.5.5001.5.5v1a.5.5001-.5.5h-1a.5.5001-.5-.5v-1z"/><pathd="M3.50a.5.5001.5.5V1h8V.5a.5.500110V1h1a2200122v11a22001-22H2a22001-2-2V3a220012-2h1V.5a.5.5001.5-.5zM14v10a1100011h12a110001-1V4H1z"/></svg></a></li><liclass="nav-item"><aclass="nav-linkactive"href="{{path('app_event_creation')}}"><svgxmlns="http://www.w3.org/2000/svg"width="26"height="26"fill="currentColor"class="bibi-plus-circle"viewBox="001616"><pathd="M815A7701181a77001014zm01A8801080a88000016z"/><pathd="M84a.5.5001.5.5v3h3a.5.500101h-3v3a.5.5001-10v-3h-3a.5.50010-1h3v-3A.5.500184z"/></svg></a></li><liclass="nav-item"><aclass="nav-linkactive"href="{{path('private_message')}}"><svgxmlns="http://www.w3.org/2000/svg"width="26"height="26"fill="currentColor"class="bibi-chat-dots"viewBox="001616"><pathd="M58a11011-201100120zm40a11011-201100120zm31a110100-21100002z"/><pathd="m2.16515.803.02-.004c1.83-.3632.948-.8423.468-1.105A9.069.06000815c4.41808-3.1348-7s-3.582-7-8-7-83.134-87c01.76.7433.371.974.6a10.43710.437001-.5242.318l-.003.011a10.72210.722001-.244.637c-.079.186.074.394.273.362a21.67321.673000.693-.125zm.8-3.108a11000-.287-.801C1.61810.8319.46818c0-3.1923.004-67-6s72.80876c03.193-3.0046-76a8.068.06001-2.088-.27211000-.711.074c-.387.196-1.24.57-2.634.893a10.9710.97000.398-2z"/></svg></a></li><liclass="nav-item"><aclass="nav-linkactive"href="{{path('app_notifications')}}"><svgxmlns="http://www.w3.org/2000/svg"width="26"height="26"fill="currentColor"class="bibi-bell"viewBox="001616"><pathd="M816a220002-2H6a2200022zM81.918l-.797.161A4.0024.00200046c0.628-.1342.197-.4593.742-.16.767-.3761.566-.6632.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.1348.197126.628126a4.0024.002000-3.203-3.92L81.917zM14.2212c.223.447.481.801.781H1c.299-.199.557-.553.78-1C2.6810.236.8836c0-2.421.72-4.444.005-4.901a110111.990A5.0025.002001136c0.88.324.21.226z"/></svg><spanclass="translate-middlebadgerounded-pillbg-danger"id="notifications">{{app.user.notifications.count}}</span></a></li><liclass="nav-item"><aclass="nav-linkactive"href="{{path('app_contacts')}}"><svgxmlns="http://www.w3.org/2000/svg"width="28"height="28"fill="currentColor"class="bibi-people"viewBox="001616"><pathd="M1514s101-1-1-4-5-4-53-541111h8Zm-7.978-1A.261.261001712.996c.001-.264.167-1.03.76-1.72C8.31210.6299.282101110c1.71702.687.633.241.276.593.69.7581.457.761.72l-.008.002a.274.274001-.014.002H7.022ZM117a220100-42200004Zm3-2a33011-603300160ZM6.9369.28a5.885.88000-1.23-.247A7.357.3500059c-40-53-540.667.333111h4.216A2.2382.238001513c0-1.01.377-2.0421.09-2.904.243-.294.526-.569.846-.816ZM4.9210A5.4935.493000413H1c0-.26.164-1.03.76-1.724.545-.6361.492-1.2563.16-1.275ZM1.55.5a330116033001-60Zm3-2a2201004220000-4Z"/></svg></a></li><liclass="nav-itemmx-4"><formclass="d-flex"action="{{path('app_recherche')}}"method="get"role="form"><inputclass="form-controlme-2"type="search"placeholder="Search"aria-label="Search"autocomplete="off"name="recherche"><buttonclass="btnbtn-outline-primary"type="submit">Rechercher</button></form></li></ul><divclass="dropdown"><divclass=""data-bs-toggle="dropdown"aria-expanded="false"><aclass="nav-linkactive"href="#mesévénementsParticipés"><imgsrc="{{asset('images/pas_de_photo.png')}}"width="50"class="rounded-circle"></a></div><ulclass="dropdown-menu"><li><aclass="dropdown-item"href="{{path('app_profile')}}">Profile</a></li><li><aclass="dropdown-item"href="{{path('app_logout')}}">Deconnection</a></li></ul></div></div></div></nav>>> {% if not app.user.notifications.empty %} {% endif %}>>>>> ea767f4989a7c58ea911d42323547680502a55fe
