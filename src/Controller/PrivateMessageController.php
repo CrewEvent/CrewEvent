@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\PrivateMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +37,6 @@ class PrivateMessageController extends AbstractController
     #[Route('/private/message/{username}', name: 'send_private_message')]
     public function send_message(Request $request, HubInterface $hub, User $user, EntityManagerInterface $em, PrivateMessageRepository $messageRepo, MemberRepository $memberRepo): Response
     {
-
 
 
         //On affiche d'abord les messages entre ces 2 utilisateurs
@@ -93,27 +93,38 @@ class PrivateMessageController extends AbstractController
             $message->setContent($data['message']);
 
 
-            //On enregistre le mebre dans la base de donnée
+            //On enregistre le membre dans la base de donnée
             $member->setUsername($this->getUser()->getUserIdentifier());
             $member->setOtherUsername($user->getUserIdentifier());
             $member->setLastMessage($data['message']);
 
+            //On setup la notification
+            $notification = new Notification;
+            $notification->setCategorie('messsage');
+            $notification->setName($this->getUser()->getUserIdentifier());
+            $notification->setUser($user);
+
+            /*$nbr_notifications =count( $user->getNotifications()->toArray());*/
 
 
-            // 🔥 The magic happens here! 🔥
-            // The HTML update is pushed to the client using Mercure
-
+            //La magic est là
             $hub->publish(new Update(
                 $canal,
-                $this->renderView('chat/private_message.stream.html.twig', ['message' => $data['message'], 'receiver' => $user->getUserIdentifier()])
+                $this->renderView('chat/private_message.stream.html.twig',
+                    ['message' => $data['message'],
+                        'receiver' => $user->getUserIdentifier()
+
+                    ])
             ));
 
 
             //On registre maintenant dans la base de donnée
             $em->persist($message);
             $em->persist($member);
+            $em->persist($notification);
             $em->flush();
         }
+
         // Force an empty form to be rendered below
         // It will replace the content of the Turbo Frame after a post
         $form = $emptyForm;

@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Notification;
+use App\Repository\MemberRepository;
 use App\Repository\ParticipantRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,6 +23,7 @@ class NotificationEventSubscriber implements EventSubscriberInterface
     private $participantRepo;
     private $userRepo;
     private $user;
+    private $members;
 
 
     //On injecte nos dépendances
@@ -29,7 +31,9 @@ class NotificationEventSubscriber implements EventSubscriberInterface
                                 EntityManagerInterface $em,
                                 RequestStack $request,
                                 ParticipantRepository $participantRepo,
-                                UserRepository $userRepo)
+                                UserRepository $userRepo,
+                                MemberRepository $memberRepo
+    )
 
     {
         $this->tokenStorage = $tokenStorage;
@@ -37,8 +41,11 @@ class NotificationEventSubscriber implements EventSubscriberInterface
         $this->request = $request;
         $this->participantRepo = $participantRepo;
         $this->userRepo = $userRepo;
-        $this->user = $tokenStorage->getToken()->getUser();
+        if($tokenStorage->getToken()) {
+            $this->user = $tokenStorage->getToken()->getUser();
+        }
     }
+
 
     public function onControllerEvent(ControllerEvent $event): void
     {
@@ -48,7 +55,9 @@ class NotificationEventSubscriber implements EventSubscriberInterface
         if ($routeName == "app_event_delete_annonce" ||
             $routeName == "event_annonce_add" ||
             $routeName == "event_annonce_update_success"
-        ){
+        )
+
+        {
 
 
             //On récupére le nom de l'événement présent dans la requéte
@@ -73,17 +82,34 @@ class NotificationEventSubscriber implements EventSubscriberInterface
         }
 
         if ($routeName == "app_event_news"){
+
             $name = $event->getRequest()->attributes->get('_route_params')['name'];
             $notifications = $this->user->getNotifications()->toArray();
-            foreach ( $notifications as $notification ){
-                if($notification->getName() == $name){
-                   $user = $this->user->removeNotification($notification);
+            if (!empty($notifications)) {
+                foreach ($notifications as $notification) {
+                    if ($notification->getName() == $name) {
+                        $this->user = $this->user->removeNotification($notification);
+                    }
                 }
+                $this->em->persist($this->user);
+                $this->em->flush();
             }
-            $this->em->persist($user);
-            $this->em->flush();
-
         }
+
+        if ($routeName == 'send_private_message'){
+            $username = $event->getRequest()->attributes->get('_route_params')['username'];
+            $notifications = $this->user->getNotifications()->toArray();
+            if (!empty($notifications)){
+                foreach ($notifications as $notification){
+                    if ($notification->getName() == $username){
+                        $this->user = $this->user->removeNotification($notification);
+                    }
+                }
+                $this->em->persist($this->user);
+                $this->em->flush();
+            }
+        }
+
 
     }
 

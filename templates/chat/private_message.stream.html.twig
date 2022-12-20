@@ -20,28 +20,6 @@
                     </div>
                 </div>
             </li>
-  
-            
-   
-            {# chat autre utilisateur #}
-                {# <li class="d-flex justify-content-end mb-4">
-                    <div class="card w-100">
-                        <div class="card-header d-flex justify-content-between p-3">
-                            <p class="fw-bold mb-0">{{app.user.username}}</p>
-                            <p class="text-muted small mb-0">
-                                <i class="far fa-clock"></i>
-                                {{"now"|format_datetime('none', 'short', locale='fr') }}</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="mb-0">
-                                {{message}} 
-                            </p>
-                        </div>
-                    </div>
-                    <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                </li> #}
-
-        {# {% endif %} #}
 
     <script>
 		var objDiv = document.getElementById("chat-scroll");
@@ -50,3 +28,13 @@
 	</template>
 
 </turbo-stream>
+
+{# #}{# On update en temps réel les notifications#}{#
+<turbo-stream action="update" target="notifications">
+    <template>
+         <span class=" translate-middle badge rounded-pill bg-danger">
+             {{ nbr_notifications }}
+         </span>
+    </template>
+
+</turbo-stream>#}

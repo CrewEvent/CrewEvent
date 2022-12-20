@@ -22,7 +22,22 @@
                         </div>
                         <p class="mb-1">Il y'a du nouveau dans l'événement.</p>
                     </a>
+                {% else %}
+                    <a href="{{ path('send_private_message',{username:notification.name}) }}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ notification.name }}</h5>
+                            <div class="">
+                                {% if notification.date|date("Y-m-d") == "now"|date("Y-m-d") %}
+                                    <small class="text-muted">aujourd'hui à {{notification.date|date("H : i") }}</small>
+                                {% else %}
+                                    <small class="text-muted"> {{notification.datet|date("d M Y ") }}</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p class="mb-1">Vous avez reçu un nouveau message</p>
+                        </a>
                 {% endif %}
+
 
             {% endfor %}
 
