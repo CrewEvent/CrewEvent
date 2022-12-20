@@ -38,7 +38,7 @@ class ContactController extends AbstractController
         $em->flush($contact);
 
         //puis on redirigige dans la page d'acceuil ?? à revoir
-        return $this->redirectToRoute('app_index');
+        return $this->redirectToRoute('app_home');
     }
 
     #[Route('/contact/remove/{username}', name: 'remove_contact')]
