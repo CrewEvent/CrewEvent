@@ -21,6 +21,7 @@ class NotificationEventSubscriber implements EventSubscriberInterface
     private $request;
     private $participantRepo;
     private $userRepo;
+    private $user;
 
 
     //On injecte nos dépendances
@@ -36,6 +37,7 @@ class NotificationEventSubscriber implements EventSubscriberInterface
         $this->request = $request;
         $this->participantRepo = $participantRepo;
         $this->userRepo = $userRepo;
+        $this->user = $tokenStorage->getToken()->getUser();
     }
 
     public function onControllerEvent(ControllerEvent $event): void
@@ -66,6 +68,19 @@ class NotificationEventSubscriber implements EventSubscriberInterface
 
                 $this->em->persist($notification);
             }
+            $this->em->flush();
+
+        }
+
+        if ($routeName == "app_event_news"){
+            $name = $event->getRequest()->attributes->get('_route_params')['name'];
+            $notifications = $this->user->getNotifications()->toArray();
+            foreach ( $notifications as $notification ){
+                if($notification->getName() == $name){
+                   $user = $this->user->removeNotification($notification);
+                }
+            }
+            $this->em->persist($user);
             $this->em->flush();
 
         }

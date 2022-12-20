@@ -558,6 +558,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     public function getNotifications(): Collection
     {
         return $this->notifications;
+
     }
 
     public function addNotification(Notification $notification): self

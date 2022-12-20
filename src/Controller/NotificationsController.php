@@ -12,7 +12,7 @@ class NotificationsController extends AbstractController
     #[Route('/notifications', name: 'app_notifications')]
     public function notifications(NotificationRepository $notifRepo): Response
     {
-        $notifications = $notifRepo->findBy(['user' => $this->getUser()->getId()]);
+        $notifications = $notifRepo->findBy(['user' => $this->getUser()->getId()],['date' =>'DESC']);
 
         return $this->render('notifications/notifications.html.twig',[
             'notifications' => $notifications
