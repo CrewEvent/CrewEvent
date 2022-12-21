@@ -81,14 +81,14 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
+        } elseif ($form->isSubmitted() && !($form->isValid())) {
+            dump($form);
         }
 
         return $this->render('registration/register.html.twig', [
             'form' => $form->createView()
         ]);
     }
-
-
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response

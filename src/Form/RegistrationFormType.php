@@ -11,6 +11,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,14 +28,21 @@ class RegistrationFormType extends AbstractType
     {
 
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('username')
-            ->add('email')
-
+            ->add('nom', TextType::class, [
+                'required' => true,
+            ])
+            ->add('prenom', TextType::class, [
+                'required' => true,
+            ])
+            ->add('username', TextType::class, [
+                'required' => true,
+            ])
+            ->add('email', EmailType::class, [
+                'required' => true,
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label'  => ' ',
+                'label'  => '',
                 'constraints' => [
                     new IsTrue([
                         'message' => "Tu dois accépter les termes d'utilisations",
@@ -42,13 +50,13 @@ class RegistrationFormType extends AbstractType
                 ],
                 'attr' => ['class' => 'form-check-input me-2']
             ])
-
             ->add(
                 'plainPassword',
                 RepeatedType::class, //type répétition
                 [
                     'type' => PasswordType::class,
                     'mapped' => false,
+                    'required' => true,
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
                         new NotBlank([
@@ -59,10 +67,7 @@ class RegistrationFormType extends AbstractType
                             'minMessage' => 'Your password should be at least {{ limit }} characters',
                             'max' => 4096
                         ])
-
                     ]
-
-
                 ]
             );
     }
