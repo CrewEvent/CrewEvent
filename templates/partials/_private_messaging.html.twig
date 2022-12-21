@@ -20,7 +20,7 @@
                         </div>
                         <div class="">
                             {% if member.updatedAt|date("Y-m-d") == "now"|date("Y-m-d") %}
-                                <small class="text-muted">aujourd'hui {{member.updatedAt|date("H : s") }}</small>
+                                <small class="text-muted">aujourd'hui à {{member.updatedAt|date("H:s") }}</small>
                             {% else %}
                                 <small class="text-muted"> {{member.updatedAt|date("d M Y ") }}</small>
                             {% endif %}
