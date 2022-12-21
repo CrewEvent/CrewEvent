@@ -73,4 +73,29 @@ class EventRepository extends ServiceEntityRepository
             ->orderBy('e.createdAt', 'ASC')
             ->getQuery();
     }
+    //On récupére ici juste les fils de discussions passés par cet utilisateur
+
+    /**
+     * @return Event[] Returns an array of Event objects
+     */
+    public function findfavEvent($fav): array
+    {
+        if ($fav == null){
+            $fav[0]='';
+            $fav[1]='';
+
+        }
+        if(!next($fav)){
+            $fav[1]='';
+        }
+        return $this->createQueryBuilder('p')
+            ->andwhere('p.tag = :fav1 or p.tag = :fav2')
+            ->setParameter('fav1', $fav[0])
+            ->setParameter('fav2', $fav[1])
+            ->orderBy('p.updatedAt', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 }
