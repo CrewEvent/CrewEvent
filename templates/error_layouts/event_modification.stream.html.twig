@@ -1,0 +1,7 @@
+<turbo-stream action="update" target="flash-error">
+    <template>
+        {% for flash_warning in app.flashes('warning') %}
+            <div class="alert alert-danger" role="alert">{{ flash_warning }}</div>
+        {% endfor %}
+    </template>
+</turbo-stream>

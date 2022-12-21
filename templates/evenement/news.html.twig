@@ -1,0 +1,32 @@
+{% extends 'default_base.html.twig' %}
+
+{# Page de l'événement #}
+
+{% block title %}
+	News !
+{% endblock %}
+
+{% block body %}
+
+<div class="row my-3">
+	<div class="col-xxl-3">
+
+            {{ include('partials/_sidebar.html.twig',{
+				"general" : "link-dark",
+				"news" : "link-white active",
+				"chat" : "link-dark"
+			})}}
+
+	</div>
+
+	<div class="col-xxl-6 ">
+		{{ include('partials/_news.html.twig') }}
+	</div>
+
+  <div class="col-xxl-3 ">
+  
+      {{include('partials/_partie_sub.html.twig')}}
+  </div>
+</div>
+    
+{% endblock %}

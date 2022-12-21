@@ -6,12 +6,16 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Entity\Participant;
 use App\Form\EventCreationType;
+use App\Repository\EventRepository;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\UX\Turbo\TurboBundle;
 
 /*
 Controller pour la gestion d'événement
@@ -27,6 +31,7 @@ class EventController extends AbstractController
 
         //On crée un nouveau événement
         $event = new Event;
+
         //On crée un nouveau formulaire de création d'événement
         $form = $this->createForm(EventCreationType::class, $event);
 
@@ -51,7 +56,7 @@ class EventController extends AbstractController
             $em->persist($event);
             $em->flush();
             //redirection vers la page de l'événement
-            //on récupére le nom dans le formulaire qu'on donne en paramétre à app_show_event   
+            //on récupére le nom dans le formulaire qu'on donne en paramétre à app_show_event
             return $this->redirectToRoute('app_add_participant', ['name' => $form->get('name')->getData()]);
         }
 
@@ -63,54 +68,93 @@ class EventController extends AbstractController
         ]);
     }
 
+
     //Page de l'événement
-    #[Route('/event/show/{name}', name: 'app_show_event', methods: ['POST', 'GET'])]
-    public function event_show(Event $event, ParticipantRepository $participantRepo): Response
+    #[Route('/event/update/{name}', name: 'app_event_update', methods: ['POST', 'GET'])]
+    public function event_update(Event $event, Request $request, ParticipantRepository $participantRepo, EntityManagerInterface $em)
     {
-
-        //On récupére l'identifiant de l'utilisateur connecté
-        $username = $this->getUser()->getUserIdentifier();
-
-        //Cherche si l'utilisateur est déja participant
-        // $isParticipant = $this->search_if_participant($username, $event->getName());
-
-        $isParticipant = false;
-
         //On prend tous les objets participants qui ont pour attribut le nom de l'événement
         $participants = $participantRepo->findBy(['eventName' => $event->getName()]);
 
-        //Pour chque objet on regarde si le nom d'utilisateur est celui de l'utilisateur connecté
-        foreach ($participants as $participant) {
-            if ($participant->getParticipantUsername() == $username) {
-                $isParticipant = true;
+        //On crée un nouveau formulaire de création d'événement
+        $form = $this->createForm(EventCreationType::class, $event);
+
+        //on dit au formulaire de gérer les requettes
+        $form->handleRequest($request);
+
+        //Si le formulaire est soumis mais pas valide
+        if ($form->isSubmitted() && !$form->isValid()) {
+
+
+            $this->addFlash('warning', 'Vérifier que les éléments soient bien renseignés');
+
+            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+            return $this->render('error_layouts/event_modification.stream.html.twig');
+        }
+        //Si le formulaire est soumis et valid
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            //On set le nouveau non de l'événement dans la liste des membres
+            foreach ($participants as $participant){
+                $participant->setEventName($form->get('name')->getData());
+                $em->persist($participant);
             }
+            //Enregistrement dans la base de donnée
+            $em->persist($event);
+            $em->flush();
+
+            //On update la liste des membres de l'événement, on change juste le nom
+            return $this->redirectToRoute('app_show_event', ['name' => $event->getName()]);
+
         }
 
-        if ($isParticipant == false) {
-            $this->addFlash("warning", "Vous n'avez pas encore participé à cet événément");
-        }
-        //retourne la page
-        return $this->render('pages/event/event_show.html.twig', [
-            'event' => $event,
+
+        //ça affiche page de création d'événement
+        return $this->render('pages/event/event_modification.html.twig', [
+            'event' =>$event,
+            'form' => $form->createView(),
             'participants' => $participants,
-            'isParticipant' => $isParticipant
-
         ]);
     }
 
-    //Fonction recherche si l'utilisateur est déja participant à l'événement
-    // public function search_if_participant(String $username, String $event_name)
-    // {
+    //Page de l'événement
+    #[Route('/event/deletion/{name}', name: 'event_deletion', methods: ['POST', 'GET'])]
+    public function event_deletion(Event $event,EventRepository $eventRepo)
+    {
+        $eventRepo->remove($event,true);
+        return $this->redirectToRoute('app_home');
+    }
 
-    //     $ParticipantRepo = $this->getDoctrine()->getRepository(Participant::class);
-    //     $participants = $ParticipantRepo->findAll();
+    //Page de l'événement
+    #[Route('/event/participant/quit/{participantUsername}', name: 'event_participant_quit', methods: ['POST', 'GET'])]
+    public function event_participant_quit(Participant $participant, EntityManagerInterface $em)
+    {
 
-    //     foreach ($participants as $participant) {
-    //         if ($participant->getParticipantUsername() == $username && $participant->getEventName() == $event_name) {
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-    //     }
-    // }
+        $event = $participant->getEvent();
+        $event->removeParticipant($participant);
+        $em->persist($event);
+        $em->flush();
+        return $this->redirectToRoute('app_home');
+    }
+
+    //My events
+    #[Route('/my_events', name: 'app_my_events', methods: ['POST', 'GET'])]
+    public function my_events(ParticipantRepository $participantRepo,EventRepository $eventRepo,EntityManagerInterface $em):response
+    {
+        //On regarde dans la liste des événements pour voir les événements qu'on a crée
+        //On retourne donc un tableau des événements que j'ai crée
+        $created = $eventRepo->findBy(['user'=> $this->getUser()->getId()]);
+
+        //On regarde la liste des participants
+        //On retourne donc la liste des événments que j'ai participés
+        $participated = $participantRepo->findBy(['participantUsername'=> $this->getUser()->getUserIdentifier()]);
+
+        return $this->render('pages/event/my_events.html.twig',[
+            'events_created'=>$created,
+            'events_participated'=>$participated
+        ]);
+    }
+
+
 }

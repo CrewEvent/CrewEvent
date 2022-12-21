@@ -1,0 +1,45 @@
+
+
+<div>
+    <div class="p-3 bg-primary bg-opacity-10 border border-primary border rounded mb-2">
+        <h3># Modifications événement</h3>
+    </div>
+    {{ form_start(form) }}
+
+    <div class="form-group my-3">
+
+        <div id="flash-error">
+
+        </div>
+        <label for="exampleInput">Nom de l'événement</label>
+        {# <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer le nom de l'événement"> #}
+        {{form_widget(form.name, { attr: { class: 'form-control', id: 'exampleInput' } })}}
+        <small id="emailHelp" class="form-text text-muted">Le nom doit contenir au moins 6 charactéres !</small>
+    </div>
+
+
+    <div class="form-group my-3">
+        <label for="exampleInput">Tag</label>
+        {{form_widget(form.tag, { attr: { class: 'form-select form-select-lg', id: 'exampleInput' } })}}
+        <small id="emailHelp" class="form-text text-muted">Référencer cet événement</small>
+    </div>
+    <div class="form-group my-3">
+        <label for="exampleInput">Description</label>
+        {# <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer le tag "> #}
+        {{form_widget(form.description, { attr: { class: 'form-control', id: 'exampleInput' } })}}
+        <small id="emailHelp" class="form-text text-muted">C'est ce qui définit votre événement !</small>
+    </div>
+    <div class="form-check my-3">
+        {# <input type="checkbox" class="form-check-input" id="exampleCheck1"> #}
+        {{form_widget(form.agreeTerms, { attr: { class: 'form-check-label', id: 'exampleCheck1' } })}}
+        <label class="form-check-label" for="exampleCheck1"> J'accépte les <a href="#!">conditions d'utilisations</a></label>
+
+    </div>
+    <div class="text-center my-3">
+        <button type="submit" class="btn btn-primary w-50 ">Modifier</button>
+    </div>
+
+    {{ form_end(form) }}
+
+
+</div>

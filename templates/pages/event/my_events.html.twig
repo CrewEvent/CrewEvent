@@ -1,0 +1,20 @@
+{% extends 'default_base.html.twig' %}
+{#
+Page de la liste des événements participés
+#}
+
+{% block title %}
+   Mes événements
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid p-3">
+
+        <div class="container">
+            {{include('partials/_my_events.html.twig')}}
+        </div>
+    </div>
+
+
+
+{% endblock %}

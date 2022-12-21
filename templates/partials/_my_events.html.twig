@@ -1,0 +1,18 @@
+
+
+<div class="list-group">
+
+    <div class="text-center my-2">
+        <h4>Mes événements participés</h4>
+    </div>
+    {% for event in events_participated %}
+        <a href="{{ path('app_show_event',{name:event.eventName}) }}" class="list-group-item list-group-item-action">{{ event.eventName }}</a>
+    {% endfor %}
+
+    <div class="text-center my-2">
+        <h4>Mes événements crées</h4>
+    </div>
+    {% for event in events_created %}
+        <a href="{{ path('app_show_event',{name:event.name}) }}" class="list-group-item list-group-item-action">{{ event.name }}</a>
+    {% endfor %}
+</div>

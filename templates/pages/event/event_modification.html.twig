@@ -1,0 +1,34 @@
+{% extends 'default_base.html.twig' %}
+{#
+Page de modification de l'événement
+#}
+
+{% block title %}
+    page de modification de l'événement
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row my-3">
+        <div class="col-xxl-3">
+
+            {{ include('partials/_sidebar.html.twig',{
+                "general" : "link-dark",
+                "news" : "link-dark",
+                "chat" : "link-dark"
+            })}}
+
+        </div>
+
+        <div class="col-xxl-6 ">
+            {{include('partials/_event_modification.html.twig')}}
+        </div>
+
+        <div class="col-xxl-3 ">
+            {{include('partials/_partie_sub.html.twig')}}
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -8,22 +8,25 @@
 
 {% block body %}
 
-<div class="row">
-	<div class="col-md-3">
+<div class="row my-3">
+	<div class="col-xxl-3">
 
-    {{ include('partials/_sidebar.html.twig',{
-      "active_ig" : "active",
-       "active_dis" : "",
-       "active_ar" : ""
-       })}}
+	   {{ include('partials/_sidebar.html.twig',{
+					"general" : "link-white active",
+					"news" : "link-dark",
+					"chat" : "link-dark"
+				})}}
 
-		{{ include('partials/_partie_sub.html.twig') }}
 	</div>
-	<div class="col-md-9">
+
+	<div class="col-xxl-6 ">
 		{{include('partials/_event_show.html.twig')}}
 	</div>
 
-
+  <div class="col-xxl-3 ">
+  
+      {{include('partials/_partie_sub.html.twig')}}
+  </div>
 </div>
 
 {% endblock %}
