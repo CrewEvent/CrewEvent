@@ -16,7 +16,7 @@
                                 {% if notification.date|date("Y-m-d") == "now"|date("Y-m-d") %}
                                     <small class="text-muted">aujourd'hui à {{notification.date|date("H : i") }}</small>
                                 {% else %}
-                                    <small class="text-muted"> {{notification.datet|date("d M Y ") }}</small>
+                                    <small class="text-muted"> {{notification.date|date("d M Y ") }}</small>
                                 {% endif %}
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                 {% if notification.date|date("Y-m-d") == "now"|date("Y-m-d") %}
                                     <small class="text-muted">aujourd'hui à {{notification.date|date("H : i") }}</small>
                                 {% else %}
-                                    <small class="text-muted"> {{notification.datet|date("d M Y ") }}</small>
+                                    <small class="text-muted"> {{notification.date|date("d M Y ") }}</small>
                                 {% endif %}
                             </div>
                         </div>

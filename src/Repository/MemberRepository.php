@@ -87,7 +87,7 @@ class MemberRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andwhere('p.username = :username or p.otherUsername = :username')
             ->setParameter('username', $username)
-            ->orderBy('p.updatedAt', 'ASC')
+            ->orderBy('p.updatedAt', 'DESC')
             ->getQuery()
             ->getResult();
     }
