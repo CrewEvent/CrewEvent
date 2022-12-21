@@ -1,0 +1,64 @@
+{% extends 'default_base.html.twig' %}
+
+{% block title %}Hello ContactController!
+{% endblock %}
+
+{% block body %}
+	{{ include('partials/_navbar.html.twig')}}
+
+
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<div class="mb-3">
+					<h1 class="card-title">Mes contacts
+						<span class="text-muted fw-normal ms-2">({{contacts|length}})</span>
+					</h1>
+				</div>
+			</div>
+			{# End partie haut gauche #}
+		</div>
+		{# Partie D'1 contact #}
+		<div class="row">
+			{% for contact in contacts %}
+				<div class="col-xl-3 col-sm-6">
+					<div class="card">
+						<div class="card-body">
+
+							<div class="d-flex flex-column align-items-center">
+								<div><img src="{{ asset('images/pas_de_photo.png')}}" alt="profilePhoto" class="avatar-md rounded-circle img-thumbnail"/></div>
+								<div class="flex-1 ms-3">
+									<h5 class="font-size-16 mb-1">
+										<a href="{{path('app_show_profile', {username : contact.contactUsername})}}" class="text-dark">{{contact.contactUsername}}</a>
+									</h5>
+								</div>
+							</div>
+
+							<div class="d-flex gap-5 pt-4 align-items-center justify-content-center">
+								<a href="#">
+									<i class="far fa-envelope fa-2x"></i>
+								</a>
+								<a href="{{path('remove_contact',{username : contact.contactUsername})}}" class="text-danger">
+									<i class="far fa-trash-alt fa-2x"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{# End contact card #}
+			{% endfor %}
+		</div>
+	</div>
+
+
+	{{form(FindContactType,{action:path('search_contact')})}}
+
+		<ul>
+			{% for result in ordered_contacts %}
+				<li>{{ result }}</li>
+			{% endfor %}
+		</ul>
+
+
+	{% endblock %}
+
