@@ -10,11 +10,11 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221220090540 extends AbstractMigration
+final class Version20221220215856 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'table notifications created';
+        return '';
     }
 
     public function up(Schema $schema): void
