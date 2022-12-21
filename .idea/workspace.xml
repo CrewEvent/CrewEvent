@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bcc3ff3-e431-46b4-b374-f752b33bf7d8" name="Changes" comment="">
+
+
+    <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,20 +223,41 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ROOT.DIV/SUPP_3/Workspace/CrewEvent&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ROOT.DIV\SUPP_3\Workspace\CrewEvent\templates\pages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.phpunit.xml.dist">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.watch" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -243,6 +270,11 @@
       <workItem from="1671007814908" duration="1003000" />
       <workItem from="1671015576923" duration="175000" />
       <workItem from="1671017067866" duration="144000" />
+      <workItem from="1671641464160" duration="677000" />
+      <workItem from="1671642682422" duration="144000" />
+      <workItem from="1671642846561" duration="439000" />
+      <workItem from="1671643315187" duration="1538000" />
+      <workItem from="1671645291816" duration="3031000" />
     </task>
     <servers />
   </component>
