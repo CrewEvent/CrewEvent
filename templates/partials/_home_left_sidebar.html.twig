@@ -11,5 +11,12 @@
 </div>
 <div>
     <h4 class="text-center">Suggestions</h4>
-
+    <div class="list-group">
+        {% for suggestion in suggestions %}
+            <a href="{{ path('app_show_event',{name : suggestion[0]}) }}" class="list-group-item list-group-item-action d-flex justify-content-start align-items-center">
+                <img src="https://github.com/mdo.png" alt="event_image" class="rounded-circle me-2" width="32" height="32">
+                <span>{{ suggestion[0] }}</span>
+            </a>
+        {% endfor %}
+    </div>
 </div>
