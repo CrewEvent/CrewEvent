@@ -3,26 +3,22 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Contact;
 use App\Form\FindContactType;
 use App\Repository\ContactRepository;
-use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+
+
+use function PHPUnit\Framework\isNull;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact/add/{username}', name: 'add_contact')]
     public function add_contact(User $user, EntityManagerInterface $em)
     {
-
-
-        // if ($contactRepo->findBy(['username' => $user->getUserIdentifier()])) {
-
         //Créer un nouveau contact
         $contact = new Contact;
 
@@ -38,7 +34,8 @@ class ContactController extends AbstractController
         $em->flush($contact);
 
         //puis on redirigige dans la page d'acceuil ?? à revoir
-        return $this->redirectToRoute('app_home');
+        //rajout la redirection vers show_profile
+        return $this->redirectToRoute('app_show_profile',['username' =>$this->getUser()->getUserIdentifier()]);
     }
 
     #[Route('/contact/remove/{username}', name: 'remove_contact')]
@@ -46,33 +43,40 @@ class ContactController extends AbstractController
     {
         $contact = $contactRepo->findOneBy(['user' => $user->getId(), 'username' => $this->getUser()->getUserIdentifier()]);
 
-        //On retire le contact de la base de donnée
+        //On retire le contact de la base de donnée_
         $em->remove($contact);
         $em->flush($contact);
 
         //puis on redirigige dans la page d'acceuil ?? à revoir
-        return $this->redirectToRoute('app_index');
+        //rajout la redirection vers show_profile
+        
+        return $this->redirectToRoute('app_show_profile', ['username' =>$this->getUser()->getUserIdentifier()]);
     }
 
+    // Recherche de contacts
     #[Route('/contact', name: 'app_contacts')]
-    public function show_contacts(ContactRepository $contactRepo, Request $request, EntityManagerInterface $em)
+    public function show_contacts(ContactRepository $contactRepo, Request $request, EntityManagerInterface $em, $ordered_contacts = [])
     {
-        $contact = new Contact;
-        $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
-
-        $form = $this->createForm(FindContactType::class);
+        $form = $this->createForm(FindContactType::class, null, [
+            'method' => 'GET'
+        ]);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $query = $em->createQuery(
-                'SELECT contact FROM App\Entity\Contact contact WHERE contact.username = :username AND contact.contactUsername LIKE :contact_username'
-            )
-                ->setParameter('username', $this->getUser()->getUserIdentifier())
-                ->setParameter('contact_username', '%' . $form->getData()->getContactUsername() . '%');
-
-            $contacts = $query->getResult();
+        $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
+        if (!isset($ordered_contacts) || isNull($ordered_contacts) || count($ordered_contacts) == 0) {
+            $ordered_contacts = [];
         }
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ordered_contacts = array();
 
-        return $this->render('contact/show_contacts.html.twig', ['contacts' => $contacts, 'FindContactType' => $form->createView()]);
+            for ($index = 0, $count = count($contacts); $index < $count; $index++) {
+                // On trie les contacts du par proximité par rapport à la recherche
+                array_push($ordered_contacts, (string)$contacts[$index]->getContactUsername());
+                levenshtein(($ordered_contacts[$index]), $form->getData()->getContactUsername()) < levenshtein($ordered_contacts[0], $form->getData()->getContactUsername()) ?  [$ordered_contacts[$index], $ordered_contacts[0]] = [$ordered_contacts[0], $ordered_contacts[$index]] : null;
+            }
+
+            return $this->render('contact/show_contacts.html.twig', ['contacts' => $contacts, 'FindContactType' => $form->createView(), 'ordered_contacts' => $ordered_contacts]);
+        }
+        return $this->renderForm('contact/show_contacts.html.twig', ['contacts' => $contacts, 'FindContactType' => $form, 'ordered_contacts' => $ordered_contacts]);
     }
 }

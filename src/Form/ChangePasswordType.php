@@ -30,7 +30,7 @@ class ChangePasswordType extends AbstractType
                         new NotBlank(['message' => 'veuillez entrer un mot de passe']), //Contraintes pas vide
                         new UserPassword(["message" => "le message actuel n'est pas valide"]) //Contraintes de type mot de passe de l'utilisateur
                     ],
-                    'attr' => ['placeholder' => 'votre mot de passe actuel', 'class' => 'mb-2'],
+                    'attr' => ['placeholder' => 'saisir le mot de passe actuel', 'class' => 'mb-2'],
                     'label' => ' '
                 ]
 
@@ -57,8 +57,8 @@ class ChangePasswordType extends AbstractType
                         ])
 
                     ],
-                    'first_options'  => ['attr' => ['placeholder' => 'nouveau mot de passe', 'class' => 'mb-2'], 'label' => ' '],
-                    'second_options' => ['attr' => ['placeholder' => 'confirmer le nouveau mot de passe', 'class' => 'mb-3'], 'label' => ' ']
+                    'first_options'  => ['attr' => ['placeholder' => 'Nouveau mot de passe', 'class' => 'mb-2'], 'label' => ' '],
+                    'second_options' => ['attr' => ['placeholder' => 'Confirmé le mot de passe', 'class' => 'mb-3'], 'label' => ' ']
 
                 ]
             );

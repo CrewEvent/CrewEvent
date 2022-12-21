@@ -47,4 +47,16 @@
 	</div>
 </div>
 
+
+
+
+{{form(FindContactType)}}
+
+<ul>
+    {% for result in ordered_contacts %}
+        <li>{{ result }}</li>
+    {% endfor %}
+</ul>
+
+
 {% endblock %}
