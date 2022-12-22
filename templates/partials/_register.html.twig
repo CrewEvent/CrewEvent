@@ -23,11 +23,11 @@
 											{{ form_label(form.nom) }}
 											{{ form_widget(form.nom, { attr: { class: 'form-control'} }) }}
 											{% if not form.nom.vars.valid %}
-												<div class="alert alert-danger p-1 mt-2" role="alert">
-													{% for errors in form.nom.vars.errors %}
+												{% for errors in form.nom.vars.errors %}
+													<div class="alert alert-danger p-1 mt-2" role="alert">
 														{{ (errors.message) }}
-													{% endfor %}
-												</div>
+													</div>
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -38,11 +38,11 @@
 											{{ form_label(form.prenom) }}
 											{{ form_widget(form.prenom, { attr: { class: 'form-control'} }) }}
 											{% if not form.prenom.vars.valid %}
-												<div class="alert alert-danger p-1 mt-2" role="alert">
-													{% for errors in form.prenom.vars.errors %}
+												{% for errors in form.prenom.vars.errors %}
+													<div class="alert alert-danger p-1 mt-2" role="alert">
 														{{ (errors.message) }}
-													{% endfor %}
-												</div>
+													</div>
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -53,11 +53,11 @@
 											{{ form_label(form.username) }}
 											{{ form_widget(form.username, { attr: { class: 'form-control'} }) }}
 											{% if not form.username.vars.valid %}
-												<div class="alert alert-danger p-1 mt-2" role="alert">
-													{% for errors in form.username.vars.errors %}
+												{% for errors in form.username.vars.errors %}
+													<div class="alert alert-danger p-1 mt-2" role="alert">
 														{{ (errors.message) }}
-													{% endfor %}
-												</div>
+													</div>
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -67,11 +67,11 @@
 											{{ form_label(form.email) }}
 											{{ form_widget(form.email, { attr: { class: 'form-control'} }) }}
 											{% if not form.email.vars.valid %}
-												<div class="alert alert-danger p-1 mt-2" role="alert">
-													{% for errors in form.email.vars.errors %}
+												{% for errors in form.email.vars.errors %}
+													<div class="alert alert-danger p-1 mt-2" role="alert">
 														{{ (errors.message) }}
-													{% endfor %}
-												</div>
+													</div>
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -82,11 +82,11 @@
 											{{ form_label(form.plainPassword.first) }}
 											{{ form_widget(form.plainPassword.first, { attr: { class: 'form-control'} }) }}
 											{% if not form.plainPassword.first.vars.valid %}
-												<div class="alert alert-danger p-1 mt-2" role="alert">
-													{% for errors in form.plainPassword.first.vars.errors %}
+												{% for errors in form.plainPassword.first.vars.errors %}
+													<div class="alert alert-danger p-1 mt-2" role="alert">
 														{{ (errors.message) }}
-													{% endfor %}
-												</div>
+													</div>
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -97,11 +97,11 @@
 											{{ form_label(form.plainPassword.second) }}
 											{{ form_widget(form.plainPassword.second, { attr: { class: 'form-control'} }) }}
 											{% if not form.plainPassword.second.vars.valid %}
-												<div class="alert alert-danger p-1 mt-2" role="alert">
-													{% for errors in form.plainPassword.second.vars.errors %}
+												{% for errors in form.plainPassword.second.vars.errors %}
+													<div class="alert alert-danger p-1 mt-2" role="alert">
 														{{ (errors.message) }}
-													{% endfor %}
-												</div>
+													</div>
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
