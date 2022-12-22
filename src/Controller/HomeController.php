@@ -41,7 +41,6 @@ class HomeController extends PublicationController
         //Je prend les 2 premiers tags dans une list des tags
         $fav = array_keys(array_slice($tags, 0, 2));
 
-
         //On récupére les événements qui ont pour tag ces tags favories
         $favs = $eventRepo->findfavEvent($fav);
 

@@ -54,7 +54,6 @@ class RegistrationFormType extends AbstractType
                 ],
                 'attr' => ['class' => 'form-check-input me-2']
             ])
-
             ->add(
                 'plainPassword',
                 RepeatedType::class, //type répétition
