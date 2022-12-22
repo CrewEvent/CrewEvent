@@ -1,89 +1,93 @@
 <nav class="navbar navbar-white bg-white">
-<ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="navbar-brand" href="#">
-        <img src="{{asset('images/crewevent.png')}}" width="140"  class="d-inline-block align-top" alt="">
-        </a>
-    </li>
-</ul>
-  
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="navbar-brand" href="#">
+				<img src="{{asset('images/crewevent.png')}}" width="140" class="d-inline-block align-top" alt="">
+			</a>
+		</li>
+	</ul>
 </nav>
 <section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5 d-flex justify-content-center">
-        <img src="{{asset('images/event2.png')}}" 
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-         
-        <form class="form" method="post">
-            <div class="text-center mb-4 w-75"><h1 >Connectez-Vous</h1></div>
-            
-          <!-- Email input -->
-          <div class="form-outline mb-4 w-75">
-            <label class="form-label" for="form3Example3">Identifiant</label>
-            <input type="text" value="{{ last_username }}" name="username" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Entrer un identifiant valide" />
-            
+	<div class="container-fluid h-custom">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col-md-9 col-lg-6 col-xl-5 d-flex justify-content-center">
+				<img src="{{asset('images/event2.png')}}" class="img-fluid" alt="Sample image">
+			</div>
+			<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
-          </div>
+				<form class="form" method="post">
+					<div class="text-center mb-4 w-75">
+						<h1>Connectez-Vous</h1>
+					</div>
 
-          <!-- Password input -->
-          <div class="form-outline mb-3 w-75">
-             <label class="form-label" for="form3Example4">Mot de passe</label>
-            <input type="password" id="form3Example4" name="password" class="form-control form-control-lg"
-              placeholder="Entrer un mot de passe" />
-           
+					{% for label, messages in app.flashes %}
+						{% for message in messages %}
+							<div class="alert alert-danger mb-4 w-75" role="alert">
+								{{ message }}
+							</div>
+						{% endfor %}
+					{% endfor %}
 
-          </div>
-          <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" name="_remember_me" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
-            </div>
-            {# <a href="#!" class="text-body">Forgot password?</a> #}
-          </div>
+					<!-- Email input -->
+					<div class="form-outline mb-4 w-75">
+						<label class="form-label" for="form3Example3">Identifiant</label>
+						<input type="text" value="{{ last_username }}" name="username" id="form3Example3" class="form-control form-control-lg" placeholder="Entrer un identifiant valide"/>
+					</div>
 
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" name="submit" class="btn btn-primary btn-lg mb-4 w-75"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Connecter</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas encore de compte? <a href="{{path('app_register')}}"
-                class="link-danger">Créer un compte ici</a></p>
-          </div>
+					<!-- Password input -->
+					<div class="form-outline mb-3 w-75">
+						<label class="form-label" for="form3Example4">Mot de passe</label>
+						<input type="password" id="form3Example4" name="password" class="form-control form-control-lg" placeholder="Entrer un mot de passe"/>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        </form>
-      </div>
-    </div>
-  </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Crewevent © 2020. All rights reserved.
-    </div>
-    <!-- Copyright -->
+					<div
+						class="d-flex flex-column">
 
-    <!-- Right -->
-    <div>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="#!" class="text-white">
-        <i class="fab fa-discord-in"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </div>
+						<!-- Checkbox -->
+						<div class="form-check mb-0">
+							<input class="form-check-input me-2" name="_remember_me" type="checkbox" value="" id="form2Example3"/>
+							<label class="form-check-label" for="form2Example3">
+								Se souvenir de moi
+							</label>
+						</div>
+						{# <a href="#!" class="text-body">Forgot password?</a> #}
+					</div>
+
+					<div class="text-center text-lg-start mt-4 pt-2">
+						<button type="submit" name="submit" class="btn btn-primary btn-lg mb-4 w-75" style="padding-left: 2.5rem; padding-right: 2.5rem;">Connecter</button>
+						<p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas encore de compte?
+							<a href="{{path('app_register')}}" class="link-danger">Créer un compte ici</a>
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div
+		class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+		<!-- Copyright -->
+		<div class="text-white mb-3 mb-md-0">
+			Crewevent © 2020. All rights reserved.
+		</div>
+		<!-- Copyright -->
+
+		<!-- Right -->
+		<div>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#!" class="text-white me-4">
+				<i class="fab fa-google"></i>
+			</a>
+			<a href="#!" class="text-white">
+				<i class="fab fa-discord-in"></i>
+			</a>
+		</div>
+		<!-- Right -->
+	</div>
 </section>

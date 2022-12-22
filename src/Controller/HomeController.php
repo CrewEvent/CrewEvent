@@ -14,11 +14,11 @@ use App\Repository\PublicationRepository;
 class HomeController extends PublicationController
 {
     #[Route('/home', name: 'app_home')]
-    public function home(PublicationRepository $postRepo,
-                         EventRepository       $eventRepo,
-                         ParticipantRepository $participantRepo
-    ): Response
-    {
+    public function home(
+        PublicationRepository $postRepo,
+        EventRepository       $eventRepo,
+        ParticipantRepository $participantRepo
+    ): Response {
         $participants = $participantRepo->findBy(['participantUsername' => $this->getUser()->getUserIdentifier()]);
 
         //On prend rous les post
@@ -65,8 +65,8 @@ class HomeController extends PublicationController
 
 
         foreach ($participants as $participant) {
-            foreach ($suggestions as $key => $suggestion){
-             if ($suggestion[0] == $participant->getEventName()) {
+            foreach ($suggestions as $key => $suggestion) {
+                if ($suggestion[0] == $participant->getEventName()) {
                     unset($suggestions[$key]);
                     //On réindex les valeurs
                     $suggestions = array_values($suggestions);
