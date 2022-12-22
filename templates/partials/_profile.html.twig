@@ -1,13 +1,9 @@
-
-
-
-
 <div
-		class="main-content">
+	class="main-content">
 
 	<!-- Header -->
 	<div
-			class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 450px; width:100%; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+		class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 450px; width:100%; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
 		<!-- Mask -->
 		<span class="mask bg-gradient-default opacity-8"></span>
 		<!-- Header container -->
@@ -17,76 +13,44 @@
 	<div class="container-fluid mt--7">
 		<div class="row">
 			<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-				<div class="card card-profile shadow">
+				<div
+					class="card card-profile shadow">
 					<!-- met les élements au centre -->
 					<div class="row justify-content-center">
-						<div class="col-lg-3 order-lg-2">
+						<div
+							class="col-lg-3 order-lg-2">
 							<!--partie photo de profile -->
-							<div class="card-profile-image">
+							<div
+								class="card-profile-image">
 								<!-- affiche la photo de profile insérer /par défault c'est no_image/ le code source est dans le controller
-                                    EditPhotoControler -->
-								<img src="{{ asset(photoProfile) }}" class="rounded-circle profile-pic upload-button">
+																                                    EditPhotoControler -->
+								<img
+								src="{{ asset(photoProfile) }}" class="rounded-circle profile-pic upload-button">
 
 								<!-- cela nous permet d'effecter l'insertion dans la bdd //le code source pour le démarche est dans
-                                    Form/Editphototype-->
+																                                    Form/Editphototype-->
 								{{ form(Form) }}
 
-							</div>
-						</div>
-					</div>
-					<!--fin -->
-					<!-- -------------------------------------------------- -->
-					<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-						<div class="d-flex justify-content-around">
-							<!-- affiche l'icon check-circle et permet d'envoyer la Pp dans la BDD -->
-							<a href="#" class="btn btn-sm btn-info mr-4 save_img">
-								<i class="fa fa-check-circle" aria-hidden="true"></i>
-							</a>
-							<!-- affiche l'icon trash  et permet de supprimé la Pp dans la BDD -->
-							<a href="{{ path('profile_deletephoto') }}" class="btn btn-sm btn-info float-right ">
-								<i class="fa fa-trash" aria-hidden="true"></i>
-							</a>
-						</div>
-					</div>
-					<!-- fin -->
-					<!------------------------------------------------------------------------------------------------->
-					<!-- Début de card body -->
-					<div class="card-body pt-0 pt-md-4">
-						<div class="row">
-							<div class="col">
-								<!-- affiche le nombres de stats de la carte profile -->
-								<div class="card-profile-stats d-flex justify-content-center mt-md-5">
-									<div>
-										<span class="heading">0</span>
-										<span class="description">Amis</span>
-									</div>
-									<div>
-										<span class="heading">0</span>
-										<span class="description">Évènements</span>
-									</div>
-									<div>
-										<span class="heading">0</span>
-										<span class="description">Photo</span>
-									</div>
 								</div>
 							</div>
 						</div>
-						<!-- fin -->
-						<!------------------------------------------------------------------>
-						<!-- affiche les informations et sa descriptions du user -->
-						<div class="text-center">
-							<!-- affiche le nom et prenom -->
-							<h3>
-								{{app.user.nom}}&nbsp;{{app.user.prenom}}<span class="font-weight-light"></span>
-							</h3>
-
-							<!-- affiche la description du user -->
-							<div class="h5 font-weight-300">
-								<i class="ni location_pin mr-2"></i>
-								{{app.user.description}}
+						<!--fin -->
+						<!-- -------------------------------------------------- -->
+						<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+							<div
+								class="d-flex justify-content-around">
+								<!-- affiche l'icon check-circle et permet d'envoyer la Pp dans la BDD -->
+								<a href="#" class="btn btn-sm btn-info mr-4 save_img">
+									<i class="fa fa-check-circle" aria-hidden="true"></i>
+								</a>
+								<!-- affiche l'icon trash  et permet de supprimé la Pp dans la BDD -->
+								<a href="{{ path('profile_deletephoto') }}" class="btn btn-sm btn-info float-right ">
+									<i class="fa fa-trash" aria-hidden="true"></i>
+								</a>
 							</div>
 						</div>
 						<!-- fin -->
+
 					</div>
 					<!-- fin du card body -->
 				</div>
@@ -99,143 +63,214 @@
 							<!-- début de la partie des informations personnels du user -->
 							<div class="col-8">
 								<h3 class="mb-0">Profile</h3>
-							</div>
-							<!-- ici est la partie contenant les deux btn a droite de la carte -->
-							<div class="col-4 text-right d-flex  justify-content-end">
-								<!-- permet de modifier les informations personnels du profile user -->
-								<a href="{{path('app_edit_profile')}}" class="btn btn-sm btn-info">Modifier le profile</a>
-								<!-- permet de modifier le mot de passe du user -->
-								<a href="{{path('app_change_password')}}" class="btn btn-sm btn-outline-info mr-6">Modifier le mot de passe</a>
-							</div>
-							<!-- fin -->
-						</div>
 
-					</div>
-					<!--début des informations personnels de users-->
-					<div class="card-body">
-						<form>
-							<h6 class="heading-small text-muted mb-4">Informations Personnels</h6>
-							<div class="pl-lg-4">
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group focused">
-											<!-- affiche et render l'identifiant dans le input-->
-											<label class="form-control-label" for="input-username">Identifiant :</label>
-											<input type="view" id="input-username" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.username}}>
+						<!------------------------------------------------------------------------------------------------->
+						<!-- Début de card body -->
+							<div class="card-body pt-0 pt-md-4"> <div class="row">
+								<div
+									class="col">
+									<!-- affiche le nombres de stats de la carte profile -->
+									<div class="card-profile-stats d-flex justify-content-center mt-md-5">
+										<div>
+											<span class="heading">0</span>
+											<span class="description">Amis</span>
 										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<!-- affiche et render l'address mail dans le input -->
-											<label class="form-control-label" for="input-email">Address mail :
-											</label>
-											<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="exemple@emple.com" disabled value={{app.user.email}}>
-
+										<div>
+											<span class="heading">0</span>
+											<span class="description">Évènements</span>
+										</div>
+										<div>
+											<span class="heading">0</span>
+											<span class="description">Photo</span>
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group focused">
-											<!-- affiche et render le nom dans input -->
-											<label class="form-control-label" for="input-first-name">Nom</label>
-											<input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.nom}}>
+>>>>>>> c316ba432eb1f57fe92f2ecaed34832246411379
+							</div>
+							<!-- fin -->
+							<!------------------------------------------------------------------>
+							<!-- affiche les informations et sa descriptions du user -->
+								<div
+								class="text-center"> <!-- affiche le nom et prenom -->
+								<h3>
+									{{app.user.nom}}&nbsp;{{app.user.prenom}}<span class="font-weight-light"></span>
+								</h3>
+
+								<!-- affiche la description du user -->
+								<div class="h5 font-weight-300">
+									<i class="ni location_pin mr-2"></i>
+									{{app.user.description}}
+								</div>
+							</div>
+							<!-- fin -->
+						</div>
+						<!-- fin du card body -->
+					</div>
+				</div>
+				<!--- ---------------------- ---------------------->
+				<div class="col-xl-8 order-xl-1">
+					<div class="card bg-secondary shadow">
+						<div class="card-header bg-white border-0">
+							<div
+								class="row align-items-center">
+								<!-- début de la partie des informations personnels du user -->
+								<div class="col-8">
+									<h3 class="mb-0">Profile</h3>
+								</div>
+								<!-- ici est la partie contenant les deux btn a droite de la carte -->
+								<div
+									class="col-4 text-right d-flex  justify-content-end">
+									<!-- permet de modifier les informations personnels du profile user -->
+									<a href="{{path('app_edit_profile')}}" class="btn btn-sm btn-info">Modifier le profile</a>
+									<!-- permet de modifier le mot de passe du user -->
+									<a href="{{path('app_change_password')}}" class="btn btn-sm btn-outline-info mr-6">Modifier le mot de passe</a>
+								</div>
+								<!-- fin -->
+							</div>
+
+						</div>
+						<!--début des informations personnels de users-->
+						<div class="card-body">
+							<form>
+								<h6 class="heading-small text-muted mb-4">Informations Personnels</h6>
+								<div class="pl-lg-4">
+									<div class="row">
+										<div class="col-lg-6">
+											<div
+												class="form-group focused">
+												<!-- affiche et render l'identifiant dans le input-->
+												<label class="form-control-label" for="input-username">Identifiant :</label>
+												<input type="view" id="input-username" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.username}}>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div
+												class="form-group">
+												<!-- affiche et render l'address mail dans le input -->
+												<label class="form-control-label" for="input-email">Address mail :
+												</label>
+												<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="exemple@emple.com" disabled value={{app.user.email}}>
+
+											</div>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<div class="form-group focused">
-											<!-- affiche et render le prenom dans input -->
-											<label class="form-control-label" for="input-last-name">Prénom</label>
-											<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.prenom}}">
+									<div class="row">
+										<div class="col-lg-6">
+											<div
+												class="form-group focused">
+												<!-- affiche et render le nom dans input -->
+												<label class="form-control-label" for="input-first-name">Nom</label>
+												<input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.nom}}>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div
+												class="form-group focused">
+												<!-- affiche et render le prenom dans input -->
+												<label class="form-control-label" for="input-last-name">Prénom</label>
+												<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.prenom}}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div
+												class="form-group focused">
+												<!-- affiche et render la langue dans input-->
+												<label class="form-control-label" for="input-last-name">Langue</label>
+												<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.language}}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div
+												class="form-group focused">
+												<!-- afficge et render la date de naissance dans input-->
+												<label class="form-control-label" for="input-last-name">Date de naissance</label>
+												<input type="date" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.birthday}}">
+											</div>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<div class="form-group focused">
-											<!-- affiche et render la langue dans input-->
-											<label class="form-control-label" for="input-last-name">Langue</label>
-											<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.language}}">
+								</div>
+								<hr class="my-4"><!-- Address -->
+								<!-- début de la partie contact  -->
+									<h6 class="heading-small text-muted mb-4"> Contact</h6>
+								<div class="pl-lg-4">
+									<div class="row">
+										<div class="col-md-12">
+											<div
+												class="form-group focused">
+												<!-- affiche et render l'adresse dans input -->
+												<label class="form-control-label" for="input-address">Address</label>
+												<input id="input-address" class="form-control form-control-alternative" placeholder="" disabled value="" type="text">
+											</div>
 										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-4">
+											<div
+												class="form-group focused">
+												<!-- affiche et render la ville dans input -->
+												<label class="form-control-label" for="input-city">Ville</label>
+												<input type="text" id="input-city" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.city}}>
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<div
+												class="form-group focused">
+												<!-- affiche et render le pays dans input  -->
+												<label class="form-control-label" for="input-country">Pays</label>
+												<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.country}}>
+											</div>
+										</div>
+<<<<<<< HEAD
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group focused">
 											<!-- afficge et render la date de naissance dans input-->
 											<label class="form-control-label" for="input-last-name">Date de naissance</label>
 											<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.annif|date("m/d/Y")}}">
+=======
+										<div class="col-lg-4">
+											<div
+												class="form-group">
+												<!-- affiche et render le tel dans input -->
+												<label class="form-control-label" for="input-country">Telephone</label>
+												<input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.Telephone}}>
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<div
+												class="form-group">
+												<!-- affiche et render le sexe dans input -->
+												<label class="form-control-label" for="input-country">Sexe</label>
+												<input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.gender}}>
+											</div>
+>>>>>>> c316ba432eb1f57fe92f2ecaed34832246411379
 										</div>
 									</div>
 								</div>
-							</div>
-							<hr
-									class="my-4">
-							<!-- Address -->
-							<!-- début de la partie contact  -->
-							<h6 class="heading-small text-muted mb-4">Contact</h6>
-							<div class="pl-lg-4">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group focused">
-											<!-- affiche et render l'adresse dans input -->
-											<label class="form-control-label" for="input-address">Address</label>
-											<input id="input-address" class="form-control form-control-alternative" placeholder="" disabled value="" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-4">
-										<div class="form-group focused">
-											<!-- affiche et render la ville dans input -->
-											<label class="form-control-label" for="input-city">Ville</label>
-											<input type="text" id="input-city" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.city}}>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="form-group focused">
-											<!-- affiche et render le pays dans input  -->
-											<label class="form-control-label" for="input-country">Pays</label>
-											<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.country}}>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="form-group">
-											<!-- affiche et render le tel dans input -->
-											<label class="form-control-label" for="input-country">Telephone</label>
-											<input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.Telephone}}>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="form-group">
-											<!-- affiche et render le sexe dans input -->
-											<label class="form-control-label" for="input-country">Sexe</label>
-											<input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="" disabled value={{app.user.gender}}>
-										</div>
-									</div>
-								</div>
-							</div>
-							<hr
-									class="my-4">
+								<hr
+								class="my-4">
 							<!-- Description -->
-						</form>
+							</form>
+						</div>
+						<!-- fin de la partie informations personnels -->
 					</div>
-					<!-- fin de la partie informations personnels -->
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<footer class="footer">
-	<div class="row align-items-center justify-content-xl-between">
-		<div
+	<footer class="footer">
+		<div class="row align-items-center justify-content-xl-between">
+			<div
 				class="col-xl-6 m-auto text-center"><!--<div class="copyright">
-																																																																																																																																																																								          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
-																																																																																																																																																																								        </div> -->
+																																																																																																																																																																																		          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
+																																																																																																																																																																																		        </div> -->
+			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
 
 
-
-<!-- partie css du profile -->
-<style>:root
+	<!-- partie css du profile -->
+	<style>:root
 	{
 		--blue: #5e72e4;
 		--indigo: #5603ad;
