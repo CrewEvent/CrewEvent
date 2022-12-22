@@ -30,15 +30,19 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'required' => true,
+                'label' => 'Nom',
             ])
             ->add('prenom', TextType::class, [
                 'required' => true,
+                'label' => 'Prenom',
             ])
             ->add('username', TextType::class, [
                 'required' => true,
+                'label' => 'Username',
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
+                'label' => 'Email',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -67,7 +71,11 @@ class RegistrationFormType extends AbstractType
                             'minMessage' => 'Your password should be at least {{ limit }} characters',
                             'max' => 4096
                         ])
-                    ]
+                    ],
+                    'first_options'  => [
+                        'label' => 'Mot de passe'
+                    ],
+                    'second_options' => array('label' => 'Confirmer le mot de passe'),
                 ]
             );
     }
