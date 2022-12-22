@@ -49,7 +49,8 @@
     <div class="mb-3">
         <h1 class="card-title">
             <small class="text-muted">Mes Contacts</small>
-            <span class="text-muted fw-normal ms-2">({{contacts|length}})</span>
+            <span class="text-muted fw-normal ms-2"></span>
+{#            ({{contacts|length}})#}
         </h1>
     </div>
 
@@ -64,49 +65,47 @@
 
     <div class="row">
         {% for contact in contacts %}
-        <div class="col-xl-6 mb-4">
-            <div class="card">
-                <div class="card-body">
+            <div class="col-xl-6 mb-4">
+                <div class="card" style="width: 50%">
+                    <div class="card-body">
 
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <img
-                                    src="{{ asset('images/No_image.jpg')}}" alt="profilePhoto" class="avatar-md rounded-circle img-thumbnail"
-                                    alt=""
-                                    style="width: 45px; height: 45px"
-                                    class="rounded-circle"
-                            />
-                            <div class="ms-3">
-                                <a href=" ">
-                                    <p class="fw-bold mb-1">{{contact.contactUsername}}</p>
-                                </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img
+                                        src="{{ app.user.PhotoProfile  ? asset('images/' ~ app.user.PhotoProfile)  :  asset('images/No_image.jpg') }}"
+                                        alt="Photo profile"
+                                        style="width: 45px; height: 45px"
+                                        class="avatar-md rounded-circle img-thumbnail"/>
+                                <div class="ms-3">
+                                    <a href="{{path('app_show_profile', {username : contact.contactUsername})}}">
+                                        <span class="fw-bold mb-1">{{contact.contactUsername}}</span>
+                                    </a>
 
+                                </div>
                             </div>
+                            <span class="badge rounded-pill badge-success">En ligne</span>
                         </div>
-                        <span class="badge rounded-pill badge-success">En ligne</span>
+                    </div>
+                    <div
+                            class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+                        <a
+                                class="btn btn-link m-0 text-reset"
+                                href="{{path('send_private_message',{username : contact.contactUsername})}}"
+                                role="button"
+                                data-ripple-color="BLUE">
+                            <i class="fas fa-message ms-3 text-primary"></i>
+                        </a>
+                        <a
+                                class="btn btn-link m-0 text-reset "
+                                href="{{path('remove_contact',{username : contact.contactUsername})}}"
+                                role="button"
+                                data-ripple-color="BLUE">
+                            <i class="fas fa-trash ms-2 text-danger"></i>
+                        </a>
+
                     </div>
                 </div>
-                <div
-                        class="card-footer border-0 bg-light p-2 d-flex justify-content-around"
-                >
-                    <a
-                            class="btn btn-link m-0 text-reset"
-                            href="{{path('send_private_message',{username : contact.contactUsername})}}"
-                            role="button"
-                            data-ripple-color="BLUE">
-                            <i class="fas fa-message ms-3 text-primary"></i>
-                    </a>
-                    <a
-                            class="btn btn-link m-0 text-reset "
-                            href="{{path('remove_contact',{username : contact.contactUsername})}}"
-                            role="button"
-                            data-ripple-color="BLUE">
-                            <i class="fas fa-trash ms-2 text-danger"></i>
-                    </a>
-
-                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 

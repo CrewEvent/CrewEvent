@@ -1,14 +1,14 @@
 <div>
 	<div class="p-3 bg-primary bg-opacity-10 border border-primary border rounded mb-2 d-flex align-items-center gap-3">
-  		<h5># infos générales</h5>
+		<h5># infos générales</h5>
 
 		{# On rajoute le bouton pour participer si ce n'est pas le cas #}
 
-			{% if not isParticipant %}
-				<a href="{{path("app_add_participant",{name : event.name})}}">
-					<button type="button" class="btn btn-success">Participer</button>
-				</a>
-			{% endif %}
+		{% if not isParticipant %}
+			<a href="{{path("app_add_participant",{name : event.name})}}">
+				<button type="button" class="btn btn-success">Participer</button>
+			</a>
+		{% endif %}
 
 
 	</div>
@@ -43,23 +43,23 @@
 
 	{% for info_elt in event.infoGenerale %}
 
-			<div class="my-3" id="card-{{info_elt.title}}">
-				<div class="card">
-					<div class="card-header">
-						<h4>{{ info_elt.title }}</h4>
-					</div>
-					<div class="card-body">
-						<p class="card-text">{{ info_elt.content }}</p>
-					</div>
-					{% if (app.user.id == event.user.id) %}
-					<div class="card-footer">
-						<a type="button" class="btn btn-primary" href="{{ path('app_event_update_info',{name : event.name, info_title : info_elt.title}) }}" >éditer</a>
-						<a type="button" class="btn btn-danger"href="{{ path('event_info_delete',{name : event.name, info_title : info_elt.title}) }}">supprimer</a>
-					</div>
-					{% endif %}
-
+		<div class="my-3" id="card-{{info_elt.title}}">
+			<div class="card">
+				<div class="card-header">
+					<h4>{{ info_elt.title }}</h4>
 				</div>
+				<div class="card-body">
+					<p class="card-text">{{ info_elt.content }}</p>
+				</div>
+				{% if (app.user.id == event.user.id) %}
+					<div class="card-footer">
+						<a type="button" class="btn btn-primary" href="{{ path('app_event_update_info' ,{name : event.name, info_title : info_elt.title}) }}" >éditer</a>
+						<a type="button" class="btn btn-danger" href="{{ path('event_info_delete',{name : event.name, info_title : info_elt.title}) }}">supprimer</a>
+					</div>
+				{% endif %}
+
 			</div>
+		</div>
 
 	{% endfor %}
 
