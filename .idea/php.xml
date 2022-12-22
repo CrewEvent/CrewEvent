@@ -167,6 +167,10 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring 2" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81 2" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73 2" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80 2" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
