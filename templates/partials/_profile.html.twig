@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<!--- ---------------------- ---------------------->
-			<div class="col-xl-8 order-xl-1">
+			<div class="col-xl-8 order-xl-1" id="profile-{{ app.user.id }}">
 				<div class="card bg-secondary shadow">
 					<div class="card-header bg-white border-0">
 						<div class="row align-items-center">
@@ -160,7 +160,7 @@
 										<div class="form-group focused">
 											<!-- afficge et render la date de naissance dans input-->
 											<label class="form-control-label" for="input-last-name">Date de naissance</label>
-											<input type="date" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.birthday}}">
+											<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{app.user.annif|date("m/d/Y")}}">
 										</div>
 									</div>
 								</div>

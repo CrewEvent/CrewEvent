@@ -79,9 +79,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $gender = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $birthday = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $language = null;
 
@@ -118,6 +115,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Notification::class, orphanRemoval: true)]
     private Collection $notifications;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $annif = null;
 
     public function __construct()
     {
@@ -340,18 +343,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     public function setGender(?string $gender): self
     {
         $this->gender = $gender;
-
-        return $this;
-    }
-
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(?\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
 
         return $this;
     }
@@ -579,6 +570,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
                 $notification->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getAnnif(): ?\DateTimeInterface
+    {
+        return $this->annif;
+    }
+
+    public function setAnnif(?\DateTimeInterface $annif): self
+    {
+        $this->annif = $annif;
 
         return $this;
     }

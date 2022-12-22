@@ -1,0 +1,146 @@
+
+<turbo-stream action="replace" target="profile-{{app.user.id}}">
+    <template>
+
+        <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                {#<form action="{{path('profile_edit_success')}}" name="form" method="post">#}
+                {{ form_start(form) }}
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <!-- début de la partie des informations personnels du user -->
+                            <div class="col-8">
+                                <h3 class="mb-0">Profile</h3>
+                            </div>
+                            <!-- ici est la partie contenant les deux btn a droite de la carte -->
+                            <div class="col-4 text-right d-flex  justify-content-end">
+                                <!-- permet de modifier les informations personnels du profile user -->
+                                <button type="submit" class="btn btn-sm btn-success">Enregistrer</button>
+                                <!-- permet de modifier le mot de passe du user -->
+                                <a href="{{ path('profile_edit_cancel') }}" class="btn btn-sm btn-danger mr-6">Annuler</a>
+                            </div>
+                            <!-- fin -->
+                        </div>
+
+                    </div>
+                <!--début des informations personnels de users-->
+                    <div class="card-body">
+
+                            <h6 class="heading-small text-muted mb-4">Informations Personnels</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render l'identifiant dans le input-->
+                                            <label class="form-control-label" for="input-username">Identifiant :</label>
+                                            {{ form_widget(form.username,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- affiche et render l'address mail dans le input -->
+                                            <label class="form-control-label" for="input-email">Address mail :
+                                            </label>
+                                            {{ form_widget(form.email,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render le nom dans input -->
+                                            <label class="form-control-label" for="input-first-name">Nom</label>
+                                            {{ form_widget(form.nom,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render le prenom dans input -->
+                                            <label class="form-control-label" for="input-last-name">Prénom</label>
+                                            {{ form_widget(form.prenom,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render la langue dans input-->
+                                            <label class="form-control-label" for="input-last-name">Langue</label>
+                                            {{ form_widget(form.language,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <!-- afficge et render la date de naissance dans input-->
+                                            <label class="form-control-label" for="input-last-name">Date de naissance</label>
+                                            {{ form_widget(form.annif,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr
+                                    class="my-4">
+                            <!-- Address -->
+                            <!-- début de la partie contact  -->
+                            <h6 class="heading-small text-muted mb-4">Contact</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render l'adresse dans input -->
+                                            <label class="form-control-label" for="input-address">Adresse</label>
+                                            {{ form_widget(form.adresse,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render l'adresse dans input -->
+                                            <label class="form-control-label" for="input-address">Description</label>
+                                            {{ form_widget(form.description,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                        {#    <!-- affiche et render la ville dans input -->#}
+                                            <label class="form-control-label" for="input-city">Ville</label>
+
+                                            {{ form_widget(form.city,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <!-- affiche et render le pays dans input  -->
+                                            <label class="form-control-label" for="input-country">Pays</label>
+                                            {{ form_widget(form.country,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <!-- affiche et render le tel dans input -->
+                                            <label class="form-control-label" for="input-country">Telephone</label>
+                                            {{ form_widget(form.Telephone,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <!-- affiche et render le sexe dans input -->
+                                            <label class="form-control-label" for="input-country">Sexe</label>
+                                            {{ form_widget(form.gender,{ attr: { class: 'form-control form-control-alternativeform-control' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr
+                                    class="my-4">
+                         {#   <!-- Description -->#}
+
+                    </div>
+                    <!-- fin de la partie informations personnels -->
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </template>
+</turbo-stream>
