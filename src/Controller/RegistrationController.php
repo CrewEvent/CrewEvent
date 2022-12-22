@@ -48,6 +48,9 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -78,14 +81,14 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
+        } elseif ($form->isSubmitted() && !($form->isValid())) {
+            dump($form);
         }
 
         return $this->render('registration/register.html.twig', [
             'form' => $form->createView()
         ]);
     }
-
-
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
