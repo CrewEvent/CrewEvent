@@ -149,9 +149,12 @@ class ProfileController extends AbstractController
         $isContact = false;
 
         //s'il se trouve dans la liste on enléve le bouton ajouter
-        if ($contactRepo->findBy(['user' => $user->getId()])) {
+        $contacts = $contactRepo->findBy(['username'=> $this->getUser()->getUserIdentifier()]);
 
-            $isContact = true;
+        foreach ($contacts as $contact){
+            if($contact->getContactUsername() == $user->getUserIdentifier()){
+                $isContact = true;
+            }
         }
 
         return $this->render('pages/show_profile.html.twig', ['user' => $user, 'isContact' => $isContact]);

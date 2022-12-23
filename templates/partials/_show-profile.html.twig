@@ -2,7 +2,6 @@
 <form action="POST">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-
 	<div
 		class="main-content">
 
@@ -37,12 +36,11 @@
 							<div
 								class="d-flex justify-content-around">
 								<!-- une conditons  permetant d'ajouter , ou de supprimer un use s'il est déja ajouter dans les contacts-->
+
 								{% if not isContact %}
 									<a href="{{path('add_contact',{username: user.username})}}" class="btn btn-sm btn-info mr-4 mt-4">
 										<i class="fa fa-user-plus" aria-hidden="true"></i>
-
 									</a>
-
 								{% else %}
 									<a href="{{path('remove_contact',{username: user.username})}}" class="btn btn-sm btn-info mr-4 mt-4">
 										<i class="fa fa-user-times" aria-hidden="true"></i>
@@ -166,7 +164,7 @@
 											<div class="form-group focused">
 											<!-- affiche la date de naissance d'un autre user et le render dans input -->
 												<label class="form-control-label" for="input-last-name">Date de naissance</label>
-												<input type="date" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{user.annif}}">
+												<input type="date" id="input-last-name" class="form-control form-control-alternative" placeholder="" disabled value="{{user.annif|date("m/d/Y")}}">
 											</div>
 										</div>
 
