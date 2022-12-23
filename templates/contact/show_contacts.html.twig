@@ -1,10 +1,10 @@
 {% extends 'default_base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contacts{% endblock %}
 
 {% block body %}
 
-<div class="container">
+{#<div class="container">
 	<div class="row align-items-center">
 		<div class="col-md-6">
 			<div class="mb-3">
@@ -13,9 +13,9 @@
 				</h1>
 			</div>
 		</div>
-        {# End partie haut gauche #}
+         End partie haut gauche
 	</div>
-    {# Partie D'1 contact #}
+     Partie D'1 contact
 	<div class="row">
         {% for contact in contacts %}
             <div class="col-xl-3 col-sm-6">
@@ -42,21 +42,79 @@
                     </div>
                 </div>
             </div>
-            {# End contact card #}
-        {% endfor %}	
+             End contact card
+        {% endfor %}
 	</div>
-</div>
+</div>#}
+    <div class="mb-3">
+        <h1 class="card-title">
+            <small class="text-muted">Mes Contacts</small>
+            <span class="text-muted fw-normal ms-2"></span>
+{#            ({{contacts|length}})#}
+        </h1>
+    </div>
+
+    {{form(FindContactType)}}
+
+    <ul>
+        {% for result in ordered_contacts %}
+            <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <div class="row">
+        {% for contact in contacts %}
+        <div class="col-xl-6 mb-4">
+            <div class="card" style="width: 50%">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img
+                                    src="{{contact.user.PhotoProfile  ? asset('images/' ~ contact.user.PhotoProfile)  :  asset('images/No_image.jpg') }}"
+                                    alt="profilePhoto"
+                                    style="width: 45px; height: 45px"
+                                    class="avatar-md rounded-circle img-thumbnail"
+                            />
+                            <div class="ms-3">
+                                <a href="{{path('app_show_profile', {username : contact.contactUsername})}} ">
+                                    <p class="fw-bold mb-1">{{contact.contactUsername}}</p>
+                                </a>
+
+                            </div>
+                        </div>
+                        <span class="badge rounded-pill badge-success">En ligne</span>
+                    </div>
+                </div>
+                <div
+                        class="card-footer border-0 bg-light p-2 d-flex justify-content-around"
+                >
+                    <a
+                            class="btn btn-link m-0 text-reset"
+                            href="{{path('send_private_message',{username : contact.contactUsername})}}"
+                            role="button"
+                            data-ripple-color="BLUE">
+                            <i class="fas fa-message ms-3 text-primary"></i>
+                    </a>
+                    <a
+                            class="btn btn-link m-0 text-reset "
+                            href="{{path('remove_contact',{username : contact.contactUsername})}}"
+                            role="button"
+                            data-ripple-color="BLUE">
+                            <i class="fas fa-trash ms-2 text-danger"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
 
 
 
-{{form(FindContactType)}}
 
-<ul>
-    {% for result in ordered_contacts %}
-        <li>{{ result }}</li>
-    {% endfor %}
-</ul>
 
 
 {% endblock %}
