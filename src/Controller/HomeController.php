@@ -45,10 +45,15 @@ class HomeController extends PublicationController
 
         }
 
+        $owns = $postRepo->findBy(['publisher' => $this->getUser()->getUserIdentifier()]);
+        if( !in_array($owns,$feeds,true)) {
+            array_push($feeds, $owns);
+        }
+
         //On filtre les post avec les contacts dans le répertoire
         $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
         foreach ($contacts as $contact){
-           $post = $postRepo->findBy(['publisher' => $contact->getUsername()]);
+           $post = $postRepo->findBy(['publisher' => $contact->getContactUsername()]);
            if( !in_array($post,$feeds,true)) {
                array_push($feeds, $post);
            }
