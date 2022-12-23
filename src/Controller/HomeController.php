@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\EventRepository;
+use App\Repository\ContactRepository;
 use App\Repository\ParticipantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,13 +18,41 @@ class HomeController extends PublicationController
     public function home(
         PublicationRepository $postRepo,
         EventRepository       $eventRepo,
-        ParticipantRepository $participantRepo
-    ): Response {
+        ParticipantRepository $participantRepo,
+        ContactRepository     $contactRepo
+
+         ): Response {
         $participants = $participantRepo->findBy(['participantUsername' => $this->getUser()->getUserIdentifier()]);
 
-        //On prend rous les post
-        $post = $postRepo->findAll();
+        //les feeds ou les post
+        //On prend les post des gens qu'on connait et les gens avec qui on est dans le méme événement
 
+        //On prend tous les participants des événements j'ai participé
+        $my_ev=[];
+        foreach ($participants as $participant){
+            array_push($my_ev, $participant->getEvent()->getParticipants()->toArray());
+        }
+
+        //On energistre les post dans feeds
+        $feeds=[];
+        foreach ($my_ev as $key => $ee){
+            foreach ($ee as $e){
+                $f = $postRepo->findBy(['publisher' => $e->getParticipantUsername()]);
+                if( !in_array($f,$feeds,true)) {
+                    array_push($feeds, $f);
+                }
+            }
+
+        }
+
+        //On filtre les post avec les contacts dans le répertoire
+        $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
+        foreach ($contacts as $contact){
+           $post = $postRepo->findBy(['publisher' => $contact->getUsername()]);
+           if( !in_array($post,$feeds,true)) {
+               array_push($feeds, $post);
+           }
+        }
 
         //Je fais ici la suggestion d'événements
         //Je récupére la liste des tags des événements participés par l'utilisateurs dans une liste
@@ -73,8 +102,10 @@ class HomeController extends PublicationController
             }
         }
 
+
+
         return $this->render('home/home.html.twig', [
-            'post' => $post,
+            'post' => $feeds,
             'participants' => $participants,
             'suggestions' => $suggestions
         ]);

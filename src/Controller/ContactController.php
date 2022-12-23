@@ -62,6 +62,7 @@ class ContactController extends AbstractController
         ]);
         $form->handleRequest($request);
         $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
+
         if (!isset($ordered_contacts) || isNull($ordered_contacts) || count($ordered_contacts) == 0) {
             $ordered_contacts = [];
         }
