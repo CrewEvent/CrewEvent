@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact/show_contacts.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/show_contacts.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +229,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -275,6 +277,7 @@
       <workItem from="1671645291816" duration="3031000" />
       <workItem from="1671693368338" duration="20504000" />
       <workItem from="1671719530599" duration="2304000" />
+      <workItem from="1671808032599" duration="2854000" />
     </task>
     <servers />
   </component>

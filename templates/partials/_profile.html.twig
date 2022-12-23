@@ -16,6 +16,7 @@
 	<!-- Page content -->
 	<div class="container-fluid mt--7">
 		<div class="row">
+{#			{% for contact in contacts %}#}
 			<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
 				<div class="card card-profile shadow">
 					<!-- met les élements au centre -->
@@ -53,24 +54,31 @@
 					<!-- Début de card body -->
 					<div class="card-body pt-0 pt-md-4">
 						<div class="row">
+
 							<div class="col">
 								<!-- affiche le nombres de stats de la carte profile -->
+
 								<div class="card-profile-stats d-flex justify-content-center mt-md-5">
 									<div>
-										<span class="heading">0</span>
 										<span class="description">Amis</span>
+										<span class="heading">0</span>
+
 									</div>
 									<div>
-										<span class="heading">0</span>
 										<span class="description">Évènements</span>
+										<span class="heading">0</span>
+
 									</div>
 									<div>
-										<span class="heading">0</span>
 										<span class="description">Photo</span>
+										<span class="heading">0</span>
+
 									</div>
 								</div>
+
 							</div>
 						</div>
+
 						<!-- fin -->
 						<!------------------------------------------------------------------>
 						<!-- affiche les informations et sa descriptions du user -->
@@ -219,6 +227,7 @@
 					<!-- fin de la partie informations personnels -->
 				</div>
 			</div>
+{#			{% endfor %}#}
 		</div>
 	</div>
 </div>

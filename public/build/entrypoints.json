@@ -3,24 +3,22 @@
     "app": {
       "js": [
         "/build/runtime.js",
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
-        "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo-merc-b9ee0e.js",
         "/build/app.js"
       ],
       "css": [
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo-merc-b9ee0e.css",
         "/build/app.css"
       ]
     },
     "profile": {
       "js": [
         "/build/runtime.js",
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
-        "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo-merc-b9ee0e.js",
         "/build/profile.js"
       ],
       "css": [
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo-merc-b9ee0e.css",
         "/build/vendors-node_modules_mdb-ui-kit_css_mdb_min_css.css",
         "/build/profile.css"
       ]
@@ -28,13 +26,12 @@
     "default": {
       "js": [
         "/build/runtime.js",
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo-merc-b9ee0e.js",
         "/build/vendors-node_modules_mdb-ui-kit_js_mdb_min_js.js",
-        "/build/node_modules_symfony_stimulus-bridge_dist_webpack_loader_js_assets_controllers_json-assets_bo-c9ceb2.js",
         "/build/default.js"
       ],
       "css": [
-        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-esm_js-node_modules_symfony_stimulus-br-0264f5.css",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_symfony_ux-turbo-merc-b9ee0e.css",
         "/build/vendors-node_modules_mdb-ui-kit_css_mdb_min_css.css",
         "/build/default.css"
       ]
