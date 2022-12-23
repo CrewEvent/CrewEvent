@@ -62,6 +62,7 @@ class ContactController extends AbstractController
         ]);
         $form->handleRequest($request);
         $contacts = $contactRepo->findBy(['username' => $this->getUser()->getUserIdentifier()]);
+
         if (!isset($ordered_contacts) || isNull($ordered_contacts) || count($ordered_contacts) == 0) {
             $ordered_contacts = [];
         }
@@ -77,6 +78,7 @@ class ContactController extends AbstractController
 
             return $this->render('contact/show_contacts.html.twig', ['contacts' => $contacts, 'FindContactType' => $form->createView(), 'ordered_contacts' => $ordered_contacts]);
         }
+
         return $this->renderForm('contact/show_contacts.html.twig', ['contacts' => $contacts, 'FindContactType' => $form, 'ordered_contacts' => $ordered_contacts]);
     }
 }

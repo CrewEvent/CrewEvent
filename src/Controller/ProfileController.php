@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,14 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\EditPhotoType;
+use App\Repository\ContactRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\UX\Turbo\TurboBundle;
 use App\Form\UserType;
 
 class ProfileController extends AbstractController
 {
-    private $user_form;
-
 
     /*
  -Render la page de profil
@@ -25,7 +24,6 @@ class ProfileController extends AbstractController
     #[Route('/profile', name: 'app_profile')]
     public function profile(): Response
     {
-
 
         $user = $this->getUser();
         $photoProfile = $user->getphotoProfile();
@@ -145,16 +143,18 @@ class ProfileController extends AbstractController
     //symfony sait que l'entité que l'on va utiliser est la méme que celui de la route
 
     #[Route('/show_profile/{username}', name: 'app_show_profile')]
-    public function show_profile(ContactRepository $contactRepo, User $user): Response
+    public function show_profile(User $user,ContactRepository $contactRepo): Response
     {
         //On regarde d'abord si cet utilisateur est déja contact
         $isContact = false;
 
-
         //s'il se trouve dans la liste on enléve le bouton ajouter
-        if ($contactRepo->findBy(['user' => $user->getId()])) {
+        $contacts = $contactRepo->findBy(['username'=> $this->getUser()->getUserIdentifier()]);
 
-            $isContact = true;
+        foreach ($contacts as $contact){
+            if($contact->getContactUsername() == $user->getUserIdentifier()){
+                $isContact = true;
+            }
         }
 
         return $this->render('pages/show_profile.html.twig', ['user' => $user, 'isContact' => $isContact]);
