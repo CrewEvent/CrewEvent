@@ -1,76 +1,80 @@
 {% for post_card in post %}
-<div class="card  mt-4" >
-    <div class="card-header bg-transparent d-flex justify-content-between align-items-center ">
-
-        <div class="d-flex justify-content-start align-items-center">
-            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
-
-            {% if post_card.publisher == app.user.username %}
-                <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_profile')}}" class="text-decoration-none">{{post_card.publisher}}</a></h6>
-            {% else %}
-                <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_show_profile', {username: post_card.publisher})}}" class="text-decoration-none">{{post_card.publisher}}</a></h6>
-            {% endif %}
-        </div>
-
-        <div>
-            <p class="text-muted small mb-0">
-                {% if post_card.createdAt|date("Y-m-d") == "now"|date("Y-m-d") %}
-                    <small class="text-muted">aujourd'hui à {{post_card.createdAt|date("H:s") }}</small>
-                {% else %}
-                    <small class="text-muted"> {{post_card.createdAt|date("d M Y ") }}</small>
-                {% endif %}
-
-            </p>
-        </div>
+    {% for feed in post_card %}
 
 
-    </div>
-    <div class="card-body ">
-        <p class="card-text">{{post_card.content}}</p>
-    </div>
-    <div class="card-footer bg-transparent d-flex flex-column">
-        <div class="d-flex justify-content-start align-items-center gap-4">
-            <a href="{{path('post_like',{id : post_card.id})}} " class="d-flex align-items-center text-decoration-none">
-                <i class="far fa-thumbs-up fa-lg"></i>
-                <span class="mx-2 my-0" id="like-{{post_card.id}}">{{post_card.likes|length}}</span>
-            </a>
+        <div class="card  mt-4" >
+            <div class="card-header bg-transparent d-flex justify-content-between align-items-center ">
 
-            <a href="#collapse-{{post_card.id}}" class="d-flex align-items-center me-3 text-decoration-none" aria-expanded="false"
-               aria-controls="collapse-{{post_card.id}}" data-bs-toggle="collapse">
-                <i class="far fa-comment-dots fa-lg"></i>
-                <p class="mx-2 my-0">{{post_card.comments|length}}</p>
-            </a>
-        </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
 
-
-        <div class="collapse mt-3 "  id="collapse-{{post_card.id}}">
-            <div class="d-flex flex-column gap-2">
-                <turbo-frame id="comment-form">
-                    <form class="" action="{{path('app_comment', {id : post_card.id})}}" method="get" role="form">
-                        <div class="d-flex flex-start w-100">
-                            <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
-                            <div class="form-group w-100">
-                                <label class="form-label" for="textAreaExample">Message</label>
-                                <textarea class="form-control" id="textAreaExample" rows="1" name="comment"></textarea>
-
-                            </div>
-                        </div>
-                        <div class="float-end my-1">
-                            <button type="submit" class="btn btn-primary btn-sm">poster</button>
-                        </div>
-                    </form>
-                </turbo-frame>
-                <div id="comment-{{post_card.id}}" class="d-flex flex-column gap-2">
-
+                    {% if feed.publisher == app.user.username %}
+                        <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_profile')}}" class="text-decoration-none">{{feed.publisher}}</a></h6>
+                    {% else %}
+                        <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_show_profile', {username: feed.publisher})}}" class="text-decoration-none">{{feed.publisher}}</a></h6>
+                    {% endif %}
                 </div>
-                <div class="d-flex flex-column gap-2">
-                    {{include('partials/_comments.html.twig')}}
+
+                <div>
+                    <p class="text-muted small mb-0">
+                        {% if feed.createdAt|date("Y-m-d") == "now"|date("Y-m-d") %}
+                            <small class="text-muted">aujourd'hui à {{feed.createdAt|date("H:s") }}</small>
+                        {% else %}
+                            <small class="text-muted"> {{feed.createdAt|date("d M Y ") }}</small>
+                        {% endif %}
+
+                    </p>
                 </div>
+
 
             </div>
+            <div class="card-body ">
+                <p class="card-text">{{feed.content}}</p>
+            </div>
+            <div class="card-footer bg-transparent d-flex flex-column">
+                <div class="d-flex justify-content-start align-items-center gap-4">
+                    <a href="{{path('post_like',{id : feed.id})}} " class="d-flex align-items-center text-decoration-none">
+                        <i class="far fa-thumbs-up fa-lg"></i>
+                        <span class="mx-2 my-0" id="like-{{feed.id}}">{{feed.likes|length}}</span>
+                    </a>
 
+                    <a href="#collapse-{{feed.id}}" class="d-flex align-items-center me-3 text-decoration-none" aria-expanded="false"
+                       aria-controls="collapse-{{feed.id}}" data-bs-toggle="collapse">
+                        <i class="far fa-comment-dots fa-lg"></i>
+                        <p class="mx-2 my-0">{{feed.comments|length}}</p>
+                    </a>
+                </div>
+
+
+                <div class="collapse mt-3 "  id="collapse-{{feed.id}}">
+                    <div class="d-flex flex-column gap-2">
+                        <turbo-frame id="comment-form">
+                            <form class="" action="{{path('app_comment', {id : feed.id})}}" method="get" role="form">
+                                <div class="d-flex flex-start w-100">
+                                    <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
+                                    <div class="form-group w-100">
+                                        <label class="form-label" for="textAreaExample">Message</label>
+                                        <textarea class="form-control" id="textAreaExample" rows="1" name="comment"></textarea>
+
+                                    </div>
+                                </div>
+                                <div class="float-end my-1">
+                                    <button type="submit" class="btn btn-primary btn-sm">poster</button>
+                                </div>
+                            </form>
+                        </turbo-frame>
+                        <div id="comment-{{feed.id}}" class="d-flex flex-column gap-2">
+
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            {{include('partials/_comments.html.twig')}}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    {% endfor %}
 {% endfor %}
 
