@@ -1,7 +1,9 @@
 
 <turbo-stream action="replace" target="profile-{{app.user.id}}">
     <template>
-
+        {% for flash_warning in app.flashes('warning') %}
+            <div class="alert alert-danger" role="alert">{{ flash_warning }}</div>
+        {% endfor %}
         <div class="col-xl-8 order-xl-1">
             <div class="card bg-secondary shadow">
                 {#<form action="{{path('profile_edit_success')}}" name="form" method="post">#}
