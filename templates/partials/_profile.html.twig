@@ -93,6 +93,9 @@
 			</div>
 			<!--- ---------------------- ---------------------->
 			<div class="col-xl-8 order-xl-1" id="profile-{{ app.user.id }}">
+				{% for flash_success in app.flashes('success') %}
+					<div class="alert alert-success" role="alert">{{ flash_success }}</div>
+				{% endfor %}
 				<div class="card bg-secondary shadow">
 					<div class="card-header bg-white border-0">
 						<div class="row align-items-center">
@@ -109,6 +112,7 @@
 							</div>
 							<!-- fin -->
 						</div>
+
 
 					</div>
 					<!--début des informations personnels de users-->

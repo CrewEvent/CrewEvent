@@ -83,11 +83,12 @@ class ProfileController extends AbstractController
             $em->persist($this->getUser());
             $em->flush();
 
+            $this->addFlash('success', 'Les informations du profil ont été enregistrés avec success');
             return $this->redirectToRoute("app_profile");
         }
         elseif ($form->isSubmitted() && !$form->isValid()){
-            $this->addFlash('warning', 'Vérifier les informations que vous avez renseigné');
-            return $this->redirectToRoute('profile_edit_success');
+            $this->addFlash('warning', 'Vérifier les informations que vous avez renseignés');
+            return $this->redirectToRoute('app_edit_profile');
         }
 
     }
