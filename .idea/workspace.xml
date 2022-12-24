@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mercure/mercure.db" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/mercure.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PrivateMessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrivateMessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/NotificationEventSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/NotificationEventSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PrivateMessageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PrivateMessageRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/chat/private_message.stream.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat/private_message.stream.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_send_private_message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_send_private_message.html.twig" afterDir="false" />
     </list>
