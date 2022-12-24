@@ -14,7 +14,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\UX\Turbo\TurboBundle;
 use App\Form\UserType;
 use App\Form\ChangePasswordType;
-
 class ProfileController extends AbstractController
 {
 
