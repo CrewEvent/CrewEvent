@@ -91,7 +91,7 @@ class PrivateMessageRepository extends ServiceEntityRepository
             ->setParameter('sender', $sender)
             ->setParameter('receiver', $receiver)
             ->orderBy('p.createdAt', 'ASC')
-            ->setMaxResults(10)
+/*            ->setMaxResults(10)*/
             ->getQuery()
             ->getResult();
     }

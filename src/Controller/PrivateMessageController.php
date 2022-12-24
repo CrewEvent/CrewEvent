@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Notification;
 use App\Entity\PrivateMessage;
+use http\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mercure\HubInterface;
@@ -16,10 +18,12 @@ use App\Repository\PrivateMessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Member;
 use App\Repository\MemberRepository;
-
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 //Controller pour la messagerie privee
 class PrivateMessageController extends AbstractController
 {
+
+
     //On rentre dans la page des messages privées
     #[Route('/private/message', name: 'private_message')]
     public function private_message(MemberRepository $memberRepo): Response
@@ -35,7 +39,15 @@ class PrivateMessageController extends AbstractController
 
     //Pour envoyer un message privée à un utilisateur
     #[Route('/private/message/{username}', name: 'send_private_message')]
-    public function send_message(Request $request, HubInterface $hub, User $user, EntityManagerInterface $em, PrivateMessageRepository $messageRepo, MemberRepository $memberRepo): Response
+    public function send_message(Request $request,
+                                 HubInterface $hub,
+                                 User $user,
+                                 EntityManagerInterface $em,
+                                 PrivateMessageRepository $messageRepo,
+                                 MemberRepository $memberRepo,
+                                 HttpClientInterface $client,
+
+    ): Response
     {
 
 
@@ -71,6 +83,7 @@ class PrivateMessageController extends AbstractController
 
         //C'est le canal ou ces 2 utilisateurs vont discuter
         $canal = strval($member->getId());
+        $canala = $canal."a";
         // dd($member);
         //On dit au formulaire de gérer les requétes
         $form->handleRequest($request);
@@ -104,30 +117,48 @@ class PrivateMessageController extends AbstractController
             $notification->setName($this->getUser()->getUserIdentifier());
             $notification->setUser($user);
 
-            /*$nbr_notifications =count( $user->getNotifications()->toArray());*/
-
-
-            //La magic est là
-            $hub->publish(new Update(
-                $canal,
-                $this->renderView('chat/private_message.stream.html.twig',
-                    ['message' => $data['message'],
-                        'receiver' => $user->getUserIdentifier()
-
-                    ])
-            ));
-
 
             //On registre maintenant dans la base de donnée
             $em->persist($message);
             $em->persist($member);
             $em->persist($notification);
             $em->flush();
+
+
+            //La magic est là
+            $hub->publish(new Update(
+                $canal,
+               json_encode(['id' => $message->getId(),'sender' => $this->getUser()->getUserIdentifier(), 'message' => $data['message']]),
+                false,
+                null,
+                null,
+                2
+            ));
+
+            $hub->publish(new Update(
+                $canala,
+                $this->renderView('chat/private_message.stream.html.twig',
+                    ['message' => $data['message'],
+                        'receiver' => $user->getUserIdentifier(),
+                        'sender' => $this->getUser()->getUserIdentifier(),
+                        'id'=> $message->getId()
+                    ]),
+                false,
+                null,
+                null,
+                2
+            ));
+
+
         }
 
-        // Force an empty form to be rendered below
-        // It will replace the content of the Turbo Frame after a post
         $form = $emptyForm;
-        return $this->renderForm('private_message/send_private_message.html.twig', ['form' => $form, 'user' => $user, 'messages' => $messages, 'canal' => $canal]);
+        return $this->renderForm('private_message/send_private_message.html.twig',
+            ['form' => $form,
+                'user' => $user,
+                'messages' => $messages,
+                'canal' => $canal,
+                'canala' => $canala,
+            ]);
     }
 }

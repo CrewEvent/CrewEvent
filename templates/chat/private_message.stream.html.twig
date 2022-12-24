@@ -1,9 +1,38 @@
 {# chat/private_message.stream.html.twig #}
-
 {# Les nouveaux messages reçu par mercure sont mis dans le div de partials/_send_private_message.html.twig "messages" ID. #}
-<turbo-stream action="append" target="private_messages"> 
+
+<turbo-stream action="append" target="message-send">
     <template>
-        {# chat utilisateur connecté #}
+        <li class="d-flex justify-content-end">
+            <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+            <div class="card ">
+                <div class="card-header d-flex justify-content-between p-2 align-items-center">
+                    <p class="fw-bold mb-0" id="username">{{app.user.username}}</p>&nbsp;&nbsp;
+                    <p class="text-muted small mb-0">
+                        <i class="far fa-clock"></i>
+                        &nbsp;&nbsp;{{"now"|format_datetime('none', 'short', locale='fr') }}</p>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        {{message}}
+                    </p>
+                </div>
+            </div>
+        </li>
+
+    <script>
+		var objDiv = document.getElementById("chat-scroll");
+		objDiv.scrollTop = objDiv.scrollHeight;
+	</script>
+
+	</template>
+
+</turbo-stream>
+
+
+<turbo-stream action="append" target="message-received">
+    <template>
+
             <li class="d-flex justify-content-start mb-4">
                 <img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                 <div class="card">
@@ -15,7 +44,7 @@
                     </div>
                     <div class="card-body">
                         <p class="mb-0">
-                        {{message}} 
+                        {{message}}
                         </p>
                     </div>
                 </div>

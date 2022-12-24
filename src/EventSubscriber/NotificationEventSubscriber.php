@@ -14,6 +14,7 @@ use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\Routing\RequestContextAwareInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class NotificationEventSubscriber implements EventSubscriberInterface
 {
@@ -24,6 +25,7 @@ class NotificationEventSubscriber implements EventSubscriberInterface
     private $userRepo;
     private $user;
     private $members;
+    private $client;
 
 
     //On injecte nos dépendances
@@ -32,10 +34,12 @@ class NotificationEventSubscriber implements EventSubscriberInterface
                                 RequestStack $request,
                                 ParticipantRepository $participantRepo,
                                 UserRepository $userRepo,
-                                MemberRepository $memberRepo
+                                MemberRepository $memberRepo,
+                                HttpClientInterface $client
     )
 
     {
+        $this->client = $client;
         $this->tokenStorage = $tokenStorage;
         $this->em = $em;
         $this->request = $request;
@@ -109,7 +113,6 @@ class NotificationEventSubscriber implements EventSubscriberInterface
                 $this->em->flush();
             }
         }
-
 
     }
 

@@ -13,25 +13,61 @@
 
 					{# chat utilisateur connecté #}
 					{% for message in messages %}
-						<li class="d-flex justify-content-start mb-4">
-							<img src="{{asset('images/pas_de_photo.png')}}" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-							<div class="card">
-								<div class="card-header d-flex justify-content-between p-2 align-items-center">
-									<p class="fw-bold mb-0">{{message.sender}}</p>&nbsp;&nbsp;
-									<p class="text-muted small mb-0">
-										<i class="far fa-clock"></i>
-										&nbsp;&nbsp;{{message.createdAt|format_datetime('none', 'short', locale='fr') }}</p>
+						{% if message.sender == app.user.username %}
+
+							<li class="d-flex justify-content-end mb-4">
+								<div class="card">
+									<div class="card-header d-flex justify-content-between p-2 align-items-center">
+										<p class="fw-bold mb-0">{{message.sender}}</p>&nbsp;&nbsp;
+										<p class="text-muted small mb-0">
+											<i class="far fa-clock"></i>
+											{% if message.createdAt|date("Y-m-d") == "now"|date("Y-m-d") %}
+												{{message.createdAt|date("H:s") }}
+											{% else %}
+												{{message.createdAt|date("d M Y ") }}
+											{% endif %}
+
+									</div>
+									<div class="card-body">
+										<p class="mb-0">
+											{{message.content}}
+										</p>
+									</div>
 								</div>
-								<div class="card-body">
-									<p class="mb-0">
-										{{message.content}}
-									</p>
-								</div>
-							</div>
-						</li>
+							</li>
+							{% else %}
+								<li class="d-flex justify-content-start mb-4">
+									<div class="card">
+										<div class="card-header d-flex justify-content-between p-2 align-items-center">
+											<p class="fw-bold mb-0">{{message.sender}}</p>&nbsp;&nbsp;
+											<p class="text-muted small mb-0">
+												<i class="far fa-clock"></i>
+												&nbsp;&nbsp;{% if message.createdAt|date("Y-m-d") == "now"|date("Y-m-d") %}
+													{{message.createdAt|date("H:s") }}
+												{% else %}
+													{{message.createdAt|date("d M Y ") }}
+												{% endif %}
+										</div>
+										<div class="card-body">
+											<p class="mb-0">
+												{{message.content}}
+											</p>
+										</div>
+									</div>
+								</li>
+						{% endif %}
+
 					{% endfor %}
 
-					<div id="private_messages" {{ turbo_stream_listen(canal) }}></div>
+					{#<div id="message-received" {{ turbo_stream_listen(canal) }}></div>#}
+
+
+					{#<div id="message-send" ></div>#}
+
+						<div id="messages" >
+
+						</div>
+
 				</div>
 				<li
 					class="bg-white mb-3">
@@ -53,3 +89,59 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	const eventSource = new EventSource("{{ mercure(canal)|escape('js') }}");
+	const username = {{ app.user.username|json_encode()|raw}};
+	eventSource.onmessage = event => {
+		const myObject = JSON.parse(event.data);
+		console.log(myObject);
+		const messages = document.getElementById('messages');
+		const now = new Date();
+
+		if (username == myObject.sender){
+			const messageElement = document.createElement('li')
+			messageElement.innerHTML=`
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between p-2 align-items-center">
+                        <p class="fw-bold mb-0">${myObject.sender}</p>&nbsp;&nbsp;
+						<p class="text-muted small mb-0">
+							<i class="far fa-clock"></i>
+							&nbsp;&nbsp;${now.getHours()}:${now.getMinutes()}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-0">
+                      ${myObject.message}
+                        </p>
+
+                    </div>
+                </div>
+			`
+			messageElement.className = 'd-flex justify-content-end mb-4'
+			messages.appendChild(messageElement);
+		}else{
+			const messageElement = document.createElement('li')
+			messageElement.innerHTML=`
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between p-2 align-items-center">
+                        <p class="fw-bold mb-0">${myObject.sender}</p>&nbsp;&nbsp;
+						<p class="text-muted small mb-0">
+							<i class="far fa-clock"></i>
+							&nbsp;&nbsp;${now.getHours()}:${now.getMinutes()}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-0">
+                      ${myObject.message}
+                        </p>
+                    </div>
+                </div>
+			`
+			messageElement.className = 'd-flex justify-content-start mb-4'
+			messages.appendChild(messageElement);
+		}
+		var objDiv = document.getElementById("chat-scroll");
+		objDiv.scrollTop = objDiv.scrollHeight;
+	}
+</script>
