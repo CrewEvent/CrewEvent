@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/mercure.db" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/mercure.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ChangePasswordType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChangePasswordType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/app_change_password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/app_change_password.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
