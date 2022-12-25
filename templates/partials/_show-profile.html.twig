@@ -63,19 +63,31 @@
 									<div class="card-profile-stats d-flex justify-content-center mt-md-5">
 										<div>
 											<span class="description">Amis</span>
-											<span class="heading">0</span>
+											<span class="heading">{{ user.contacts.count }}</span>
 
 										</div>
 										<div>
 											<span class="description">Évènements</span>
-											<span class="heading">0</span>
+											<span class="heading">
+												<ul class="list-unstyled">
+													{% for participant in participants %}
+														<li>
+															<a href="{{ path('app_show_event',{name:participant.eventName}) }}">
+																{{ participant.eventName }}
+															</a>
+														</li>
+													{% endfor %}
+												</ul>
+
+											</span>
 
 										</div>
-										<div>
+
+										{#<div>
 											<span class="description">Photo</span>
 											<span class="heading">0</span>
 
-										</div>
+										</div>#}
 									</div>
 								</div>
 							</div>
