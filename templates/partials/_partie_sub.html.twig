@@ -50,9 +50,19 @@
 		<div class="list-group">
 			{% for participant in participants %}
 				{% if participant.participantUsername == app.user.username %}
-					<a href="{{path("app_profile")}}" class="list-group-item list-group-item-action">{{participant.participantUsername}}</a>
+					<a href="{{path("app_profile")}}" class="list-group-item list-group-item-action">
+						{{participant.participantUsername}}
+						{% if event.user.id == participant.userId %}
+							<span class="badge text-bg-success">Admin</span>
+						{% endif %}
+					</a>
 				{% else %}
-					<a href="{{path("app_show_profile", {username : participant.participantUsername })}}" class="list-group-item list-group-item-action">{{participant.participantUsername}}</a>
+					<a href="{{path("app_show_profile", {username : participant.participantUsername })}}" class="list-group-item list-group-item-action">
+						{{participant.participantUsername}}
+						{% if event.user.id == participant.userId %}
+							<span class="badge text-bg-success">Admin</span>
+						{% endif %}
+					</a>
 				{% endif %}
 			{% endfor %}
 

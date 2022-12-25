@@ -143,7 +143,7 @@ class AppFixtures extends Fixture
             $participant->setEvent($event);
             $participant->setEventName($event->getName());
             $participant->setParticipantUsername($user->getUsername());
-
+            $participant->setUserId($user->getId());
             $manager->persist($participant);
         }
         // Participants
