@@ -23,6 +23,9 @@ class Participant
     #[ORM\Column(length: 255)]
     private ?string $eventName = null;
 
+    #[ORM\Column]
+    private ?int $userId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Participant
     public function setEventName(string $eventName): self
     {
         $this->eventName = $eventName;
+
+        return $this;
+    }
+
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }

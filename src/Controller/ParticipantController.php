@@ -38,6 +38,9 @@ class ParticipantController extends AbstractController
         //On enregistre le nom d'utilisateur dans le repo participant
         $participant->setParticipantUsername($user->getUserIdentifier());
 
+        //On enregistre le participant Id
+        $participant->setUserId($user->getId());
+
         //On enregistre dans la base de donnée
         $em->persist($participant);
         $em->flush();
