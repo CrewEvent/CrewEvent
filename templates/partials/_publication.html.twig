@@ -30,6 +30,10 @@
             </div>
             <div class="card-body ">
                 <p class="card-text">{{feed.content}}</p>
+                {% if feed.link %}
+                    <a href="{{ feed.link }}" class="card-text"> Rejoigner nous</a>
+                {% endif %}
+
             </div>
             <div class="card-footer bg-transparent d-flex flex-column">
                 <div class="d-flex justify-content-start align-items-center gap-4">

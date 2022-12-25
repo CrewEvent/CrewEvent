@@ -123,7 +123,6 @@ class HomeController extends PublicationController
 
         }
 
-
         return $this->render('home/home.html.twig', [
             'post' => $feeds,
             'events' => $part_events,
