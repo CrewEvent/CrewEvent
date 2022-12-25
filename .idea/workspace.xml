@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mercure/mercure.db" beforeDir="false" afterPath="$PROJECT_DIR$/mercure/mercure.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventChatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat/message.stream.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat/message.stream.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_chat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_chat.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_send_private_message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_send_private_message.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +28,7 @@
     <setting file="file://$PROJECT_DIR$/src/Controller/ContactController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EditphotoController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventAnnoncesController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Controller/EventChatController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventInfosController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/HomeController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />

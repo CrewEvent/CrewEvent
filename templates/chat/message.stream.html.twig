@@ -4,24 +4,23 @@
 <turbo-stream action="append" target="messages">
      <template>
 
-
-        {# <div class="d-flex flex-row justify-content-end mb-4">      #}
-
-        {# On render le sender #}
-        <div class="d-flex ms-3 justify-content-center align-items-center">
-            {% if sender == app.user.username %}
-                <a href="{{path('app_profile')}}"><span class="small text-primary">{{sender}}</span></a>
-            {% else %}
-                <a href="{{path('app_show_profile')}}"><span class="small text-primary">{{sender}}</span></a>
-            {% endif %}
-            
-            <span class="small text-muted"> &nbsp;à&nbsp; {{"now"|format_datetime('none', 'short', locale='fr') }}</span>
-        </div>
-                
-          {# Puis on render le message       #}
-        <div class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">{{ message }}</div>
-        {# </div> #}
-            
+         <div class="card mb-4 ">
+             <div class="card-header d-flex justify-content-between p-2 align-items-center">
+                 <p class="fw-bold mb-0" id="username">{{app.user.username}}</p>&nbsp;&nbsp;
+                 <p class="text-muted small mb-0">
+                     <i class="far fa-clock"></i>
+                     &nbsp;&nbsp;{{"now"|date("H:s") }}</p>
+             </div>
+             <div class="card-body">
+                 <p class="mb-0">
+                     {{message}}
+                 </p>
+             </div>
+         </div>
+         <script>
+             var objDiv = document.getElementById("chat-scroll-el");
+             objDiv.scrollTop = objDiv.scrollHeight;
+         </script>
 	</template>
 </turbo-stream>
 

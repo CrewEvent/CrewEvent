@@ -72,7 +72,11 @@ class EventChatController extends AbstractController
 
                 $hub->publish(new Update(
                     $canal,
-                    $this->renderView('chat/message.stream.html.twig', ['message' => $data['message'], 'sender' => $username])
+                    $this->renderView('chat/message.stream.html.twig', ['message' => $data['message'], 'sender' => $username]),
+                    false,
+                    null,
+                    null,
+                    2
                 ));
 
                 // Force an empty form to be rendered below
