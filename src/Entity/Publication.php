@@ -35,6 +35,9 @@ class Publication
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $likes = [];
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -118,6 +121,18 @@ class Publication
             }
             $i++;
         }
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
+
         return $this;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Entity\Participant;
+use App\Entity\Publication;
 use App\Form\EventCreationType;
 use App\Repository\EventRepository;
 use App\Repository\ParticipantRepository;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\UX\Turbo\TurboBundle;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -182,6 +184,34 @@ class EventController extends AbstractController
 
 
         }
+    }
+    //Partage de l'événement
+
+    #[Route('event/share/{name}', name: 'event_share', methods: ['POST', 'GET'])]
+    public function event_share(Event $event, EntityManagerInterface $em,RouterInterface $router)
+    {
+        //On crée une nouvelle pulication
+        $post = new Publication;
+
+        //ON définit l'utilisateur qui fait le post
+        $post->setPublisher($this->getUser()->getUserIdentifier());
+
+        //On récupre l'url de l'événement
+        $url = $router->generate('app_show_event', ['name'=>$event->getName()]);
+
+        //On le stransforme en string pour l'enregistrer dans la base de donnée
+        $link = (string)$url;
+
+        //On définit le contenu du post
+        $post->setContent("Si vous étes fan de ".$event->getTag().", venez découvrir ".$event->getName());
+        //Le lien vers l'événement
+        $post->setLink($link);
+
+        //Enregistrement
+        $em->persist($post);
+        $em->flush();
+
+        return $this->redirectToRoute('app_home');
     }
 
 }

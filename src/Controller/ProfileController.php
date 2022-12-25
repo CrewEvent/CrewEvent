@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\User;
+use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,8 +23,9 @@ class ProfileController extends AbstractController
  */
 
     #[Route('/profile', name: 'app_profile')]
-    public function profile(): Response
+    public function profile(ParticipantRepository $participantRepo): Response
     {
+        $participants = $participantRepo->findBy(['participantUsername'=>$this->getUser()->getUserIdentifier()]);
 
         $user = $this->getUser();
         $photoProfile = $user->getphotoProfile();
@@ -40,6 +42,7 @@ class ProfileController extends AbstractController
         return $this->render(
             'pages/profile.html.twig',
             [
+                'participants' =>$participants,
                 'Form' => $form->createView(),
                 'photoProfile' => $photoProfile ? 'images/' . $photoProfile : 'images/No_image.jpg'
             ]
@@ -143,7 +146,7 @@ class ProfileController extends AbstractController
     //symfony sait que l'entité que l'on va utiliser est la méme que celui de la route
 
     #[Route('/show_profile/{username}', name: 'app_show_profile')]
-    public function show_profile(User $user,ContactRepository $contactRepo): Response
+    public function show_profile(User $user,ContactRepository $contactRepo, ParticipantRepository $participantRepo): Response
     {
         //On regarde d'abord si cet utilisateur est déja contact
         $isContact = false;
@@ -157,6 +160,13 @@ class ProfileController extends AbstractController
             }
         }
 
-        return $this->render('pages/show_profile.html.twig', ['user' => $user, 'isContact' => $isContact]);
+        //La liste des participations
+        $participants = $participantRepo->findBy(['participantUsername' =>$user->getUserIdentifier()]);
+
+        return $this->render('pages/show_profile.html.twig', [
+            'user' => $user,
+            'isContact' => $isContact,
+            'participants' =>$participants
+        ]);
     }
 }

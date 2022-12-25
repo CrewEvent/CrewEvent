@@ -6,7 +6,7 @@
             <div class="card-header bg-transparent d-flex justify-content-between align-items-center ">
 
                 <div class="d-flex justify-content-start align-items-center">
-                    <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="60" height="60"/>
+
 
                     {% if feed.publisher == app.user.username %}
                         <h6 class="fw-bold text-primary mb-1"><a href="{{path('app_profile')}}" class="text-decoration-none">{{feed.publisher}}</a></h6>
@@ -30,6 +30,10 @@
             </div>
             <div class="card-body ">
                 <p class="card-text">{{feed.content}}</p>
+                {% if feed.link %}
+                    <a href="{{ feed.link }}" class="card-text"> Rejoigner nous</a>
+                {% endif %}
+
             </div>
             <div class="card-footer bg-transparent d-flex flex-column">
                 <div class="d-flex justify-content-start align-items-center gap-4">
@@ -51,11 +55,9 @@
                         <turbo-frame id="comment-form">
                             <form class="" action="{{path('app_comment', {id : feed.id})}}" method="get" role="form">
                                 <div class="d-flex flex-start w-100">
-                                    <img class="rounded-circle shadow-1-strong me-3" src="{{asset('images/pas_de_photo.png')}}" alt="avatar" width="40" height="40"/>
                                     <div class="form-group w-100">
                                         <label class="form-label" for="textAreaExample">Message</label>
                                         <textarea class="form-control" id="textAreaExample" rows="1" name="comment"></textarea>
-
                                     </div>
                                 </div>
                                 <div class="float-end my-1">
