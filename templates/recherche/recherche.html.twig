@@ -3,35 +3,93 @@
 {% block title %} Page de recherche {% endblock %}
 
 {% block body %}
-   
-    <h1>Resulats de la recherche</h1>
-    {% if events|length or users|length  %}
-        <h3>{{events|length + users|length}} résultats trouvés</h3>
-    {% else %}
-        <h3>Pas de résultats trouvés</h3>
-    {% endif %}
-
-    <ul>
-        {# On affiche la recherche par utilisateur #}
-        <h3> Utilisateurs </h3>
-        {% for user in users %}
-            {% if user == app.user %}
-                <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>
+{#    <h1>Resulats de la recherche</h1>#}
+{#    {% if events|length or users|length  %}#}
+{#        <h3>{{events|length + users|length}} résultats trouvés</h3>#}
+{#    {% else %}#}
+{#        <h3>Pas de résultats trouvés</h3>#}
+{#    {% endif %}#}
+    <div class="mb-3">
+        <h1 class="card-title">
+            <small class="text-muted">Mes Contacts</small>
+            {% if events|length or users|length  %}
+                <hr>
+            <h3 class="text-muted">{{events|length + users|length}} résultats trouvés</h3>
             {% else %}
-                <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>
+            <h6>Pas de résultats trouvés</h6>
             {% endif %}
-        {% endfor %}
 
-        {# Le résultat de la recherche par événement #}
-        <h3> Evenements </h3>
-        {% for event in events %}
-            <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>
-        {% endfor %}    
+        </h1>
+    </div>
 
+
+{#    <ul>#}
+{#         On affiche la recherche par utilisateur#}
+{#        <h3> Utilisateurs </h3>#}
+{#        {% for user in users %}#}
+{#            {% if user == app.user %}#}
+{#                <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>#}
+{#            {% else %}#}
+{#                <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+
+{#         Le résultat de la recherche par événement#}
+{#        <h3> Evenements </h3>#}
+{#        {% for event in events %}#}
+{#            <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>#}
+{#        {% endfor %}#}
+
+{#    </ul>#}
+
+
+    {#         On affiche la recherche par utilisateur#}
+    <h6 class="bg-light p-2 border-top border-bottom">Utilisateurs</h6>
+
+    <ul class="list-group list-group-light mb-4">
+        <li class="list-group-item align-items-center">
+            {% for user in users %}
+            <div class="d-flex align-items-center ">
+                <img src="{{ user.PhotoProfile ? asset('images/' ~ user.PhotoProfile) : asset('images/No_image.jpg')}}" alt="" style="width: 45px; height: 45px"
+                     class="rounded-circle" />
+                <div class="ms-3">
+                    {% if user == app.user %}
+                    <a href="{{path('app_profile')}}" class="text-muted mb-1 ">{{user.username}}</a>
+
+                    {% else %}
+                   <a href="{{path('app_show_profile',{username : user.username})}}" class="text-muted mb-0">{{user.username}}</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+        </li>
+
+
+    </ul>
+    {#         Le résultat de la recherche par événement#}
+    <h6 class="bg-light p-2 border-top border-bottom">Evenements</h6>
+
+    <ul class="list-group list-group-light">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {% for event in events %}
+            <div class="d-flex align-items-center">
+
+                <img src="{{ asset('images/No_image.jpg')}}" alt="" style="width: 45px; height: 45px"
+                     class="rounded-circle" />
+                <div class="ms-3">
+                    <a href="{{path('app_show_event',{name : event.name})}}" class="text-muted mb-0">{{event.name}}</a>
+                    <p class="text-muted mb-0">{{ event.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </li>
     </ul>
 
     <div class="m-auto">
-            {{ knp_pagination_render(events) }}
+        {{ knp_pagination_render(events) }}
+
     </div>
+
 
 {% endblock  %}
