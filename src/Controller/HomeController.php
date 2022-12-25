@@ -96,11 +96,9 @@ class HomeController extends PublicationController
         $suggestions = $this->selection_sort($events);
 
 
-        //On prend les 3 derniers
-      /*  $suggestions = array_slice($events, -3, 3);*/
+
 
         //S'il a déja participé on ne va pas lui suggérer encore
-
 
         foreach ($participants as $participant) {
             foreach ($suggestions as $key => $suggestion) {
@@ -111,6 +109,7 @@ class HomeController extends PublicationController
                 }
             }
         }
+
 
         $events = $eventRepo->findAll();
 
@@ -123,6 +122,11 @@ class HomeController extends PublicationController
             }
 
         }
+        if (count($suggs) > 3){
+            //On prend les 3 derniers
+            $suggs = array_slice($suggs, -3, 3);
+        }
+
 
         return $this->render('home/home.html.twig', [
             'post' => $feeds,
