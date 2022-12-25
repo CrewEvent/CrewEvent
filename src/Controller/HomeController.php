@@ -93,11 +93,11 @@ class HomeController extends PublicationController
 
 
         //On trie la liste des événements du plus petit nbre de participants au plus grand
-        $events = $this->selection_sort($events);
+        $suggestions = $this->selection_sort($events);
 
 
         //On prend les 3 derniers
-        $suggestions = array_slice($events, -3, 3);
+      /*  $suggestions = array_slice($events, -3, 3);*/
 
         //S'il a déja participé on ne va pas lui suggérer encore
 
@@ -111,6 +111,7 @@ class HomeController extends PublicationController
                 }
             }
         }
+
         $events = $eventRepo->findAll();
 
         $suggs = [];
