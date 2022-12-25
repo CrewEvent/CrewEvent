@@ -31,17 +31,22 @@
 							<a href=""
 							   class="list-group-item list-group-item-danger"
 							   data-mdb-toggle="modal" data-mdb-target="#quitModal">
-								quitter
+								Quitter
 							</a>
 
 						{% elseif app.user.id != event.user.id and not isParticipant %}
 
 							<a href="{{path("app_add_participant",{name : event.name})}}"
 							   class="list-group-item list-group-item-success">
-								participer
+								Participer
 							</a>
 
 						{% endif %}
+
+						<a href="{{ path('event_share',{name:event.name}) }}"
+						   class="list-group-item list-group-item-primary">
+							Partager
+						</a>
 					</div>
 					{{ include('partials/_quit_event_modal.html.twig') }}
 				</div>
