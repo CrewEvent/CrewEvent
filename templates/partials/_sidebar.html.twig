@@ -66,7 +66,7 @@ Side bar page événement
 
 							<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
 							   data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-								<img src="https://github.com/mdo.png" alt="" class="rounded-circle me-2" width="32" height="32">
+								<img src="{{ event.image ? asset('images/'~event.image): asset('images/event.png') }}" alt="" class="rounded-circle me-2" width="32" height="32">
 								<strong>Paramétres</strong>
 							</a>
 						</div>
@@ -82,12 +82,21 @@ Side bar page événement
 									</a>
 
 									<a href="#"
+									   class="list-group-item list-group-item-action list-group-item"
+									   data-mdb-toggle="modal" data-mdb-target="#exampleModala">
+										modifier l'image
+									</a>
+
+									<a href="#"
 									   class="list-group-item list-group-item-action list-group-item-danger"
 									   data-mdb-toggle="modal" data-mdb-target="#exampleModal">
 										Supprimer
 									</a>
 
+
+
 								</div>
+								{{ include('partials/_modale_modify_image.html.twig') }}
 								{{ include('partials/_event_delete.html.twig') }}
 							</div>
 						</div>

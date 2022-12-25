@@ -24,6 +24,11 @@ class HomeController extends PublicationController
          ): Response {
         $participants = $participantRepo->findBy(['participantUsername' => $this->getUser()->getUserIdentifier()]);
 
+        $part_events= [];
+        foreach ($participants as $participant){
+            array_push($part_events, $participant->getEvent());
+        }
+
         //les feeds ou les post
         //On prend les post des gens qu'on connait et les gens avec qui on est dans le méme événement
 
@@ -106,13 +111,23 @@ class HomeController extends PublicationController
                 }
             }
         }
+        $events = $eventRepo->findAll();
 
+        $suggs = [];
+        foreach ($events as $event){
+            foreach ($suggestions as $suggestion) {
+                if ($event->getName() == $suggestion[0]) {
+                    array_push($suggs, $event);
+                }
+            }
+
+        }
 
 
         return $this->render('home/home.html.twig', [
             'post' => $feeds,
-            'participants' => $participants,
-            'suggestions' => $suggestions
+            'events' => $part_events,
+            'suggestions' => $suggs
         ]);
     }
 

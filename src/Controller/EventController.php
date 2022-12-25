@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\UX\Turbo\TurboBundle;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /*
 Controller pour la gestion d'événement
@@ -155,6 +156,32 @@ class EventController extends AbstractController
             'events_participated'=>$participated
         ]);
     }
+    #[Route('image/modification/{name}', name: 'event_image_modification', methods: ['POST', 'GET'])]
+    public function image_modification(Event $event, Request $request,EntityManagerInterface $em){
+        $file = $request->files->get('image');
 
+        if ($file instanceof UploadedFile && $file->isValid()) {
+            // Récupération du nom original du fichier
+            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            // Génération d'un nom de fichier unique
+            $newFilename = uniqid().'.'.$file->guessExtension();
+
+            // Déplacement du fichier téléchargé dans le répertoire de destination
+            $file->move(
+                $this->getParameter('uploads_dir'),
+                $newFilename
+            );
+
+
+            // Mise à jour de l'entité avec le nouveau nom de fichier
+            $event->setImage($newFilename);
+            $em->persist($event);
+            $em->flush();
+
+           return $this->redirectToRoute('app_show_event',['name' => $event->getName()]);
+
+
+        }
+    }
 
 }
