@@ -28,6 +28,28 @@
             <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>
         {% endfor %}
 
+        </li>
+
+
+    </ul>
+    {#         Le résultat de la recherche par événement#}
+    <h6 class="bg-light p-2 border-top border-bottom">Evenements</h6>
+
+    <ul class="list-group list-group-light">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {% for event in events %}
+            <div class="d-flex align-items-center">
+
+                <img src="{{event.image ?  asset('images/' ~ event.image) : asset('images/event.png') }}" alt="" style="width: 45px; height: 45px"
+                     class="rounded-circle" />
+                <div class="ms-3">
+                    <a href="{{path('app_show_event',{name : event.name})}}" class="text-muted mb-0">{{event.name}}</a>
+                    <p class="text-muted mb-0">{{ event.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </li>
+>>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
     </ul>
 
     <div class="m-auto">
