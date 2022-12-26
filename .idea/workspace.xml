@@ -6,24 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/COPYRIGHT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/Caddyfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/Caddyfile.dev" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/mercure.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mercure/mercure.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20221221215204.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20221222081657.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20221225133106.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20221225145421.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20221225145613.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/recherche/recherche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recherche/recherche.html.twig" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +28,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable path="composer" />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,19 +43,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="profilFix" />
-                    <option name="lastUsedInstant" value="1671978457" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="sos" />
-                    <option name="lastUsedInstant" value="1671978431" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="Temp" />
-                    <option name="lastUsedInstant" value="1671978288" />
+                    <option name="lastUsedInstant" value="1672003445" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1671978287" />
+                    <option name="lastUsedInstant" value="1672003421" />
                   </RecentBranch>
                 </list>
               </option>
@@ -73,6 +59,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Controller/ContactController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventAnnoncesController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventInfosController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
@@ -82,7 +69,6 @@
     <setting file="file://$PROJECT_DIR$/src/Controller/ParticipantController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/PrivateMessageController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/ProfileController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Controller/PublicationController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/RechercheController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/Contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/Event.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
@@ -90,12 +76,11 @@
     <setting file="file://$PROJECT_DIR$/src/Entity/Notification.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/Participant.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/PrivateMessage.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Entity/Publication.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/User.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/EventSubscriber/NotificationEventSubscriber.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Form/UserType.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/templates/partials/_show-profile.html.twig" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/templates/recherche/recherche.html.twig" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/templates/profile/profile_edit.stream.html.twig" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -262,6 +247,9 @@
       <path value="$PROJECT_DIR$/vendor/league/uri-query-parser" />
       <path value="$PROJECT_DIR$/vendor/league/uri-parser" />
       <path value="$PROJECT_DIR$/vendor/dsentker/url-signature" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
     </include_path>
   </component>
   <component name="ProjectId" id="2ItjWlnz0QqL7CiUqxbMVLAWsV8" />
@@ -274,11 +262,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mrrobot/Desktop/SUP3Dev /Workspace/CrewEvent&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ROOT.DIV/SUPP_3/Workspace/CrewEvent&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -332,13 +319,9 @@
       <workItem from="1671645291816" duration="3031000" />
       <workItem from="1671693368338" duration="20504000" />
       <workItem from="1671719530599" duration="2304000" />
-
-      <workItem from="1671727212850" duration="443000" />
-      <workItem from="1671745972568" duration="120000" />
-      <workItem from="1671978092628" duration="2231000" />
-      <workItem from="1671980735678" duration="41000" />
-      <workItem from="1671980812702" duration="501000" />
-      <workItem from="1671981390488" duration="7777000" />
+      <workItem from="1672002968570" duration="875000" />
+      <workItem from="1672049595633" duration="7000" />
+      <workItem from="1672050475674" duration="1979000" />
     </task>
     <servers />
   </component>
@@ -355,8 +338,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

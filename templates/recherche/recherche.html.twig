@@ -19,6 +19,8 @@
             <h6>Pas de résultats trouvés</h6>
             {% endif %}
 
+
+
         </h1>
     </div>
 
@@ -75,7 +77,7 @@
             {% for event in events %}
             <div class="d-flex align-items-center">
 
-                <img src="{{ asset('images/No_image.jpg')}}" alt="" style="width: 45px; height: 45px"
+                <img src="{{event.image ?  asset('images/' ~ event.image) : asset('images/event.png') }}" alt="" style="width: 45px; height: 45px"
                      class="rounded-circle" />
                 <div class="ms-3">
                     <a href="{{path('app_show_event',{name : event.name})}}" class="text-muted mb-0">{{event.name}}</a>
