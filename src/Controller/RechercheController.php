@@ -37,7 +37,7 @@ class RechercheController extends AbstractController
         $usersResult = [];
         foreach ($allUsers as $user) {
             foreach ($patterns as $value) {
-                if (str_contains($user->getUserIdentifier(), $value)) {
+                if (str_contains(strtolower($user->getUserIdentifier()), strtolower($value))) {
                     $usersResult[] = $user;
                 }
             }
@@ -61,7 +61,7 @@ class RechercheController extends AbstractController
         $eventsResult = [];
         foreach ($allevents as $event) {
             foreach ($patterns as $value) {
-                if (str_contains($event->getName(), $value)) {
+                if (str_contains(strtolower($event->getName()), strtolower($value))) {
                     $eventsResult[] = $event;
                 }
             }
