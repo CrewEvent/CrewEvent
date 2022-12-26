@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="665e894c-b671-49af-922d-1bea07698c50" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20221221215204.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20221222081657.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/profile_aliounesarr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ProfileController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/profile/profile_edit.stream.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/migrations/Version20221221144723.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_profile.html.twig" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/migrations/Version20221221215204.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20221222081657.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20221225133106.php" beforeDir="false" />
@@ -20,6 +33,7 @@
       <change beforePath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/recherche/recherche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recherche/recherche.html.twig" afterDir="false" />
+>>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +47,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="GitToolBoxStore">
     <option name="recentBranches">
       <RecentBranches>
@@ -58,6 +74,7 @@
       </RecentBranches>
     </option>
   </component>
+>>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Controller/ContactController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Controller/EventAnnoncesController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
@@ -80,7 +97,10 @@
     <setting file="file://$PROJECT_DIR$/src/Entity/User.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/EventSubscriber/NotificationEventSubscriber.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Form/UserType.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+<<<<<<< HEAD
+=======
     <setting file="file://$PROJECT_DIR$/templates/profile/profile_edit.stream.html.twig" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
+>>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -319,9 +339,12 @@
       <workItem from="1671645291816" duration="3031000" />
       <workItem from="1671693368338" duration="20504000" />
       <workItem from="1671719530599" duration="2304000" />
+<<<<<<< HEAD
+=======
       <workItem from="1672002968570" duration="875000" />
       <workItem from="1672049595633" duration="7000" />
       <workItem from="1672050475674" duration="1979000" />
+>>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
     </task>
     <servers />
   </component>

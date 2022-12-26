@@ -3,20 +3,20 @@
 {% block title %} Page de recherche {% endblock %}
 
 {% block body %}
-{#    <h1>Resulats de la recherche</h1>#}
-{#    {% if events|length or users|length  %}#}
-{#        <h3>{{events|length + users|length}} résultats trouvés</h3>#}
-{#    {% else %}#}
-{#        <h3>Pas de résultats trouvés</h3>#}
-{#    {% endif %}#}
+    {#    <h1>Resulats de la recherche</h1>#}
+    {#    {% if events|length or users|length  %}#}
+    {#        <h3>{{events|length + users|length}} résultats trouvés</h3>#}
+    {#    {% else %}#}
+    {#        <h3>Pas de résultats trouvés</h3>#}
+    {#    {% endif %}#}
     <div class="mb-3">
         <h1 class="card-title">
             <small class="text-muted">Mes Contacts</small>
             {% if events|length or users|length  %}
                 <hr>
-            <h3 class="text-muted">{{events|length + users|length}} résultats trouvés</h3>
+                <h3 class="text-muted">{{events|length + users|length}} résultats trouvés</h3>
             {% else %}
-            <h6>Pas de résultats trouvés</h6>
+                <h6>Pas de résultats trouvés</h6>
             {% endif %}
 
 
@@ -25,24 +25,24 @@
     </div>
 
 
-{#    <ul>#}
-{#         On affiche la recherche par utilisateur#}
-{#        <h3> Utilisateurs </h3>#}
-{#        {% for user in users %}#}
-{#            {% if user == app.user %}#}
-{#                <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>#}
-{#            {% else %}#}
-{#                <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>#}
-{#            {% endif %}#}
-{#        {% endfor %}#}
+    {#    <ul>#}
+    {#         On affiche la recherche par utilisateur#}
+    {#        <h3> Utilisateurs </h3>#}
+    {#        {% for user in users %}#}
+    {#            {% if user == app.user %}#}
+    {#                <a href="{{path('app_profile')}}"> <li>{{user.username}}</li></a>#}
+    {#            {% else %}#}
+    {#                <a href="{{path('app_show_profile',{username : user.username})}}"> <li>{{user.username}}</li></a>#}
+    {#            {% endif %}#}
+    {#        {% endfor %}#}
 
-{#         Le résultat de la recherche par événement#}
-{#        <h3> Evenements </h3>#}
-{#        {% for event in events %}#}
-{#            <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>#}
-{#        {% endfor %}#}
+    {#         Le résultat de la recherche par événement#}
+    {#        <h3> Evenements </h3>#}
+    {#        {% for event in events %}#}
+    {#            <a href="{{path('app_show_event',{name : event.name})}}"><li>{{event.name}}</li></a>#}
+    {#        {% endfor %}#}
 
-{#    </ul>#}
+    {#    </ul>#}
 
 
     {#         On affiche la recherche par utilisateur#}
@@ -51,18 +51,18 @@
     <ul class="list-group list-group-light mb-4">
         <li class="list-group-item align-items-center">
             {% for user in users %}
-            <div class="d-flex align-items-center ">
-                <img src="{{ user.PhotoProfile ? asset('images/' ~ user.PhotoProfile) : asset('images/No_image.jpg')}}" alt="" style="width: 45px; height: 45px"
-                     class="rounded-circle" />
-                <div class="ms-3">
-                    {% if user == app.user %}
-                    <a href="{{path('app_profile')}}" class="text-muted mb-1 ">{{user.username}}</a>
+                <div class="d-flex align-items-center ">
+                    <img src="{{ user.PhotoProfile ? asset('images/' ~ user.PhotoProfile) : asset('images/No_image.jpg')}}" alt="" style="width: 45px; height: 45px"
+                         class="rounded-circle" />
+                    <div class="ms-3">
+                        {% if user == app.user %}
+                            <a href="{{path('app_profile')}}" class="text-muted mb-1 text-decoration-none">{{user.username}}</a>
 
-                    {% else %}
-                   <a href="{{path('app_show_profile',{username : user.username})}}" class="text-muted mb-0">{{user.username}}</a>
-                    {% endif %}
+                        {% else %}
+                            <a href="{{path('app_show_profile',{username : user.username})}}" class="text-muted mb-0 text-decoration-none">{{user.username}}</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
             {% endfor %}
 
         </li>
@@ -75,15 +75,15 @@
     <ul class="list-group list-group-light">
         <li class="list-group-item d-flex justify-content-between align-items-center">
             {% for event in events %}
-            <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center">
 
-                <img src="{{event.image ?  asset('images/' ~ event.image) : asset('images/event.png') }}" alt="" style="width: 45px; height: 45px"
-                     class="rounded-circle" />
-                <div class="ms-3">
-                    <a href="{{path('app_show_event',{name : event.name})}}" class="text-muted mb-0">{{event.name}}</a>
-                    <p class="text-muted mb-0">{{ event.description }}</p>
+                    <img src="{{event.image ?  asset('images/' ~ event.image) : asset('images/event.png') }}" alt="" style="width: 45px; height: 45px"
+                         class="rounded-circle" />
+                    <div class="ms-3">
+                        <a href="{{path('app_show_event',{name : event.name})}}" class="text-muted mb-0 text-decoration-none">{{event.name}}</a>
+                        <p class="text-muted mb-0">{{ event.description }}</p>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
         </li>
     </ul>
