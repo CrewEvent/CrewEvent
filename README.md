@@ -107,3 +107,10 @@ Voici la liste des fonctionnalités de l'application CrewEvent.
 - Partage d'événements
 - Suggestions d'événement
 - Recherche de contacts et d'événements
+
+
+## Tech Stack
+
+**Client:** Bootstrap, Twig, Html and css
+
+**Server:** PHP, Symfony
