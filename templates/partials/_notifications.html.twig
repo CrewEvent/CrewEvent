@@ -9,7 +9,7 @@
         <div class="list-group">
             {% for notification in notifications %}
                 {% if notification.categorie == "event" %}
-                    <a href="{{ path('app_event_news',{name:notification.name}) }}" class="">
+                    <a href="{{ path('app_event_news',{name:notification.name}) }}" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ notification.name }}</h5>
                             <div class="">
