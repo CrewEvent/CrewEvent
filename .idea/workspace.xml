@@ -12,28 +12,11 @@
       <change afterPath="$PROJECT_DIR$/templates/profile/profile_edit.stream.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/migrations/Version20221221144723.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_profile.html.twig" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/migrations/Version20221221215204.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20221222081657.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20221225133106.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20221225145421.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20221225145613.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_app_change_password.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_show-profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recherche/recherche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recherche/recherche.html.twig" afterDir="false" />
->>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,14 +76,9 @@
     <setting file="file://$PROJECT_DIR$/src/Entity/Notification.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/Participant.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/PrivateMessage.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Entity/Publication.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Entity/User.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/EventSubscriber/NotificationEventSubscriber.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Form/UserType.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-<<<<<<< HEAD
-=======
-    <setting file="file://$PROJECT_DIR$/templates/profile/profile_edit.stream.html.twig" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
->>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -339,12 +317,6 @@
       <workItem from="1671645291816" duration="3031000" />
       <workItem from="1671693368338" duration="20504000" />
       <workItem from="1671719530599" duration="2304000" />
-<<<<<<< HEAD
-=======
-      <workItem from="1672002968570" duration="875000" />
-      <workItem from="1672049595633" duration="7000" />
-      <workItem from="1672050475674" duration="1979000" />
->>>>>>> 3c1a4a7732073d6c557be4f953565ab6016d813a
     </task>
     <servers />
   </component>

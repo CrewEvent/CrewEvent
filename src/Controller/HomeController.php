@@ -122,8 +122,16 @@ class HomeController extends PublicationController
             }
 
         }
+        //dd($suggs);
+
         if (count($suggs) > 3){
             //On prend les 3 derniers
+            $suggs = array_slice($suggs, -3, 3);
+        }
+        elseif (!count($suggs)){
+            foreach ($events as $event) {
+                array_push($suggs, $event);
+            }
             $suggs = array_slice($suggs, -3, 3);
         }
 
@@ -157,4 +165,5 @@ class HomeController extends PublicationController
         }
         return $data;
     }
+
 }
