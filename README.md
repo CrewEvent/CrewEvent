@@ -114,3 +114,14 @@ Voici la liste des fonctionnalités de l'application CrewEvent.
 **Client:** Bootstrap, Twig, Html and css
 
 **Server:** PHP, Symfony
+
+## Support
+
+Si vous avez besoin de support joignez notre groupe discord: https://discord.gg/yCdvSf2Y.
+Nous sommes disponibles et ouverts à toutes vos questions.
+
+
+
+## Les leçons
+
+Pour un temps limité, nous avons pris en main symfony et pour beaucoup d'entres nous cela a été notre premier projet. Nous avons appris beaucoup de choses en commençant par la gestion de projet avec l'application github, le travail en équipe mais aussi le fait d'aller chercher des informations qui ne sont des fois pas évidentes à trouver.
