@@ -72,7 +72,7 @@ Si tout se passe bien vous serez dirrigé vers la page d'acceuil.
 Dés fois composer ne détecte pas les dépendences de certaines bundle de symfony donc il faudra les installer manuellement. 
 Contacter nous si vous avez des soucis concernant l'installation.
 
-## Setup locale Mercure
+## Setup locale de Mercure
 
 Notre application dispose d'un systéme de chat instantannée utilisant mercure que l'on peut tester facilement en locale.
 Dans votre fichier .env mettez ces paramétres:
@@ -84,29 +84,26 @@ MERCURE_JWT_SECRET=!ChangeMe!
 
 ```
 Démarrer maintenant le hub mercure avec:
+
 ```bash
    cd mercure
    $env:MERCURE_PUBLISHER_JWT_KEY='!ChangeMe!'; $env:MERCURE_SUBSCRIBER_JWT_KEY='!ChangeMe!';$env:SERVER_NAME='localhost:3014'; .\mercure.exe run -config Caddyfile.dev
 ```
 
-Si tout marche bien maintenant ouvrez le hub à l'adresse: https://localhost:3014
-dans la partie setting en bas à gauche dans la partie JWT coller cette token ci-dessous: eyJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdLCJzdWJzY3JpYmUiOlsiKiJdfX0.Ws4gtnaPtM-R2-z9DnH-laFu5lDZrMnmyTpfU8uKyQo
+Si tout marche bien jusque là ouvrez le hub à l'adresse: https://localhost:3014
 
-Je passe un peut la génération cet token JWT mais c'est trés simple à faire.
 
-/////Cette partie n'est pas importante: c'est juste pour la génération du token JWT //////
-//Donc en bas du token JWT il y'a un bouton qui s'appelle create token:
-//ça t'emméne dans le site JWT.io
-//Là à droite il y'a 3 champs à renseigner:
-Header: qu'on laisse comme ça
-Payload: on met:
-{
-  "mercure": {
-    "publish": ["*"],
-    "subscribe": ["*"]
-  }
-}
-Verify Signature: !ChangeMe!
+## Fonctionnalités 
 
-A droite ça te génére la clé que tu colle dans la partie JWT du hub
+Voici la liste des fonctionnalités de l'application CrewEvent.
 
+- Systéme de connection et d'inscription
+- Géstionnaire de contacts
+- Gestionnaire de profil
+- Gestionnaire d'événement
+- Gestionnaire de notifications
+- Chat instantannée
+- Publications, commenataire, et like
+- Partage d'événements
+- Suggestions d'événement
+- Recherche de contacts et d'événements
