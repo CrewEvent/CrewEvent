@@ -109,7 +109,12 @@ Voici la liste des fonctionnalités de l'application CrewEvent :
 - Suggestions d'événements
 - Recherche de contacts et d'événements
 
+## Generer les fixtures
+- Installation du bundle
+composer require --dev orm-fixtures
 
+- Chargement des fixtures dans la db
+php bin/console doctrine:fixtures:load
 
 
 ## Tech Stack
